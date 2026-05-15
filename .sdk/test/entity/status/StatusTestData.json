@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "status": {
+      "STATUS00": {},
+      "STATUS01": {},
+      "STATUS02": {}
+    }
+  },
+  "new": {
+    "status": {
+      "status_ref01": {}
+    }
+  }
+}

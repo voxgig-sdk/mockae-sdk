@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {
+        "category": "s32",
+        "description": "s33",
+        "id": "PRODUCT00",
+        "name": "s35",
+        "price": 54
+      },
+      "PRODUCT01": {
+        "category": "s64",
+        "description": "s65",
+        "id": "PRODUCT01",
+        "name": "s67",
+        "price": 104
+      },
+      "PRODUCT02": {
+        "category": "s96",
+        "description": "s97",
+        "id": "PRODUCT02",
+        "name": "s99",
+        "price": 154
+      }
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {
+        "category": "sc8",
+        "description": "sc9",
+        "name": "scb",
+        "price": 204
+      }
+    }
+  }
+}

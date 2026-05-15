@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "cart": {
+      "CART00": {
+        "id": "CART00",
+        "item": [],
+        "total": 42,
+        "user_id": "USER01"
+      },
+      "CART01": {
+        "id": "CART01",
+        "item": [],
+        "total": 82,
+        "user_id": "USER01"
+      },
+      "CART02": {
+        "id": "CART02",
+        "item": [],
+        "total": 122,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "cart": {
+      "cart_ref01": {
+        "item": [],
+        "total": 162,
+        "user_id": "USER01"
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "coupon": {
+      "COUPON00": {
+        "code": "s32",
+        "discount": 51,
+        "expiry_date": "s34",
+        "id": "COUPON00",
+        "type": "s36"
+      },
+      "COUPON01": {
+        "code": "s64",
+        "discount": 101,
+        "expiry_date": "s66",
+        "id": "COUPON01",
+        "type": "s68"
+      },
+      "COUPON02": {
+        "code": "s96",
+        "discount": 151,
+        "expiry_date": "s98",
+        "id": "COUPON02",
+        "type": "s9a"
+      }
+    }
+  },
+  "new": {
+    "coupon": {
+      "coupon_ref01": {
+        "code": "sc8",
+        "discount": 201,
+        "expiry_date": "sca",
+        "type": "scc"
+      }
+    }
+  }
+}

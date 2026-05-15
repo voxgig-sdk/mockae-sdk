@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// Mockae SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+MockaeUtility::setRegistrar(function (MockaeUtility $u): void {
+    $u->clean = [MockaeClean::class, 'call'];
+    $u->done = [MockaeDone::class, 'call'];
+    $u->make_error = [MockaeMakeError::class, 'call'];
+    $u->feature_add = [MockaeFeatureAdd::class, 'call'];
+    $u->feature_hook = [MockaeFeatureHook::class, 'call'];
+    $u->feature_init = [MockaeFeatureInit::class, 'call'];
+    $u->fetcher = [MockaeFetcher::class, 'call'];
+    $u->make_fetch_def = [MockaeMakeFetchDef::class, 'call'];
+    $u->make_context = [MockaeMakeContext::class, 'call'];
+    $u->make_options = [MockaeMakeOptions::class, 'call'];
+    $u->make_request = [MockaeMakeRequest::class, 'call'];
+    $u->make_response = [MockaeMakeResponse::class, 'call'];
+    $u->make_result = [MockaeMakeResult::class, 'call'];
+    $u->make_point = [MockaeMakePoint::class, 'call'];
+    $u->make_spec = [MockaeMakeSpec::class, 'call'];
+    $u->make_url = [MockaeMakeUrl::class, 'call'];
+    $u->param = [MockaeParam::class, 'call'];
+    $u->prepare_auth = [MockaePrepareAuth::class, 'call'];
+    $u->prepare_body = [MockaePrepareBody::class, 'call'];
+    $u->prepare_headers = [MockaePrepareHeaders::class, 'call'];
+    $u->prepare_method = [MockaePrepareMethod::class, 'call'];
+    $u->prepare_params = [MockaePrepareParams::class, 'call'];
+    $u->prepare_path = [MockaePreparePath::class, 'call'];
+    $u->prepare_query = [MockaePrepareQuery::class, 'call'];
+    $u->result_basic = [MockaeResultBasic::class, 'call'];
+    $u->result_body = [MockaeResultBody::class, 'call'];
+    $u->result_headers = [MockaeResultHeaders::class, 'call'];
+    $u->transform_request = [MockaeTransformRequest::class, 'call'];
+    $u->transform_response = [MockaeTransformResponse::class, 'call'];
+});

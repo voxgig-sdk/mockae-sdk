@@ -1,0 +1,51 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 5
+  metrics: count: path: 9
+  metrics: count: method: 9
+
+  entity: cart: {
+    path: "/carts": {
+      op: list: method: *GET
+    }
+    path: "/carts/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: coupon: {
+    path: "/coupons": {
+      op: list: method: *GET
+    }
+    path: "/coupons/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: product: {
+    path: "/products": {
+      op: list: method: *GET
+    }
+    path: "/products/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: status: {
+    path: "/status/{statusCode}": {
+      rename: param: "statusCode": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: user: {
+    path: "/users": {
+      op: list: method: *GET
+    }
+    path: "/users/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

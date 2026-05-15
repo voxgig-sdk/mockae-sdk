@@ -1,0 +1,7 @@
+# Flows
+
+@"BasicCartFlow.jsonic"
+@"BasicCouponFlow.jsonic"
+@"BasicProductFlow.jsonic"
+@"BasicStatusFlow.jsonic"
+@"BasicUserFlow.jsonic"

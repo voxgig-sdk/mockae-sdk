@@ -1,0 +1,502 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mockae API",
+    "description": "Mockae API allows you to create mock REST APIs with Lua code execution, enabling customization of headers, bodies, and HTTP status codes. It's ideal for testing and prototyping, providing a flexible way to generate API responses quickly and easily.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Mockae",
+      "url": "https://mockae.com/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.mockae.com/fakeapi",
+      "description": "Public API server for testing (read-only)"
+    }
+  ],
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "Get all products",
+        "description": "Returns a list of 50 mock products",
+        "operationId": "getAllProducts",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "Get product by ID",
+        "description": "Returns a single product by its ID",
+        "operationId": "getProductById",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Product ID",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with product details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/carts": {
+      "get": {
+        "summary": "Get all carts",
+        "description": "Returns a list of 20 mock shopping carts",
+        "operationId": "getAllCarts",
+        "tags": [
+          "Carts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of carts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Cart"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/carts/{id}": {
+      "get": {
+        "summary": "Get cart by ID",
+        "description": "Returns a single cart by its ID",
+        "operationId": "getCartById",
+        "tags": [
+          "Carts"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Cart ID",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with cart details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cart"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cart not found"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "description": "Returns a list of 20 mock users",
+        "operationId": "getAllUsers",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of users",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Get user by ID",
+        "description": "Returns a single user by their ID",
+        "operationId": "getUserById",
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "User ID",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with user details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/coupons": {
+      "get": {
+        "summary": "Get all coupons",
+        "description": "Returns a list of 20 mock coupons",
+        "operationId": "getAllCoupons",
+        "tags": [
+          "Coupons"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of coupons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Coupon"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/coupons/{id}": {
+      "get": {
+        "summary": "Get coupon by ID",
+        "description": "Returns a single coupon by its ID",
+        "operationId": "getCouponById",
+        "tags": [
+          "Coupons"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Coupon ID",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with coupon details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coupon"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Coupon not found"
+          }
+        }
+      }
+    },
+    "/status/{statusCode}": {
+      "get": {
+        "summary": "Simulate HTTP status code",
+        "description": "Returns a response with the specified HTTP status code. Useful for testing error handling in applications.",
+        "operationId": "getStatusCode",
+        "tags": [
+          "Status"
+        ],
+        "parameters": [
+          {
+            "name": "statusCode",
+            "in": "path",
+            "required": true,
+            "description": "HTTP status code to simulate (e.g., 200, 403, 404, 409, 500)",
+            "schema": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            },
+            "examples": {
+              "forbidden": {
+                "value": 403,
+                "summary": "Forbidden"
+              },
+              "notFound": {
+                "value": 404,
+                "summary": "Not Found"
+              },
+              "conflict": {
+                "value": 409,
+                "summary": "Conflict"
+              },
+              "serverError": {
+                "value": 500,
+                "summary": "Internal Server Error"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success status code simulation"
+          },
+          "400": {
+            "description": "Bad Request status code simulation"
+          },
+          "401": {
+            "description": "Unauthorized status code simulation"
+          },
+          "403": {
+            "description": "Forbidden status code simulation"
+          },
+          "404": {
+            "description": "Not Found status code simulation"
+          },
+          "409": {
+            "description": "Conflict status code simulation"
+          },
+          "500": {
+            "description": "Internal Server Error status code simulation"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "type": "object",
+        "description": "Product object with details",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Product ID",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Product name",
+            "example": "Sample Product"
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "description": "Product price",
+            "example": 29.99
+          },
+          "description": {
+            "type": "string",
+            "description": "Product description",
+            "example": "This is a sample product description"
+          },
+          "category": {
+            "type": "string",
+            "description": "Product category",
+            "example": "Electronics"
+          }
+        }
+      },
+      "Cart": {
+        "type": "object",
+        "description": "Shopping cart object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Cart ID",
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "description": "User ID who owns the cart",
+            "example": 5
+          },
+          "items": {
+            "type": "array",
+            "description": "Items in the cart",
+            "items": {
+              "type": "object",
+              "properties": {
+                "productId": {
+                  "type": "integer",
+                  "example": 10
+                },
+                "quantity": {
+                  "type": "integer",
+                  "example": 2
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "number",
+            "format": "float",
+            "description": "Total cart value",
+            "example": 59.98
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "description": "User object with profile information",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "User ID",
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "Username",
+            "example": "john_doe"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address",
+            "example": "john.doe@example.com"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "User's first name",
+            "example": "John"
+          },
+          "lastName": {
+            "type": "string",
+            "description": "User's last name",
+            "example": "Doe"
+          }
+        }
+      },
+      "Coupon": {
+        "type": "object",
+        "description": "Coupon object with discount information",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Coupon ID",
+            "example": 1
+          },
+          "code": {
+            "type": "string",
+            "description": "Coupon code",
+            "example": "SAVE20"
+          },
+          "discount": {
+            "type": "number",
+            "format": "float",
+            "description": "Discount percentage or amount",
+            "example": 20
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of discount (percentage or fixed)",
+            "enum": [
+              "percentage",
+              "fixed"
+            ],
+            "example": "percentage"
+          },
+          "expiryDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Coupon expiry date",
+            "example": "2024-12-31"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Operations related to mock products"
+    },
+    {
+      "name": "Carts",
+      "description": "Operations related to mock shopping carts"
+    },
+    {
+      "name": "Users",
+      "description": "Operations related to mock users"
+    },
+    {
+      "name": "Coupons",
+      "description": "Operations related to mock coupons"
+    },
+    {
+      "name": "Status",
+      "description": "Operations for simulating HTTP status codes"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Mockae"
+        url: "https://mockae.com/"
+      }
+      description: "Mockae API allows you to create mock REST APIs with Lua code execution, enabling customization of headers, bodies, and HTTP status codes. It's ideal for testing and prototyping, providing a flexible way to generate API responses quickly and easily."
+      servers: [
+        {
+          description: "Public API server for testing (read-only)"
+          url: "https://api.mockae.com/fakeapi"
+        }
+      ]
+      title: "Mockae API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
