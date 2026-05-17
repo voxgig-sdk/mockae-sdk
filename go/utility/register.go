@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/mockae-sdk/core"
+import "github.com/voxgig-sdk/mockae-sdk/go/core"
 
 func init() {
 	core.UtilityRegistrar = registerAll

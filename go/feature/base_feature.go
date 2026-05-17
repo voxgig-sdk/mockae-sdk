@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/mockae-sdk/core"
+	"github.com/voxgig-sdk/mockae-sdk/go/core"
 )
 
 type BaseFeature struct {

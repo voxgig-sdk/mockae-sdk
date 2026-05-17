@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/mockae-sdk/core"
+	"github.com/voxgig-sdk/mockae-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/mockae-sdk/go/utility/struct"
 )
 
 type StatusEntity struct {

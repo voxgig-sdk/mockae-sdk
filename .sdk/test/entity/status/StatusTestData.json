@@ -1,9 +1,15 @@
 {
   "existing": {
     "status": {
-      "STATUS00": {},
-      "STATUS01": {},
-      "STATUS02": {}
+      "STATUS00": {
+        "id": "STATUS00"
+      },
+      "STATUS01": {
+        "id": "STATUS01"
+      },
+      "STATUS02": {
+        "id": "STATUS02"
+      }
     }
   },
   "new": {

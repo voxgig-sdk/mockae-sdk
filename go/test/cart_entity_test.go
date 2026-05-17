@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/mockae-sdk"
-	"github.com/voxgig-sdk/mockae-sdk/core"
+	sdk "github.com/voxgig-sdk/mockae-sdk/go"
+	"github.com/voxgig-sdk/mockae-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/mockae-sdk/go/utility/struct"
 )
 
 func TestCartEntity(t *testing.T) {

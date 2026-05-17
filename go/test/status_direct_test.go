@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/mockae-sdk"
-	"github.com/voxgig-sdk/mockae-sdk/core"
+	sdk "github.com/voxgig-sdk/mockae-sdk/go"
+	"github.com/voxgig-sdk/mockae-sdk/go/core"
 )
 
 func TestStatusDirect(t *testing.T) {
