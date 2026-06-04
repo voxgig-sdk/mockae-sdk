@@ -85,7 +85,6 @@ function status_basic_setup($extra)
         "MOCKAE_TEST_STATUS_ENTID" => $idmap,
         "MOCKAE_TEST_LIVE" => "FALSE",
         "MOCKAE_TEST_EXPLAIN" => "FALSE",
-        "MOCKAE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function status_basic_setup($extra)
     if ($env["MOCKAE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCKAE_APIKEY"],
             ],
             $extra ?? [],
         ]);

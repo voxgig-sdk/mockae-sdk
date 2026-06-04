@@ -102,7 +102,6 @@ def _user_basic_setup(extra):
         "MOCKAE_TEST_USER_ENTID": idmap,
         "MOCKAE_TEST_LIVE": "FALSE",
         "MOCKAE_TEST_EXPLAIN": "FALSE",
-        "MOCKAE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +112,6 @@ def _user_basic_setup(extra):
     if env.get("MOCKAE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCKAE_APIKEY"),
             },
             extra or {},
         ])

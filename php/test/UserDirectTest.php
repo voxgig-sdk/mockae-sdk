@@ -123,14 +123,12 @@ function user_direct_setup($mockres)
     $env = Runner::env_override([
         "MOCKAE_TEST_USER_ENTID" => [],
         "MOCKAE_TEST_LIVE" => "FALSE",
-        "MOCKAE_APIKEY" => "NONE",
     ]);
 
     $live = $env["MOCKAE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["MOCKAE_APIKEY"],
         ];
         $client = new MockaeSDK($merged_opts);
         return [

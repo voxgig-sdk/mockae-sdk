@@ -17,8 +17,33 @@ main: {
       ]
       title: "Mockae API"
       version: "1.0.0"
+      tagline: "Read-only public mock REST API with sample products, carts, users, coupons and HTTP status helpers"
+      homepage: "https://mockae.com/"
+      docs_url: "https://mockae.com/"
+      license_short: "Free, open-source public mock API (see Mockae site conditions of use)"
+      license_md: `- Mockae is a free, open-source project by Cyril Bois
+- The hosted \`api.mockae.com/fakeapi\` service is provided as a public, read-only sandbox
+- No specific rate limits or auth requirements are documented; treat the service as best-effort for testing and prototyping
+- See the Mockae homepage at https://mockae.com/ for conditions of use`
+      about_md: `[Mockae](https://mockae.com/) is an open-source project by Cyril Bois that lets developers mock REST APIs using Lua scripts to control headers, HTTP status codes, and response bodies based on the incoming URL, headers, and payload.
+
+This SDK targets the hosted public sandbox at \`https://api.mockae.com/fakeapi\`, which exposes a small set of read-only sample collections useful for demos, tutorials, and front-end prototyping:
+
+- \`/products\` — around 50 sample product records
+- \`/carts\` — around 20 sample shopping carts
+- \`/users\` — around 20 sample user profiles
+- \`/coupons\` — around 20 sample coupon records
+- \`/status\` — endpoint for simulating arbitrary HTTP response codes
+
+The public sandbox has CORS enabled and requires no authentication. Rate limits are not published, and the service is community-monitored, so availability and latency can vary. For private mocks with custom Lua rules, run Mockae yourself from the project's homepage.`
+      entity_desc: {
+        cart: "Sample shopping carts returned from `/carts` (about 20 fixtures)."
+        coupon: "Sample discount coupons returned from `/coupons` (about 20 fixtures)."
+        product: "Sample product catalogue entries returned from `/products` (about 50 fixtures)."
+        status: "Helper endpoint at `/status` for simulating arbitrary HTTP response codes during testing."
+        user: "Sample user profile records returned from `/users` (about 20 fixtures)."
+      }
+      auth: false
     }
   }
-}
-
 }

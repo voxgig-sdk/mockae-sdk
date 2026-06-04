@@ -20,9 +20,6 @@ class MockaeConfig
             ],
             "options" => [
                 "base" => "https://api.mockae.com/fakeapi",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

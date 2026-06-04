@@ -66,14 +66,12 @@ def _status_direct_setup(mockres):
     env = runner.env_override({
         "MOCKAE_TEST_STATUS_ENTID": {},
         "MOCKAE_TEST_LIVE": "FALSE",
-        "MOCKAE_APIKEY": "NONE",
     })
 
     live = env.get("MOCKAE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("MOCKAE_APIKEY"),
         }
         client = MockaeSDK(merged_opts)
         return {

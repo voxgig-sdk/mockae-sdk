@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'MOCKAE_TEST_STATUS_ENTID': idmap,
     'MOCKAE_TEST_LIVE': 'FALSE',
     'MOCKAE_TEST_EXPLAIN': 'FALSE',
-    'MOCKAE_APIKEY': 'NONE',
   })
 
   idmap = env['MOCKAE_TEST_STATUS_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new MockaeSDK(merge([
       {
-        apikey: env.MOCKAE_APIKEY,
       },
       extra
     ]))
