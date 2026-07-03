@@ -10,7 +10,7 @@ The Python SDK for the Mockae API — an entity-oriented client following Python
 
 ## Install
 ```bash
-pip install mockae-sdk
+pip install voxgig-sdk-mockae
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The PHP SDK for the Mockae API — an entity-oriented client using PHP conventio
 
 ## Install
 ```bash
-composer require voxgig/mockae-sdk
+composer require voxgig-sdk/mockae
 ```
 
 

@@ -10,13 +10,13 @@ The Ruby SDK for the Mockae API — an entity-oriented client using idiomatic Ru
 
 ## Install
 ```bash
-gem install mockae-sdk
+gem install voxgig-sdk-mockae
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "mockae-sdk"
+gem "voxgig-sdk-mockae"
 ```
 
 Then run:

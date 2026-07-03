@@ -10,7 +10,7 @@ The TypeScript SDK for the Mockae API — a type-safe, entity-oriented client wi
 
 ## Install
 ```bash
-npm install mockae
+npm install @voxgig-sdk/mockae
 ```
 ## Tutorial: your first API call
 
