@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -119,7 +119,7 @@ local cart = client:Cart(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Cart(nil):list(nil, nil)
+local results, err = client:Cart():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -127,7 +127,7 @@ local results, err = client:Cart(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Cart(nil):load({ id = "cart_id" }, nil)
+local result, err = client:Cart():load({ id = "cart_id" })
 ```
 
 ### Common Methods
@@ -183,7 +183,7 @@ local coupon = client:Coupon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Coupon(nil):list(nil, nil)
+local results, err = client:Coupon():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -191,7 +191,7 @@ local results, err = client:Coupon(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Coupon(nil):load({ id = "coupon_id" }, nil)
+local result, err = client:Coupon():load({ id = "coupon_id" })
 ```
 
 ### Common Methods
@@ -247,7 +247,7 @@ local product = client:Product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Product(nil):list(nil, nil)
+local results, err = client:Product():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -255,7 +255,7 @@ local results, err = client:Product(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product(nil):load({ id = "product_id" }, nil)
+local result, err = client:Product():load({ id = "product_id" })
 ```
 
 ### Common Methods
@@ -301,7 +301,7 @@ local status = client:Status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Status(nil):load({ id = "status_id" }, nil)
+local result, err = client:Status():load({ id = "status_id" })
 ```
 
 ### Common Methods
@@ -357,7 +357,7 @@ local user = client:User(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:User(nil):list(nil, nil)
+local results, err = client:User():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -365,7 +365,7 @@ local results, err = client:User(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:User(nil):load({ id = "user_id" }, nil)
+local result, err = client:User():load({ id = "user_id" })
 ```
 
 ### Common Methods

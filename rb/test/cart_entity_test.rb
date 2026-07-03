@@ -93,6 +93,7 @@ def cart_basic_setup(extra)
     "MOCKAE_TEST_CART_ENTID" => idmap,
     "MOCKAE_TEST_LIVE" => "FALSE",
     "MOCKAE_TEST_EXPLAIN" => "FALSE",
+    "MOCKAE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,6 +105,7 @@ def cart_basic_setup(extra)
   if env["MOCKAE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["MOCKAE_APIKEY"],
       },
       extra || {},
     ])

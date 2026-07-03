@@ -116,12 +116,14 @@ def coupon_direct_setup(mockres)
   env = Runner.env_override({
     "MOCKAE_TEST_COUPON_ENTID" => {},
     "MOCKAE_TEST_LIVE" => "FALSE",
+    "MOCKAE_APIKEY" => "NONE",
   })
 
   live = env["MOCKAE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["MOCKAE_APIKEY"],
     }
     client = MockaeSDK.new(merged_opts)
     return {

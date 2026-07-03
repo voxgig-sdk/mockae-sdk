@@ -1,22 +1,8 @@
 # Mockae SDK
 
-Read-only public mock REST API with sample products, carts, users, coupons and HTTP status helpers
+Mockae API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Mockae API
-
-[Mockae](https://mockae.com/) is an open-source project by Cyril Bois that lets developers mock REST APIs using Lua scripts to control headers, HTTP status codes, and response bodies based on the incoming URL, headers, and payload.
-
-This SDK targets the hosted public sandbox at `https://api.mockae.com/fakeapi`, which exposes a small set of read-only sample collections useful for demos, tutorials, and front-end prototyping:
-
-- `/products` — around 50 sample product records
-- `/carts` — around 20 sample shopping carts
-- `/users` — around 20 sample user profiles
-- `/coupons` — around 20 sample coupon records
-- `/status` — endpoint for simulating arbitrary HTTP response codes
-
-The public sandbox has CORS enabled and requires no authentication. Rate limits are not published, and the service is community-monitored, so availability and latency can vary. For private mocks with custom Lua rules, run Mockae yourself from the project's homepage.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install mockae-sdk
 luarocks install mockae-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { MockaeSDK } from 'mockae'
 
-const client = new MockaeSDK({})
+const client = new MockaeSDK({
+  apikey: process.env.MOCKAE_APIKEY,
+})
 
 // List all carts
 const carts = await client.Cart().list()
+console.log(carts.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,11 +90,11 @@ The API exposes 5 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Cart** | Sample shopping carts returned from `/carts` (about 20 fixtures). | `/carts` |
-| **Coupon** | Sample discount coupons returned from `/coupons` (about 20 fixtures). | `/coupons` |
-| **Product** | Sample product catalogue entries returned from `/products` (about 50 fixtures). | `/products` |
-| **Status** | Helper endpoint at `/status` for simulating arbitrary HTTP response codes during testing. | `/status/{statusCode}` |
-| **User** | Sample user profile records returned from `/users` (about 20 fixtures). | `/users` |
+| **Cart** |  | `/carts` |
+| **Coupon** |  | `/coupons` |
+| **Product** |  | `/products` |
+| **Status** |  | `/status/{statusCode}` |
+| **User** |  | `/users` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -116,17 +104,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from mockae_sdk import MockaeSDK
 
-client = MockaeSDK({})
+client = MockaeSDK({
+    "apikey": os.environ.get("MOCKAE_APIKEY"),
+})
 
 # List all carts
-carts, err = client.Cart(None).list(None, None)
+carts, err = client.Cart().list()
+print(carts)
 
 # Load a specific cart
-cart, err = client.Cart(None).load(
-    {"id": "example_id"}, None
-)
+cart, err = client.Cart().load({"id": "example_id"})
+print(cart)
 ```
 
 ### PHP
@@ -135,15 +126,17 @@ cart, err = client.Cart(None).load(
 <?php
 require_once 'mockae_sdk.php';
 
-$client = new MockaeSDK([]);
+$client = new MockaeSDK([
+    "apikey" => getenv("MOCKAE_APIKEY"),
+]);
 
 // List all carts
-[$carts, $err] = $client->Cart(null)->list(null, null);
+[$carts, $err] = $client->Cart()->list();
+print_r($carts);
 
 // Load a specific cart
-[$cart, $err] = $client->Cart(null)->load(
-    ["id" => "example_id"], null
-);
+[$cart, $err] = $client->Cart()->load(["id" => "example_id"]);
+print_r($cart);
 ```
 
 ### Golang
@@ -151,10 +144,13 @@ $client = new MockaeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/mockae-sdk/go"
 
-client := sdk.NewMockaeSDK(map[string]any{})
+client := sdk.NewMockaeSDK(map[string]any{
+    "apikey": os.Getenv("MOCKAE_APIKEY"),
+})
 
 // List all carts
 carts, err := client.Cart(nil).List(nil, nil)
+fmt.Println(carts)
 ```
 
 ### Ruby
@@ -162,15 +158,17 @@ carts, err := client.Cart(nil).List(nil, nil)
 ```ruby
 require_relative "Mockae_sdk"
 
-client = MockaeSDK.new({})
+client = MockaeSDK.new({
+  "apikey" => ENV["MOCKAE_APIKEY"],
+})
 
 # List all carts
-carts, err = client.Cart(nil).list(nil, nil)
+carts, err = client.Cart().list
+puts carts
 
 # Load a specific cart
-cart, err = client.Cart(nil).load(
-  { "id" => "example_id" }, nil
-)
+cart, err = client.Cart().load({ "id" => "example_id" })
+puts cart
 ```
 
 ### Lua
@@ -178,15 +176,17 @@ cart, err = client.Cart(nil).load(
 ```lua
 local sdk = require("mockae_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("MOCKAE_APIKEY"),
+})
 
 -- List all carts
-local carts, err = client:Cart(nil):list(nil, nil)
+local carts, err = client:Cart():list()
+print(carts)
 
 -- Load a specific cart
-local cart, err = client:Cart(nil):load(
-  { id = "example_id" }, nil
-)
+local cart, err = client:Cart():load({ id = "example_id" })
+print(cart)
 ```
 
 ## Unit testing in offline mode
@@ -205,25 +205,21 @@ const result = await client.Cart().load({ id: 'test01' })
 ### Python
 
 ```python
-client = MockaeSDK.test(None, None)
-result, err = client.Cart(None).load(
-    {"id": "test01"}, None
-)
+client = MockaeSDK.test()
+result, err = client.Cart().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = MockaeSDK::test(null, null);
-[$result, $err] = $client->Cart(null)->load(
-    ["id" => "test01"], null
-);
+$client = MockaeSDK::test();
+[$result, $err] = $client->Cart()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Cart(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -232,19 +228,15 @@ result, err := client.Cart(nil).Load(
 ### Ruby
 
 ```ruby
-client = MockaeSDK.test(nil, nil)
-result, err = client.Cart(nil).load(
-  { "id" => "test01" }, nil
-)
+client = MockaeSDK.test
+result, err = client.Cart().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Cart(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Cart():load({ id = "test01" })
 ```
 
 ## How it works
@@ -348,15 +340,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Mockae API
-
-- Upstream: [https://mockae.com/](https://mockae.com/)
-
-- Mockae is a free, open-source project by Cyril Bois
-- The hosted `api.mockae.com/fakeapi` service is provided as a public, read-only sandbox
-- No specific rate limits or auth requirements are documented; treat the service as best-effort for testing and prototyping
-- See the Mockae homepage at https://mockae.com/ for conditions of use
 
 ---
 

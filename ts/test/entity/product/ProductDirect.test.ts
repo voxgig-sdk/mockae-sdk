@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'MOCKAE_TEST_PRODUCT_ENTID': {},
     'MOCKAE_TEST_LIVE': 'FALSE',
+    'MOCKAE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.MOCKAE_TEST_LIVE
 
   if (live) {
     const client = new MockaeSDK({
+      apikey: env.MOCKAE_APIKEY,
     })
 
     let idmap: any = env['MOCKAE_TEST_PRODUCT_ENTID']
