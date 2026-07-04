@@ -45,6 +45,7 @@ class ProductEntity
     end
   end
 
+  # @return [Product, Hash] the current Product data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class ProductEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Product fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Product.
+  #
+  # @param reqmatch [ProductLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Product, Hash] the loaded Product; raises MockaeError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class ProductEntity
 
 
   
+  # List Product items matching the given filter.
+  #
+  # @param reqmatch [ProductListMatch, Hash, nil] match filter (any subset of Product fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Product>, Array] the matching Product items; raises MockaeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

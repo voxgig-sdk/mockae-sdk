@@ -43,16 +43,14 @@ class ProductEntityTest < Minitest::Test
     product_ref01_ent = client.Product(nil)
     product_ref01_match = {}
 
-    product_ref01_list_result, err = product_ref01_ent.list(product_ref01_match, nil)
-    assert_nil err
+    product_ref01_list_result = product_ref01_ent.list(product_ref01_match, nil)
     assert product_ref01_list_result.is_a?(Array)
 
     # LOAD
     product_ref01_match_dt0 = {
       "id" => product_ref01_data["id"],
     }
-    product_ref01_data_dt0_loaded, err = product_ref01_ent.load(product_ref01_match_dt0, nil)
-    assert_nil err
+    product_ref01_data_dt0_loaded = product_ref01_ent.load(product_ref01_match_dt0, nil)
     product_ref01_data_dt0_load_result = Helpers.to_map(product_ref01_data_dt0_loaded)
     assert !product_ref01_data_dt0_load_result.nil?
     assert_equal product_ref01_data_dt0_load_result["id"], product_ref01_data["id"]
@@ -93,7 +91,6 @@ def product_basic_setup(extra)
     "MOCKAE_TEST_PRODUCT_ENTID" => idmap,
     "MOCKAE_TEST_LIVE" => "FALSE",
     "MOCKAE_TEST_EXPLAIN" => "FALSE",
-    "MOCKAE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def product_basic_setup(extra)
   if env["MOCKAE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCKAE_APIKEY"],
       },
       extra || {},
     ])

@@ -110,14 +110,12 @@ func statusDirectSetup(mockres any) *statusDirectSetupResult {
 	env := envOverride(map[string]any{
 		"MOCKAE_TEST_STATUS_ENTID": map[string]any{},
 		"MOCKAE_TEST_LIVE":    "FALSE",
-		"MOCKAE_APIKEY":       "NONE",
 	})
 
 	live := env["MOCKAE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MOCKAE_APIKEY"],
 		}
 		client := sdk.NewMockaeSDK(mergedOpts)
 

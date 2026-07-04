@@ -194,14 +194,12 @@ func cartDirectSetup(mockres any) *cartDirectSetupResult {
 	env := envOverride(map[string]any{
 		"MOCKAE_TEST_CART_ENTID": map[string]any{},
 		"MOCKAE_TEST_LIVE":    "FALSE",
-		"MOCKAE_APIKEY":       "NONE",
 	})
 
 	live := env["MOCKAE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["MOCKAE_APIKEY"],
 		}
 		client := sdk.NewMockaeSDK(mergedOpts)
 

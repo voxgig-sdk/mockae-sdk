@@ -43,16 +43,14 @@ class CartEntityTest < Minitest::Test
     cart_ref01_ent = client.Cart(nil)
     cart_ref01_match = {}
 
-    cart_ref01_list_result, err = cart_ref01_ent.list(cart_ref01_match, nil)
-    assert_nil err
+    cart_ref01_list_result = cart_ref01_ent.list(cart_ref01_match, nil)
     assert cart_ref01_list_result.is_a?(Array)
 
     # LOAD
     cart_ref01_match_dt0 = {
       "id" => cart_ref01_data["id"],
     }
-    cart_ref01_data_dt0_loaded, err = cart_ref01_ent.load(cart_ref01_match_dt0, nil)
-    assert_nil err
+    cart_ref01_data_dt0_loaded = cart_ref01_ent.load(cart_ref01_match_dt0, nil)
     cart_ref01_data_dt0_load_result = Helpers.to_map(cart_ref01_data_dt0_loaded)
     assert !cart_ref01_data_dt0_load_result.nil?
     assert_equal cart_ref01_data_dt0_load_result["id"], cart_ref01_data["id"]
@@ -93,7 +91,6 @@ def cart_basic_setup(extra)
     "MOCKAE_TEST_CART_ENTID" => idmap,
     "MOCKAE_TEST_LIVE" => "FALSE",
     "MOCKAE_TEST_EXPLAIN" => "FALSE",
-    "MOCKAE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def cart_basic_setup(extra)
   if env["MOCKAE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCKAE_APIKEY"],
       },
       extra || {},
     ])

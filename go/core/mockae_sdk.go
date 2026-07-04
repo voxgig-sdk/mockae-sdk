@@ -245,26 +245,41 @@ func (sdk *MockaeSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Cart returns a Cart entity bound to this client.
+// Idiomatic usage: client.Cart(nil).List(nil, nil) or
+// client.Cart(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockaeSDK) Cart(data map[string]any) MockaeEntity {
 	return NewCartEntityFunc(sdk, data)
 }
 
 
+// Coupon returns a Coupon entity bound to this client.
+// Idiomatic usage: client.Coupon(nil).List(nil, nil) or
+// client.Coupon(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockaeSDK) Coupon(data map[string]any) MockaeEntity {
 	return NewCouponEntityFunc(sdk, data)
 }
 
 
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockaeSDK) Product(data map[string]any) MockaeEntity {
 	return NewProductEntityFunc(sdk, data)
 }
 
 
+// Status returns a Status entity bound to this client.
+// Idiomatic usage: client.Status(nil).List(nil, nil) or
+// client.Status(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockaeSDK) Status(data map[string]any) MockaeEntity {
 	return NewStatusEntityFunc(sdk, data)
 }
 
 
+// User returns a User entity bound to this client.
+// Idiomatic usage: client.User(nil).List(nil, nil) or
+// client.User(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *MockaeSDK) User(data map[string]any) MockaeEntity {
 	return NewUserEntityFunc(sdk, data)
 }

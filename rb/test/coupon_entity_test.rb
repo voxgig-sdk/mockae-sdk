@@ -43,16 +43,14 @@ class CouponEntityTest < Minitest::Test
     coupon_ref01_ent = client.Coupon(nil)
     coupon_ref01_match = {}
 
-    coupon_ref01_list_result, err = coupon_ref01_ent.list(coupon_ref01_match, nil)
-    assert_nil err
+    coupon_ref01_list_result = coupon_ref01_ent.list(coupon_ref01_match, nil)
     assert coupon_ref01_list_result.is_a?(Array)
 
     # LOAD
     coupon_ref01_match_dt0 = {
       "id" => coupon_ref01_data["id"],
     }
-    coupon_ref01_data_dt0_loaded, err = coupon_ref01_ent.load(coupon_ref01_match_dt0, nil)
-    assert_nil err
+    coupon_ref01_data_dt0_loaded = coupon_ref01_ent.load(coupon_ref01_match_dt0, nil)
     coupon_ref01_data_dt0_load_result = Helpers.to_map(coupon_ref01_data_dt0_loaded)
     assert !coupon_ref01_data_dt0_load_result.nil?
     assert_equal coupon_ref01_data_dt0_load_result["id"], coupon_ref01_data["id"]
@@ -93,7 +91,6 @@ def coupon_basic_setup(extra)
     "MOCKAE_TEST_COUPON_ENTID" => idmap,
     "MOCKAE_TEST_LIVE" => "FALSE",
     "MOCKAE_TEST_EXPLAIN" => "FALSE",
-    "MOCKAE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def coupon_basic_setup(extra)
   if env["MOCKAE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCKAE_APIKEY"],
       },
       extra || {},
     ])

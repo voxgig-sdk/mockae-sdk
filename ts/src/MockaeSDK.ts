@@ -6,6 +6,8 @@ import { ProductEntity } from './entity/ProductEntity'
 import { StatusEntity } from './entity/StatusEntity'
 import { UserEntity } from './entity/UserEntity'
 
+export type * from './MockaeTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -206,30 +208,70 @@ class MockaeSDK {
 
 
 
+  _cart?: CartEntity
+
+  // Idiomatic facade: `client.cart.list()` / `client.cart.load({ id })`.
+  get cart(): CartEntity {
+    return (this._cart ??= new CartEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.cart` instead. */
   Cart(data?: any) {
     const self = this
     return new CartEntity(self,data)
   }
 
 
+  _coupon?: CouponEntity
+
+  // Idiomatic facade: `client.coupon.list()` / `client.coupon.load({ id })`.
+  get coupon(): CouponEntity {
+    return (this._coupon ??= new CouponEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.coupon` instead. */
   Coupon(data?: any) {
     const self = this
     return new CouponEntity(self,data)
   }
 
 
+  _product?: ProductEntity
+
+  // Idiomatic facade: `client.product.list()` / `client.product.load({ id })`.
+  get product(): ProductEntity {
+    return (this._product ??= new ProductEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.product` instead. */
   Product(data?: any) {
     const self = this
     return new ProductEntity(self,data)
   }
 
 
+  _status?: StatusEntity
+
+  // Idiomatic facade: `client.status.list()` / `client.status.load({ id })`.
+  get status(): StatusEntity {
+    return (this._status ??= new StatusEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.status` instead. */
   Status(data?: any) {
     const self = this
     return new StatusEntity(self,data)
   }
 
 
+  _user?: UserEntity
+
+  // Idiomatic facade: `client.user.list()` / `client.user.load({ id })`.
+  get user(): UserEntity {
+    return (this._user ??= new UserEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.user` instead. */
   User(data?: any) {
     const self = this
     return new UserEntity(self,data)

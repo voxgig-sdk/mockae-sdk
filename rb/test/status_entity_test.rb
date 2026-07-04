@@ -42,8 +42,7 @@ class StatusEntityTest < Minitest::Test
     # LOAD
     status_ref01_ent = client.Status(nil)
     status_ref01_match_dt0 = {}
-    status_ref01_data_dt0_loaded, err = status_ref01_ent.load(status_ref01_match_dt0, nil)
-    assert_nil err
+    status_ref01_data_dt0_loaded = status_ref01_ent.load(status_ref01_match_dt0, nil)
     assert !status_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def status_basic_setup(extra)
     "MOCKAE_TEST_STATUS_ENTID" => idmap,
     "MOCKAE_TEST_LIVE" => "FALSE",
     "MOCKAE_TEST_EXPLAIN" => "FALSE",
-    "MOCKAE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def status_basic_setup(extra)
   if env["MOCKAE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["MOCKAE_APIKEY"],
       },
       extra || {},
     ])

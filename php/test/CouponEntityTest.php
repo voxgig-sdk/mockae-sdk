@@ -50,16 +50,14 @@ class CouponEntityTest extends TestCase
         $coupon_ref01_ent = $client->Coupon(null);
         $coupon_ref01_match = [];
 
-        [$coupon_ref01_list_result, $err] = $coupon_ref01_ent->list($coupon_ref01_match, null);
-        $this->assertNull($err);
+        $coupon_ref01_list_result = $coupon_ref01_ent->list($coupon_ref01_match, null);
         $this->assertIsArray($coupon_ref01_list_result);
 
         // LOAD
         $coupon_ref01_match_dt0 = [
             "id" => $coupon_ref01_data["id"],
         ];
-        [$coupon_ref01_data_dt0_loaded, $err] = $coupon_ref01_ent->load($coupon_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $coupon_ref01_data_dt0_loaded = $coupon_ref01_ent->load($coupon_ref01_match_dt0, null);
         $coupon_ref01_data_dt0_load_result = Helpers::to_map($coupon_ref01_data_dt0_loaded);
         $this->assertNotNull($coupon_ref01_data_dt0_load_result);
         $this->assertEquals($coupon_ref01_data_dt0_load_result["id"], $coupon_ref01_data["id"]);
@@ -96,7 +94,6 @@ function coupon_basic_setup($extra)
         "MOCKAE_TEST_COUPON_ENTID" => $idmap,
         "MOCKAE_TEST_LIVE" => "FALSE",
         "MOCKAE_TEST_EXPLAIN" => "FALSE",
-        "MOCKAE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function coupon_basic_setup($extra)
     if ($env["MOCKAE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCKAE_APIKEY"],
             ],
             $extra ?? [],
         ]);

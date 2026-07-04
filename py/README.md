@@ -9,11 +9,9 @@ The Python SDK for the Mockae API — an entity-oriented client following Python
 
 
 ## Install
-```bash
-pip install voxgig-sdk-mockae
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/mockae-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from mockae_sdk import MockaeSDK
 
-client = MockaeSDK({
-    "apikey": os.environ.get("MOCKAE_APIKEY"),
-})
+client = MockaeSDK()
 ```
 
 ### 2. List carts
 
 ```python
-result, err = client.Cart().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.cart.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a cart
 
 ```python
-result, err = client.Cart().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.cart.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MockaeSDK.test()
 
-result, err = client.Mockae().load({"id": "test01"})
+result = client.cart.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -133,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOCKAE_TEST_LIVE=TRUE
-MOCKAE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Cart` | `(data) -> CartEntity` | Create a Cart entity instance. |
 | `Coupon` | `(data) -> CouponEntity` | Create a Coupon entity instance. |
 | `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
@@ -193,11 +185,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -207,8 +199,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -292,7 +288,7 @@ API path: `/users`
 
 ### Cart
 
-Create an instance: `const cart = client.Cart()`
+Create an instance: `const cart = client.cart`
 
 #### Operations
 
@@ -313,19 +309,19 @@ Create an instance: `const cart = client.Cart()`
 #### Example: Load
 
 ```ts
-const cart = await client.Cart().load({ id: 'cart_id' })
+const cart = await client.cart.load({ id: 'cart_id' })
 ```
 
 #### Example: List
 
 ```ts
-const carts = await client.Cart().list()
+const carts = await client.cart.list()
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.Coupon()`
+Create an instance: `const coupon = client.coupon`
 
 #### Operations
 
@@ -347,19 +343,19 @@ Create an instance: `const coupon = client.Coupon()`
 #### Example: Load
 
 ```ts
-const coupon = await client.Coupon().load({ id: 'coupon_id' })
+const coupon = await client.coupon.load({ id: 'coupon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const coupons = await client.Coupon().list()
+const coupons = await client.coupon.list()
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -381,19 +377,19 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.Status()`
+Create an instance: `const status = client.status`
 
 #### Operations
 
@@ -404,13 +400,13 @@ Create an instance: `const status = client.Status()`
 #### Example: Load
 
 ```ts
-const status = await client.Status().load({ id: 'status_id' })
+const status = await client.status.load({ id: 'status_id' })
 ```
 
 
 ### User
 
-Create an instance: `const user = client.User()`
+Create an instance: `const user = client.user`
 
 #### Operations
 
@@ -432,13 +428,13 @@ Create an instance: `const user = client.User()`
 #### Example: Load
 
 ```ts
-const user = await client.User().load({ id: 'user_id' })
+const user = await client.user.load({ id: 'user_id' })
 ```
 
 #### Example: List
 
 ```ts
-const users = await client.User().list()
+const users = await client.user.list()
 ```
 
 
@@ -512,11 +508,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+cart = client.cart
+cart.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# cart.data_get() now returns the loaded cart data
+# cart.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

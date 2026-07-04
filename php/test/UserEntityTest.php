@@ -50,16 +50,14 @@ class UserEntityTest extends TestCase
         $user_ref01_ent = $client->User(null);
         $user_ref01_match = [];
 
-        [$user_ref01_list_result, $err] = $user_ref01_ent->list($user_ref01_match, null);
-        $this->assertNull($err);
+        $user_ref01_list_result = $user_ref01_ent->list($user_ref01_match, null);
         $this->assertIsArray($user_ref01_list_result);
 
         // LOAD
         $user_ref01_match_dt0 = [
             "id" => $user_ref01_data["id"],
         ];
-        [$user_ref01_data_dt0_loaded, $err] = $user_ref01_ent->load($user_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $user_ref01_data_dt0_loaded = $user_ref01_ent->load($user_ref01_match_dt0, null);
         $user_ref01_data_dt0_load_result = Helpers::to_map($user_ref01_data_dt0_loaded);
         $this->assertNotNull($user_ref01_data_dt0_load_result);
         $this->assertEquals($user_ref01_data_dt0_load_result["id"], $user_ref01_data["id"]);
@@ -96,7 +94,6 @@ function user_basic_setup($extra)
         "MOCKAE_TEST_USER_ENTID" => $idmap,
         "MOCKAE_TEST_LIVE" => "FALSE",
         "MOCKAE_TEST_EXPLAIN" => "FALSE",
-        "MOCKAE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function user_basic_setup($extra)
     if ($env["MOCKAE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["MOCKAE_APIKEY"],
             ],
             $extra ?? [],
         ]);

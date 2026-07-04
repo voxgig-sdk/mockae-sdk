@@ -9,9 +9,12 @@ The TypeScript SDK for the Mockae API — a type-safe, entity-oriented client wi
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/mockae
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/mockae-sdk/releases](https://github.com/voxgig-sdk/mockae-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MockaeSDK } from 'mockae'
+import { MockaeSDK } from '@voxgig-sdk/mockae'
 
-const client = new MockaeSDK({
-  apikey: process.env.MOCKAE_APIKEY,
-})
+const client = new MockaeSDK()
 ```
 
 ### 2. List carts
 
 ```ts
-const result = await client.Cart().list()
+const result = await client.cart.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a cart
 
 ```ts
-const result = await client.Cart().load({ id: 'example_id' })
+const result = await client.cart.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MockaeSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.cart.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new MockaeSDK({ apikey: '...' })
+const client = new MockaeSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.cart
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new MockaeSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -146,7 +146,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOCKAE_TEST_LIVE=TRUE
-MOCKAE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new MockaeSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new MockaeSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -336,7 +333,7 @@ API path: `/users`
 
 ### Cart
 
-Create an instance: `const cart = client.Cart()`
+Create an instance: `const cart = client.cart`
 
 #### Operations
 
@@ -357,19 +354,19 @@ Create an instance: `const cart = client.Cart()`
 #### Example: Load
 
 ```ts
-const cart = await client.Cart().load({ id: 'cart_id' })
+const cart = await client.cart.load({ id: 'cart_id' })
 ```
 
 #### Example: List
 
 ```ts
-const carts = await client.Cart().list()
+const carts = await client.cart.list()
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.Coupon()`
+Create an instance: `const coupon = client.coupon`
 
 #### Operations
 
@@ -391,19 +388,19 @@ Create an instance: `const coupon = client.Coupon()`
 #### Example: Load
 
 ```ts
-const coupon = await client.Coupon().load({ id: 'coupon_id' })
+const coupon = await client.coupon.load({ id: 'coupon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const coupons = await client.Coupon().list()
+const coupons = await client.coupon.list()
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -425,19 +422,19 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.Status()`
+Create an instance: `const status = client.status`
 
 #### Operations
 
@@ -448,13 +445,13 @@ Create an instance: `const status = client.Status()`
 #### Example: Load
 
 ```ts
-const status = await client.Status().load({ id: 'status_id' })
+const status = await client.status.load({ id: 'status_id' })
 ```
 
 
 ### User
 
-Create an instance: `const user = client.User()`
+Create an instance: `const user = client.user`
 
 #### Operations
 
@@ -476,13 +473,13 @@ Create an instance: `const user = client.User()`
 #### Example: Load
 
 ```ts
-const user = await client.User().load({ id: 'user_id' })
+const user = await client.user.load({ id: 'user_id' })
 ```
 
 #### Example: List
 
 ```ts
-const users = await client.User().list()
+const users = await client.user.list()
 ```
 
 
@@ -543,7 +540,7 @@ mockae/
 Import the SDK from the package root:
 
 ```ts
-import { MockaeSDK } from 'mockae'
+import { MockaeSDK } from '@voxgig-sdk/mockae'
 ```
 
 ### Entity state
@@ -553,11 +550,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const cart = client.cart
+await cart.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// cart.data() now returns the loaded cart data
+// cart.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

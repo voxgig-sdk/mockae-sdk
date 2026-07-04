@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CouponLoadMatch
+---@param ctrl? table
+---@return Coupon
+---@return string? err
 function CouponEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch CouponListMatch
+---@param ctrl? table
+---@return Coupon[]
+---@return string? err
 function CouponEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

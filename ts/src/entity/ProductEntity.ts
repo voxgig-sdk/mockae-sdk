@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Product,
+  ProductLoadMatch,
+  ProductListMatch,
+} from '../MockaeTypes'
 
 // TODO: needs Entity superclass
-class ProductEntity extends MockaeEntityBase {
+class ProductEntity extends MockaeEntityBase<Product> {
 
   constructor(client: MockaeSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class ProductEntity extends MockaeEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ProductLoadMatch, ctrl?: Control): Promise<Product> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class ProductEntity extends MockaeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Product> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ProductListMatch, ctrl?: Control): Promise<Product[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class ProductEntity extends MockaeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Product[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

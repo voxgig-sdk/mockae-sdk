@@ -9,12 +9,9 @@ The Lua SDK for the Mockae API — an entity-oriented client using Lua conventio
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-mockae
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/mockae-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("mockae_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("MOCKAE_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List carts
 
 ```lua
-local result, err = client:Cart():list()
+local result, err = client:cart():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a cart
 
 ```lua
-local result, err = client:Cart():load({ id = "example_id" })
+local result, err = client:cart():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Mockae():load({ id = "test01" })
+local result, err = client:cart():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -135,7 +130,6 @@ Create a `.env.local` file at the project root:
 
 ```
 MOCKAE_TEST_LIVE=TRUE
-MOCKAE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -293,7 +286,7 @@ API path: `/users`
 
 ### Cart
 
-Create an instance: `const cart = client.Cart()`
+Create an instance: `const cart = client.cart`
 
 #### Operations
 
@@ -314,19 +307,19 @@ Create an instance: `const cart = client.Cart()`
 #### Example: Load
 
 ```ts
-const cart = await client.Cart().load({ id: 'cart_id' })
+const cart = await client.cart.load({ id: 'cart_id' })
 ```
 
 #### Example: List
 
 ```ts
-const carts = await client.Cart().list()
+const carts = await client.cart.list()
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.Coupon()`
+Create an instance: `const coupon = client.coupon`
 
 #### Operations
 
@@ -348,19 +341,19 @@ Create an instance: `const coupon = client.Coupon()`
 #### Example: Load
 
 ```ts
-const coupon = await client.Coupon().load({ id: 'coupon_id' })
+const coupon = await client.coupon.load({ id: 'coupon_id' })
 ```
 
 #### Example: List
 
 ```ts
-const coupons = await client.Coupon().list()
+const coupons = await client.coupon.list()
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -382,19 +375,19 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: List
 
 ```ts
-const products = await client.Product().list()
+const products = await client.product.list()
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.Status()`
+Create an instance: `const status = client.status`
 
 #### Operations
 
@@ -405,13 +398,13 @@ Create an instance: `const status = client.Status()`
 #### Example: Load
 
 ```ts
-const status = await client.Status().load({ id: 'status_id' })
+const status = await client.status.load({ id: 'status_id' })
 ```
 
 
 ### User
 
-Create an instance: `const user = client.User()`
+Create an instance: `const user = client.user`
 
 #### Operations
 
@@ -433,13 +426,13 @@ Create an instance: `const user = client.User()`
 #### Example: Load
 
 ```ts
-const user = await client.User().load({ id: 'user_id' })
+const user = await client.user.load({ id: 'user_id' })
 ```
 
 #### Example: List
 
 ```ts
-const users = await client.User().list()
+const users = await client.user.list()
 ```
 
 
@@ -514,11 +507,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local cart = client:cart()
+cart:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- cart:data_get() now returns the loaded cart data
+-- cart:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

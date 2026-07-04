@@ -50,16 +50,14 @@ class TestUserEntity:
         user_ref01_ent = client.User(None)
         user_ref01_match = {}
 
-        user_ref01_list_result, err = user_ref01_ent.list(user_ref01_match, None)
-        assert err is None
+        user_ref01_list_result = user_ref01_ent.list(user_ref01_match, None)
         assert isinstance(user_ref01_list_result, list)
 
         # LOAD
         user_ref01_match_dt0 = {
             "id": user_ref01_data["id"],
         }
-        user_ref01_data_dt0_loaded, err = user_ref01_ent.load(user_ref01_match_dt0, None)
-        assert err is None
+        user_ref01_data_dt0_loaded = user_ref01_ent.load(user_ref01_match_dt0, None)
         user_ref01_data_dt0_load_result = helpers.to_map(user_ref01_data_dt0_loaded)
         assert user_ref01_data_dt0_load_result is not None
         assert user_ref01_data_dt0_load_result["id"] == user_ref01_data["id"]
@@ -102,7 +100,6 @@ def _user_basic_setup(extra):
         "MOCKAE_TEST_USER_ENTID": idmap,
         "MOCKAE_TEST_LIVE": "FALSE",
         "MOCKAE_TEST_EXPLAIN": "FALSE",
-        "MOCKAE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _user_basic_setup(extra):
     if env.get("MOCKAE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("MOCKAE_APIKEY"),
             },
             extra or {},
         ])
