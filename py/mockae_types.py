@@ -4,109 +4,99 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Cart:
-    id: Optional[int] = None
-    item: Optional[list] = None
-    total: Optional[float] = None
-    user_id: Optional[int] = None
+class Cart(TypedDict, total=False):
+    id: int
+    item: list
+    total: float
+    user_id: int
 
 
-@dataclass
-class CartLoadMatch:
+class CartLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class CartListMatch:
-    id: Optional[int] = None
-    item: Optional[list] = None
-    total: Optional[float] = None
-    user_id: Optional[int] = None
+class CartListMatch(TypedDict, total=False):
+    id: int
+    item: list
+    total: float
+    user_id: int
 
 
-@dataclass
-class Coupon:
-    code: Optional[str] = None
-    discount: Optional[float] = None
-    expiry_date: Optional[str] = None
-    id: Optional[int] = None
-    type: Optional[str] = None
+class Coupon(TypedDict, total=False):
+    code: str
+    discount: float
+    expiry_date: str
+    id: int
+    type: str
 
 
-@dataclass
-class CouponLoadMatch:
+class CouponLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class CouponListMatch:
-    code: Optional[str] = None
-    discount: Optional[float] = None
-    expiry_date: Optional[str] = None
-    id: Optional[int] = None
-    type: Optional[str] = None
+class CouponListMatch(TypedDict, total=False):
+    code: str
+    discount: float
+    expiry_date: str
+    id: int
+    type: str
 
 
-@dataclass
-class Product:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
+class Product(TypedDict, total=False):
+    category: str
+    description: str
+    id: int
+    name: str
+    price: float
 
 
-@dataclass
-class ProductLoadMatch:
+class ProductLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ProductListMatch:
-    category: Optional[str] = None
-    description: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
+class ProductListMatch(TypedDict, total=False):
+    category: str
+    description: str
+    id: int
+    name: str
+    price: float
 
 
-@dataclass
-class Status:
+class Status(TypedDict):
     pass
 
 
-@dataclass
-class StatusLoadMatch:
+class StatusLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class User:
-    email: Optional[str] = None
-    first_name: Optional[str] = None
-    id: Optional[int] = None
-    last_name: Optional[str] = None
-    username: Optional[str] = None
+class User(TypedDict, total=False):
+    email: str
+    first_name: str
+    id: int
+    last_name: str
+    username: str
 
 
-@dataclass
-class UserLoadMatch:
+class UserLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class UserListMatch:
-    email: Optional[str] = None
-    first_name: Optional[str] = None
-    id: Optional[int] = None
-    last_name: Optional[str] = None
-    username: Optional[str] = None
-
+class UserListMatch(TypedDict, total=False):
+    email: str
+    first_name: str
+    id: int
+    last_name: str
+    username: str

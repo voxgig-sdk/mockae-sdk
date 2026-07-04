@@ -157,7 +157,7 @@ Alias for `MockaeSDK.test()`.
 ## CartEntity
 
 ```ts
-const cart = client.cart
+const cart = client.Cart()
 ```
 
 ### Fields
@@ -176,7 +176,7 @@ const cart = client.cart
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.cart.list()
+const results = await client.Cart().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -184,7 +184,7 @@ const results = await client.cart.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.cart.load({ id: 'cart_id' })
+const result = await client.Cart().load({ id: 'cart_id' })
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ Return a copy of the entity options.
 ## CouponEntity
 
 ```ts
-const coupon = client.coupon
+const coupon = client.Coupon()
 ```
 
 ### Fields
@@ -238,7 +238,7 @@ const coupon = client.coupon
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.coupon.list()
+const results = await client.Coupon().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -246,7 +246,7 @@ const results = await client.coupon.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.coupon.load({ id: 'coupon_id' })
+const result = await client.Coupon().load({ id: 'coupon_id' })
 ```
 
 ### Common Methods
@@ -280,7 +280,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.product
+const product = client.Product()
 ```
 
 ### Fields
@@ -300,7 +300,7 @@ const product = client.product
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.product.list()
+const results = await client.Product().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -308,7 +308,7 @@ const results = await client.product.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.product.load({ id: 'product_id' })
+const result = await client.Product().load({ id: 'product_id' })
 ```
 
 ### Common Methods
@@ -342,7 +342,7 @@ Return a copy of the entity options.
 ## StatusEntity
 
 ```ts
-const status = client.status
+const status = client.Status()
 ```
 
 ### Operations
@@ -352,7 +352,7 @@ const status = client.status
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.status.load({ id: 'status_id' })
+const result = await client.Status().load({ id: 'status_id' })
 ```
 
 ### Common Methods
@@ -386,7 +386,7 @@ Return a copy of the entity options.
 ## UserEntity
 
 ```ts
-const user = client.user
+const user = client.User()
 ```
 
 ### Fields
@@ -406,7 +406,7 @@ const user = client.user
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.user.list()
+const results = await client.User().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -414,7 +414,7 @@ const results = await client.user.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.user.load({ id: 'user_id' })
+const result = await client.User().load({ id: 'user_id' })
 ```
 
 ### Common Methods

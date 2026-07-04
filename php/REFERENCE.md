@@ -101,7 +101,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CartEntity
 
 ```php
-$cart = $client->cart();
+$cart = $client->Cart();
 ```
 
 ### Fields
@@ -120,7 +120,7 @@ $cart = $client->cart();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->cart()->list([]);
+$results = $client->Cart()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -128,7 +128,7 @@ $results = $client->cart()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->cart()->load(["id" => "cart_id"]);
+$result = $client->Cart()->load(["id" => "cart_id"]);
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ Return the entity name.
 ## CouponEntity
 
 ```php
-$coupon = $client->coupon();
+$coupon = $client->Coupon();
 ```
 
 ### Fields
@@ -184,7 +184,7 @@ $coupon = $client->coupon();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->coupon()->list([]);
+$results = $client->Coupon()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -192,7 +192,7 @@ $results = $client->coupon()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->coupon()->load(["id" => "coupon_id"]);
+$result = $client->Coupon()->load(["id" => "coupon_id"]);
 ```
 
 ### Common Methods
@@ -228,7 +228,7 @@ Return the entity name.
 ## ProductEntity
 
 ```php
-$product = $client->product();
+$product = $client->Product();
 ```
 
 ### Fields
@@ -248,7 +248,7 @@ $product = $client->product();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->product()->list([]);
+$results = $client->Product()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -256,7 +256,7 @@ $results = $client->product()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->product()->load(["id" => "product_id"]);
+$result = $client->Product()->load(["id" => "product_id"]);
 ```
 
 ### Common Methods
@@ -292,7 +292,7 @@ Return the entity name.
 ## StatusEntity
 
 ```php
-$status = $client->status();
+$status = $client->Status();
 ```
 
 ### Operations
@@ -302,7 +302,7 @@ $status = $client->status();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->status()->load(["id" => "status_id"]);
+$result = $client->Status()->load(["id" => "status_id"]);
 ```
 
 ### Common Methods
@@ -338,7 +338,7 @@ Return the entity name.
 ## UserEntity
 
 ```php
-$user = $client->user();
+$user = $client->User();
 ```
 
 ### Fields
@@ -358,7 +358,7 @@ $user = $client->user();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->user()->list([]);
+$results = $client->User()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -366,7 +366,7 @@ $results = $client->user()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->user()->load(["id" => "user_id"]);
+$result = $client->User()->load(["id" => "user_id"]);
 ```
 
 ### Common Methods

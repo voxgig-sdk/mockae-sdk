@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:cart():list() / client:cart():load({ id = ... })
-function MockaeSDK:cart(data)
+-- Idiomatic facade: client:Cart():list() / client:Cart():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockaeSDK:Cart(data)
   local EntityMod = require("entity.cart_entity")
   if data == nil then
     if self._cart == nil then
@@ -256,15 +257,10 @@ function MockaeSDK:cart(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:cart() instead.
-function MockaeSDK:Cart(data)
-  local EntityMod = require("entity.cart_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:coupon():list() / client:coupon():load({ id = ... })
-function MockaeSDK:coupon(data)
+-- Idiomatic facade: client:Coupon():list() / client:Coupon():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockaeSDK:Coupon(data)
   local EntityMod = require("entity.coupon_entity")
   if data == nil then
     if self._coupon == nil then
@@ -275,15 +271,10 @@ function MockaeSDK:coupon(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:coupon() instead.
-function MockaeSDK:Coupon(data)
-  local EntityMod = require("entity.coupon_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
-function MockaeSDK:product(data)
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockaeSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   if data == nil then
     if self._product == nil then
@@ -294,15 +285,10 @@ function MockaeSDK:product(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:product() instead.
-function MockaeSDK:Product(data)
-  local EntityMod = require("entity.product_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:status():list() / client:status():load({ id = ... })
-function MockaeSDK:status(data)
+-- Idiomatic facade: client:Status():list() / client:Status():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockaeSDK:Status(data)
   local EntityMod = require("entity.status_entity")
   if data == nil then
     if self._status == nil then
@@ -313,15 +299,10 @@ function MockaeSDK:status(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:status() instead.
-function MockaeSDK:Status(data)
-  local EntityMod = require("entity.status_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:user():list() / client:user():load({ id = ... })
-function MockaeSDK:user(data)
+-- Idiomatic facade: client:User():list() / client:User():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function MockaeSDK:User(data)
   local EntityMod = require("entity.user_entity")
   if data == nil then
     if self._user == nil then
@@ -329,12 +310,6 @@ function MockaeSDK:user(data)
     end
     return self._user
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:user() instead.
-function MockaeSDK:User(data)
-  local EntityMod = require("entity.user_entity")
   return EntityMod.new(self, data)
 end
 

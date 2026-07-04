@@ -220,89 +220,39 @@ class MockaeSDK:
         }
 
 
-    @property
-    def cart(self):
-        """Idiomatic facade: client.cart.list() / client.cart.load({"id": ...})."""
-        from entity.cart_entity import CartEntity
-        cached = getattr(self, "_cart", None)
-        if cached is None:
-            cached = CartEntity(self, None)
-            self._cart = cached
-        return cached
-
-    def Cart(self, data=None):
-        # Deprecated: use client.cart instead.
+    def Cart(self, data=None) -> "CartEntity":
+        """Entity factory: client.Cart().list({}) / client.Cart().load({"id": ...})."""
         from entity.cart_entity import CartEntity
         return CartEntity(self, data)
 
 
-    @property
-    def coupon(self):
-        """Idiomatic facade: client.coupon.list() / client.coupon.load({"id": ...})."""
-        from entity.coupon_entity import CouponEntity
-        cached = getattr(self, "_coupon", None)
-        if cached is None:
-            cached = CouponEntity(self, None)
-            self._coupon = cached
-        return cached
-
-    def Coupon(self, data=None):
-        # Deprecated: use client.coupon instead.
+    def Coupon(self, data=None) -> "CouponEntity":
+        """Entity factory: client.Coupon().list({}) / client.Coupon().load({"id": ...})."""
         from entity.coupon_entity import CouponEntity
         return CouponEntity(self, data)
 
 
-    @property
-    def product(self):
-        """Idiomatic facade: client.product.list() / client.product.load({"id": ...})."""
-        from entity.product_entity import ProductEntity
-        cached = getattr(self, "_product", None)
-        if cached is None:
-            cached = ProductEntity(self, None)
-            self._product = cached
-        return cached
-
-    def Product(self, data=None):
-        # Deprecated: use client.product instead.
+    def Product(self, data=None) -> "ProductEntity":
+        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
-    @property
-    def status(self):
-        """Idiomatic facade: client.status.list() / client.status.load({"id": ...})."""
-        from entity.status_entity import StatusEntity
-        cached = getattr(self, "_status", None)
-        if cached is None:
-            cached = StatusEntity(self, None)
-            self._status = cached
-        return cached
-
-    def Status(self, data=None):
-        # Deprecated: use client.status instead.
+    def Status(self, data=None) -> "StatusEntity":
+        """Entity factory: client.Status().list({}) / client.Status().load({"id": ...})."""
         from entity.status_entity import StatusEntity
         return StatusEntity(self, data)
 
 
-    @property
-    def user(self):
-        """Idiomatic facade: client.user.list() / client.user.load({"id": ...})."""
-        from entity.user_entity import UserEntity
-        cached = getattr(self, "_user", None)
-        if cached is None:
-            cached = UserEntity(self, None)
-            self._user = cached
-        return cached
-
-    def User(self, data=None):
-        # Deprecated: use client.user instead.
+    def User(self, data=None) -> "UserEntity":
+        """Entity factory: client.User().list({}) / client.User().load({"id": ...})."""
         from entity.user_entity import UserEntity
         return UserEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "MockaeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -322,3 +272,13 @@ class MockaeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.cart_entity import CartEntity
+    from entity.coupon_entity import CouponEntity
+    from entity.product_entity import ProductEntity
+    from entity.status_entity import StatusEntity
+    from entity.user_entity import UserEntity

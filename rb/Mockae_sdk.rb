@@ -208,65 +208,35 @@ class MockaeSDK
   end
 
 
-  # Idiomatic facade: client.cart.list / client.cart.load({ "id" => ... })
-  def cart
-    require_relative 'entity/cart_entity'
-    @cart ||= CartEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.cart instead.
+  # Canonical facade: client.Cart.list / client.Cart.load({ "id" => ... })
   def Cart(data = nil)
     require_relative 'entity/cart_entity'
     CartEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.coupon.list / client.coupon.load({ "id" => ... })
-  def coupon
-    require_relative 'entity/coupon_entity'
-    @coupon ||= CouponEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.coupon instead.
+  # Canonical facade: client.Coupon.list / client.Coupon.load({ "id" => ... })
   def Coupon(data = nil)
     require_relative 'entity/coupon_entity'
     CouponEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.product.list / client.product.load({ "id" => ... })
-  def product
-    require_relative 'entity/product_entity'
-    @product ||= ProductEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.product instead.
+  # Canonical facade: client.Product.list / client.Product.load({ "id" => ... })
   def Product(data = nil)
     require_relative 'entity/product_entity'
     ProductEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.status.list / client.status.load({ "id" => ... })
-  def status
-    require_relative 'entity/status_entity'
-    @status ||= StatusEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.status instead.
+  # Canonical facade: client.Status.list / client.Status.load({ "id" => ... })
   def Status(data = nil)
     require_relative 'entity/status_entity'
     StatusEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.user.list / client.user.load({ "id" => ... })
-  def user
-    require_relative 'entity/user_entity'
-    @user ||= UserEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.user instead.
+  # Canonical facade: client.User.list / client.User.load({ "id" => ... })
   def User(data = nil)
     require_relative 'entity/user_entity'
     UserEntity.new(self, data)

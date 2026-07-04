@@ -28,16 +28,14 @@ require_relative "Mockae_sdk"
 client = MockaeSDK.new
 ```
 
-### 2. List carts
+### 2. List cart records
 
 ```ruby
 begin
-  result = client.cart.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Cart records — iterate directly.
+  carts = client.Cart.list
+  carts.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.cart.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Cart record (raises on error).
+  cart = client.Cart.load({ "id" => "example_id" })
+  puts cart
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = MockaeSDK.test
+client = MockaeSDK.test({
+  "entity" => { "cart" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.cart.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+cart = client.Cart.load({ "id" => "test01" })
+puts cart
 ```
 
 ### Use a custom fetch function
@@ -182,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Coupon` | `(data) -> CouponEntity` | Create a Coupon entity instance. |
 | `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `Status` | `(data) -> StatusEntity` | Create a Status entity instance. |
-| `User` | `(data) -> UserEntity` | Create a User entity instance. |
+| `User` | `(data) -> UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -292,7 +295,7 @@ API path: `/users`
 
 ### Cart
 
-Create an instance: `const cart = client.cart`
+Create an instance: `cart = client.Cart`
 
 #### Operations
 
@@ -312,20 +315,22 @@ Create an instance: `const cart = client.cart`
 
 #### Example: Load
 
-```ts
-const cart = await client.cart.load({ id: 'cart_id' })
+```ruby
+# load returns the bare Cart record (raises on error).
+cart = client.Cart.load({ "id" => "cart_id" })
 ```
 
 #### Example: List
 
-```ts
-const carts = await client.cart.list()
+```ruby
+# list returns an Array of Cart records (raises on error).
+carts = client.Cart.list
 ```
 
 
 ### Coupon
 
-Create an instance: `const coupon = client.coupon`
+Create an instance: `coupon = client.Coupon`
 
 #### Operations
 
@@ -346,20 +351,22 @@ Create an instance: `const coupon = client.coupon`
 
 #### Example: Load
 
-```ts
-const coupon = await client.coupon.load({ id: 'coupon_id' })
+```ruby
+# load returns the bare Coupon record (raises on error).
+coupon = client.Coupon.load({ "id" => "coupon_id" })
 ```
 
 #### Example: List
 
-```ts
-const coupons = await client.coupon.list()
+```ruby
+# list returns an Array of Coupon records (raises on error).
+coupons = client.Coupon.list
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product`
 
 #### Operations
 
@@ -380,20 +387,22 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```ruby
+# load returns the bare Product record (raises on error).
+product = client.Product.load({ "id" => "product_id" })
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```ruby
+# list returns an Array of Product records (raises on error).
+products = client.Product.list
 ```
 
 
 ### Status
 
-Create an instance: `const status = client.status`
+Create an instance: `status = client.Status`
 
 #### Operations
 
@@ -403,14 +412,15 @@ Create an instance: `const status = client.status`
 
 #### Example: Load
 
-```ts
-const status = await client.status.load({ id: 'status_id' })
+```ruby
+# load returns the bare Status record (raises on error).
+status = client.Status.load({ "id" => "status_id" })
 ```
 
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `user = client.User`
 
 #### Operations
 
@@ -431,14 +441,16 @@ Create an instance: `const user = client.user`
 
 #### Example: Load
 
-```ts
-const user = await client.user.load({ id: 'user_id' })
+```ruby
+# load returns the bare User record (raises on error).
+user = client.User.load({ "id" => "user_id" })
 ```
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```ruby
+# list returns an Array of User records (raises on error).
+users = client.User.list
 ```
 
 
@@ -513,7 +525,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-cart = client.cart
+cart = client.Cart
 cart.load({ "id" => "example_id" })
 
 # cart.data_get now returns the loaded cart data

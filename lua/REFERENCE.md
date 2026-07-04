@@ -99,7 +99,7 @@ same parameters as `direct()`.
 ## CartEntity
 
 ```lua
-local cart = client:cart(nil)
+local cart = client:Cart(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local cart = client:cart(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:cart():list()
+local results, err = client:Cart():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -126,7 +126,7 @@ local results, err = client:cart():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:cart():load({ id = "cart_id" })
+local result, err = client:Cart():load({ id = "cart_id" })
 ```
 
 ### Common Methods
@@ -162,7 +162,7 @@ Return the entity name.
 ## CouponEntity
 
 ```lua
-local coupon = client:coupon(nil)
+local coupon = client:Coupon(nil)
 ```
 
 ### Fields
@@ -182,7 +182,7 @@ local coupon = client:coupon(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:coupon():list()
+local results, err = client:Coupon():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -190,7 +190,7 @@ local results, err = client:coupon():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:coupon():load({ id = "coupon_id" })
+local result, err = client:Coupon():load({ id = "coupon_id" })
 ```
 
 ### Common Methods
@@ -226,7 +226,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:product(nil)
+local product = client:Product(nil)
 ```
 
 ### Fields
@@ -246,7 +246,7 @@ local product = client:product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:product():list()
+local results, err = client:Product():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -254,7 +254,7 @@ local results, err = client:product():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:product():load({ id = "product_id" })
+local result, err = client:Product():load({ id = "product_id" })
 ```
 
 ### Common Methods
@@ -290,7 +290,7 @@ Return the entity name.
 ## StatusEntity
 
 ```lua
-local status = client:status(nil)
+local status = client:Status(nil)
 ```
 
 ### Operations
@@ -300,7 +300,7 @@ local status = client:status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:status():load({ id = "status_id" })
+local result, err = client:Status():load({ id = "status_id" })
 ```
 
 ### Common Methods
@@ -336,7 +336,7 @@ Return the entity name.
 ## UserEntity
 
 ```lua
-local user = client:user(nil)
+local user = client:User(nil)
 ```
 
 ### Fields
@@ -356,7 +356,7 @@ local user = client:user(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:user():list()
+local results, err = client:User():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -364,7 +364,7 @@ local results, err = client:user():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:user():load({ id = "user_id" })
+local result, err = client:User():load({ id = "user_id" })
 ```
 
 ### Common Methods
