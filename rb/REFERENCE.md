@@ -8,7 +8,7 @@ Complete API reference for the Mockae Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'mockae_sdk'
+require_relative 'Mockae_sdk'
 
 client = MockaeSDK.new(options)
 ```
@@ -109,19 +109,19 @@ cart = client.Cart
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
-| `total` | ``$NUMBER`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `id` | `Integer` | No |  |
+| `item` | `Array` | No |  |
+| `total` | `Float` | No |  |
+| `user_id` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Cart.list(nil)
+results = client.Cart.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -172,20 +172,20 @@ coupon = client.Coupon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `expiry_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `code` | `String` | No |  |
+| `discount` | `Float` | No |  |
+| `expiry_date` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Coupon.list(nil)
+results = client.Coupon.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -236,20 +236,20 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `price` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Product.list(nil)
+results = client.Product.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -346,20 +346,20 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `String` | No |  |
+| `first_name` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `last_name` | `String` | No |  |
+| `username` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.User.list(nil)
+results = client.User.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

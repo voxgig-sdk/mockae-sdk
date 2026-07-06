@@ -16,6 +16,10 @@
 ---@field id number
 
 ---@class CartListMatch
+---@field id? number
+---@field item? table
+---@field total? number
+---@field user_id? number
 
 ---@class Coupon
 ---@field code? string
@@ -28,6 +32,11 @@
 ---@field id number
 
 ---@class CouponListMatch
+---@field code? string
+---@field discount? number
+---@field expiry_date? string
+---@field id? number
+---@field type? string
 
 ---@class Product
 ---@field category? string
@@ -40,6 +49,11 @@
 ---@field id number
 
 ---@class ProductListMatch
+---@field category? string
+---@field description? string
+---@field id? number
+---@field name? string
+---@field price? number
 
 ---@class Status
 
@@ -57,6 +71,11 @@
 ---@field id number
 
 ---@class UserListMatch
+---@field email? string
+---@field first_name? string
+---@field id? number
+---@field last_name? string
+---@field username? string
 
 local M = {}
 

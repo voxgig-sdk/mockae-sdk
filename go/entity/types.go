@@ -21,8 +21,7 @@ type CartLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// CartListMatch mirrors the cart fields as an all-optional match
-// filter (Go analog of Partial<Cart>).
+// CartListMatch is the typed request payload for Cart.ListTyped.
 type CartListMatch struct {
 	Id *int `json:"id,omitempty"`
 	Item *[]any `json:"item,omitempty"`
@@ -44,8 +43,7 @@ type CouponLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// CouponListMatch mirrors the coupon fields as an all-optional match
-// filter (Go analog of Partial<Coupon>).
+// CouponListMatch is the typed request payload for Coupon.ListTyped.
 type CouponListMatch struct {
 	Code *string `json:"code,omitempty"`
 	Discount *float64 `json:"discount,omitempty"`
@@ -68,8 +66,7 @@ type ProductLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ProductListMatch mirrors the product fields as an all-optional match
-// filter (Go analog of Partial<Product>).
+// ProductListMatch is the typed request payload for Product.ListTyped.
 type ProductListMatch struct {
 	Category *string `json:"category,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -101,8 +98,7 @@ type UserLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// UserListMatch mirrors the user fields as an all-optional match
-// filter (Go analog of Partial<User>).
+// UserListMatch is the typed request payload for User.ListTyped.
 type UserListMatch struct {
 	Email *string `json:"email,omitempty"`
 	FirstName *string `json:"first_name,omitempty"`

@@ -103,19 +103,19 @@ cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
-| `total` | ``$NUMBER`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `item` | `list` | No |  |
+| `total` | `float` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Cart().list({})
+results = client.Cart().list()
 for cart in results:
     print(cart)
 ```
@@ -167,20 +167,20 @@ coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `expiry_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `code` | `str` | No |  |
+| `discount` | `float` | No |  |
+| `expiry_date` | `str` | No |  |
+| `id` | `int` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Coupon().list({})
+results = client.Coupon().list()
 for coupon in results:
     print(coupon)
 ```
@@ -232,20 +232,20 @@ product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `price` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Product().list({})
+results = client.Product().list()
 for product in results:
     print(product)
 ```
@@ -342,20 +342,20 @@ user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `str` | No |  |
+| `first_name` | `str` | No |  |
+| `id` | `int` | No |  |
+| `last_name` | `str` | No |  |
+| `username` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.User().list({})
+results = client.User().list()
 for user in results:
     print(user)
 ```

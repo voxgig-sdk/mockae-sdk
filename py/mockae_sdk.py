@@ -221,31 +221,31 @@ class MockaeSDK:
 
 
     def Cart(self, data=None) -> "CartEntity":
-        """Entity factory: client.Cart().list({}) / client.Cart().load({"id": ...})."""
+        """Entity factory: client.Cart().list() / client.Cart().load({"id": ...})."""
         from entity.cart_entity import CartEntity
         return CartEntity(self, data)
 
 
     def Coupon(self, data=None) -> "CouponEntity":
-        """Entity factory: client.Coupon().list({}) / client.Coupon().load({"id": ...})."""
+        """Entity factory: client.Coupon().list() / client.Coupon().load({"id": ...})."""
         from entity.coupon_entity import CouponEntity
         return CouponEntity(self, data)
 
 
     def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
+        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
     def Status(self, data=None) -> "StatusEntity":
-        """Entity factory: client.Status().list({}) / client.Status().load({"id": ...})."""
+        """Entity factory: client.Status().list() / client.Status().load({"id": ...})."""
         from entity.status_entity import StatusEntity
         return StatusEntity(self, data)
 
 
     def User(self, data=None) -> "UserEntity":
-        """Entity factory: client.User().list({}) / client.User().load({"id": ...})."""
+        """Entity factory: client.User().list() / client.User().load({"id": ...})."""
         from entity.user_entity import UserEntity
         return UserEntity(self, data)
 

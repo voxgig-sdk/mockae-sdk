@@ -164,10 +164,10 @@ const cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
-| `total` | ``$NUMBER`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `item` | `any[]` | No |  |
+| `total` | `number` | No |  |
+| `user_id` | `number` | No |  |
 
 ### Operations
 
@@ -184,7 +184,7 @@ const results = await client.Cart().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Cart().load({ id: 'cart_id' })
+const result = await client.Cart().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -225,11 +225,11 @@ const coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `expiry_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `number` | No |  |
+| `expiry_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -246,7 +246,7 @@ const results = await client.Coupon().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Coupon().load({ id: 'coupon_id' })
+const result = await client.Coupon().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -287,11 +287,11 @@ const product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
 
 ### Operations
 
@@ -308,7 +308,7 @@ const results = await client.Product().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Product().load({ id: 'product_id' })
+const result = await client.Product().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -352,7 +352,7 @@ const status = client.Status()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Status().load({ id: 'status_id' })
+const result = await client.Status().load({ id: 1 })
 ```
 
 ### Common Methods
@@ -393,11 +393,11 @@ const user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `id` | `number` | No |  |
+| `last_name` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
@@ -414,7 +414,7 @@ const results = await client.User().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.User().load({ id: 'user_id' })
+const result = await client.User().load({ id: 1 })
 ```
 
 ### Common Methods

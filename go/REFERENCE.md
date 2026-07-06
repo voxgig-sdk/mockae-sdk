@@ -113,10 +113,10 @@ cart := client.Cart(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
-| `total` | ``$NUMBER`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `id` | `int` | No |  |
+| `item` | `[]any` | No |  |
+| `total` | `float64` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
@@ -170,11 +170,11 @@ coupon := client.Coupon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `expiry_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `float64` | No |  |
+| `expiry_date` | `string` | No |  |
+| `id` | `int` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -228,11 +228,11 @@ product := client.Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float64` | No |  |
 
 ### Operations
 
@@ -326,11 +326,11 @@ user := client.User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `id` | `int` | No |  |
+| `last_name` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 

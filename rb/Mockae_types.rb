@@ -38,7 +38,7 @@ CartLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Cart#list (any subset of Cart fields).
+# Request payload for Cart#list.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -93,7 +93,7 @@ CouponLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Coupon#list (any subset of Coupon fields).
+# Request payload for Coupon#list.
 #
 # @!attribute [rw] code
 #   @return [String, nil]
@@ -152,7 +152,7 @@ ProductLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Product#list (any subset of Product fields).
+# Request payload for Product#list.
 #
 # @!attribute [rw] category
 #   @return [String, nil]
@@ -224,7 +224,7 @@ UserLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for User#list (any subset of User fields).
+# Request payload for User#list.
 #
 # @!attribute [rw] email
 #   @return [String, nil]

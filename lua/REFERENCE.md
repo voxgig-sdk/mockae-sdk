@@ -106,10 +106,10 @@ local cart = client:Cart(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$ARRAY`` | No |  |
-| `total` | ``$NUMBER`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `id` | `number` | No |  |
+| `item` | `table` | No |  |
+| `total` | `number` | No |  |
+| `user_id` | `number` | No |  |
 
 ### Operations
 
@@ -169,11 +169,11 @@ local coupon = client:Coupon(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | ``$STRING`` | No |  |
-| `discount` | ``$NUMBER`` | No |  |
-| `expiry_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `code` | `string` | No |  |
+| `discount` | `number` | No |  |
+| `expiry_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -233,11 +233,11 @@ local product = client:Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
 
 ### Operations
 
@@ -343,11 +343,11 @@ local user = client:User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
+| `email` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `id` | `number` | No |  |
+| `last_name` | `string` | No |  |
+| `username` | `string` | No |  |
 
 ### Operations
 
