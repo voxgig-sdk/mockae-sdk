@@ -1,0 +1,7 @@
+# Entity Models
+
+@"cart.aontu"
+@"coupon.aontu"
+@"product.aontu"
+@"status.aontu"
+@"user.aontu"

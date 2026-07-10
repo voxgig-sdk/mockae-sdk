@@ -50,7 +50,7 @@ end
 ### 3. Load a cart
 
 ```lua
-local cart, err = client:Cart():load({ id = "example_id" })
+local cart, err = client:Cart():load({ id = 1 })
 if err then error(err) end
 print(cart)
 ```
@@ -333,7 +333,7 @@ Create an instance: `local cart = client:Cart(nil)`
 #### Example: Load
 
 ```lua
-local cart, err = client:Cart():load({ id = "cart_id" })
+local cart, err = client:Cart():load({ id = 1 })
 ```
 
 #### Example: List
@@ -367,7 +367,7 @@ Create an instance: `local coupon = client:Coupon(nil)`
 #### Example: Load
 
 ```lua
-local coupon, err = client:Coupon():load({ id = "coupon_id" })
+local coupon, err = client:Coupon():load({ id = 1 })
 ```
 
 #### Example: List
@@ -401,7 +401,7 @@ Create an instance: `local product = client:Product(nil)`
 #### Example: Load
 
 ```lua
-local product, err = client:Product():load({ id = "product_id" })
+local product, err = client:Product():load({ id = 1 })
 ```
 
 #### Example: List
@@ -424,7 +424,7 @@ Create an instance: `local status = client:Status(nil)`
 #### Example: Load
 
 ```lua
-local status, err = client:Status():load({ id = "status_id" })
+local status, err = client:Status():load({ id = 1 })
 ```
 
 
@@ -452,7 +452,7 @@ Create an instance: `local user = client:User(nil)`
 #### Example: Load
 
 ```lua
-local user, err = client:User():load({ id = "user_id" })
+local user, err = client:User():load({ id = 1 })
 ```
 
 #### Example: List

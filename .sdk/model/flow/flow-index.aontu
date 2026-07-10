@@ -1,0 +1,7 @@
+# Flows
+
+@"BasicCartFlow.aontu"
+@"BasicCouponFlow.aontu"
+@"BasicProductFlow.aontu"
+@"BasicStatusFlow.aontu"
+@"BasicUserFlow.aontu"

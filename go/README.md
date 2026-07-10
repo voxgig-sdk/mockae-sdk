@@ -361,7 +361,7 @@ Create an instance: `cart := client.Cart(nil)`
 #### Example: Load
 
 ```go
-cart, err := client.Cart(nil).Load(map[string]any{"id": "cart_id"}, nil)
+cart, err := client.Cart(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -403,7 +403,7 @@ Create an instance: `coupon := client.Coupon(nil)`
 #### Example: Load
 
 ```go
-coupon, err := client.Coupon(nil).Load(map[string]any{"id": "coupon_id"}, nil)
+coupon, err := client.Coupon(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -445,7 +445,7 @@ Create an instance: `product := client.Product(nil)`
 #### Example: Load
 
 ```go
-product, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+product, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -476,7 +476,7 @@ Create an instance: `status := client.Status(nil)`
 #### Example: Load
 
 ```go
-status, err := client.Status(nil).Load(map[string]any{"id": "status_id"}, nil)
+status, err := client.Status(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -508,7 +508,7 @@ Create an instance: `user := client.User(nil)`
 #### Example: Load
 
 ```go
-user, err := client.User(nil).Load(map[string]any{"id": "user_id"}, nil)
+user, err := client.User(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

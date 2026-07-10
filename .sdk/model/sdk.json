@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -814,14 +811,17 @@
           "url": "https://mockae.com/"
         },
         "description": "Mockae API allows you to create mock REST APIs with Lua code execution, enabling customization of headers, bodies, and HTTP status codes. It's ideal for testing and prototyping, providing a flexible way to generate API responses quickly and easily.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Public API server for testing (read-only)",
             "url": "https://api.mockae.com/fakeapi"
           }
         ],
+        "summary": "Mockae API allows you to create mock REST APIs with Lua code execution, enabling customization of headers, bodies, and HTTP status codes.",
         "title": "Mockae API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://mockae.com"
       },
       "option": {},
       "target": {
@@ -874,6 +874,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -924,6 +927,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

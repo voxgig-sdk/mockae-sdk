@@ -107,6 +107,7 @@ same parameters as `Direct()`.
 
 ```go
 cart := client.Cart(nil)
+fmt.Println(cart.GetName()) // "cart"
 ```
 
 ### Fields
@@ -126,6 +127,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Cart(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -133,7 +138,11 @@ results, err := client.Cart(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Cart(nil).Load(map[string]any{"id": "cart_id"}, nil)
+result, err := client.Cart(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -164,6 +173,7 @@ Return the entity name.
 
 ```go
 coupon := client.Coupon(nil)
+fmt.Println(coupon.GetName()) // "coupon"
 ```
 
 ### Fields
@@ -184,6 +194,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Coupon(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -191,7 +205,11 @@ results, err := client.Coupon(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Coupon(nil).Load(map[string]any{"id": "coupon_id"}, nil)
+result, err := client.Coupon(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -222,6 +240,7 @@ Return the entity name.
 
 ```go
 product := client.Product(nil)
+fmt.Println(product.GetName()) // "product"
 ```
 
 ### Fields
@@ -242,6 +261,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Product(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -249,7 +272,11 @@ results, err := client.Product(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+result, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -280,6 +307,7 @@ Return the entity name.
 
 ```go
 status := client.Status(nil)
+fmt.Println(status.GetName()) // "status"
 ```
 
 ### Operations
@@ -289,7 +317,11 @@ status := client.Status(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Status(nil).Load(map[string]any{"id": "status_id"}, nil)
+result, err := client.Status(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -320,6 +352,7 @@ Return the entity name.
 
 ```go
 user := client.User(nil)
+fmt.Println(user.GetName()) // "user"
 ```
 
 ### Fields
@@ -340,6 +373,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.User(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -347,7 +384,11 @@ results, err := client.User(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.User(nil).Load(map[string]any{"id": "user_id"}, nil)
+result, err := client.User(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

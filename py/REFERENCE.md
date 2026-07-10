@@ -125,7 +125,7 @@ for cart in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Cart().load({"id": "cart_id"})
+result = client.Cart().load({"id": 1})
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ for coupon in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Coupon().load({"id": "coupon_id"})
+result = client.Coupon().load({"id": 1})
 ```
 
 ### Common Methods
@@ -255,7 +255,7 @@ for product in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Product().load({"id": "product_id"})
+result = client.Product().load({"id": 1})
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ status = client.Status()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Status().load({"id": "status_id"})
+result = client.Status().load({"id": 1})
 ```
 
 ### Common Methods
@@ -365,7 +365,7 @@ for user in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.User().load({"id": "user_id"})
+result = client.User().load({"id": 1})
 ```
 
 ### Common Methods

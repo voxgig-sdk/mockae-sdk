@@ -128,7 +128,7 @@ $results = $client->Cart()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Cart()->load(["id" => "cart_id"]);
+$result = $client->Cart()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -192,7 +192,7 @@ $results = $client->Coupon()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Coupon()->load(["id" => "coupon_id"]);
+$result = $client->Coupon()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -256,7 +256,7 @@ $results = $client->Product()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Product()->load(["id" => "product_id"]);
+$result = $client->Product()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -302,7 +302,7 @@ $status = $client->Status();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Status()->load(["id" => "status_id"]);
+$result = $client->Status()->load(["id" => 1]);
 ```
 
 ### Common Methods
@@ -366,7 +366,7 @@ $results = $client->User()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->User()->load(["id" => "user_id"]);
+$result = $client->User()->load(["id" => 1]);
 ```
 
 ### Common Methods

@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Cart record (raises on error).
-  cart = client.Cart.load({ "id" => "example_id" })
+  cart = client.Cart.load({ "id" => 1 })
   puts cart
 rescue => err
   warn "load failed: #{err}"
@@ -345,7 +345,7 @@ Create an instance: `cart = client.Cart`
 
 ```ruby
 # load returns the bare Cart record (raises on error).
-cart = client.Cart.load({ "id" => "cart_id" })
+cart = client.Cart.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -381,7 +381,7 @@ Create an instance: `coupon = client.Coupon`
 
 ```ruby
 # load returns the bare Coupon record (raises on error).
-coupon = client.Coupon.load({ "id" => "coupon_id" })
+coupon = client.Coupon.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -417,7 +417,7 @@ Create an instance: `product = client.Product`
 
 ```ruby
 # load returns the bare Product record (raises on error).
-product = client.Product.load({ "id" => "product_id" })
+product = client.Product.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -442,7 +442,7 @@ Create an instance: `status = client.Status`
 
 ```ruby
 # load returns the bare Status record (raises on error).
-status = client.Status.load({ "id" => "status_id" })
+status = client.Status.load({ "id" => 1 })
 ```
 
 
@@ -471,7 +471,7 @@ Create an instance: `user = client.User`
 
 ```ruby
 # load returns the bare User record (raises on error).
-user = client.User.load({ "id" => "user_id" })
+user = client.User.load({ "id" => 1 })
 ```
 
 #### Example: List

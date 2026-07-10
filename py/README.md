@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    cart = client.Cart().load({"id": "example_id"})
+    cart = client.Cart().load({"id": 1})
     print(cart)
 except Exception as err:
     print(f"load failed: {err}")
@@ -347,7 +347,7 @@ Create an instance: `cart = client.Cart()`
 #### Example: Load
 
 ```python
-cart = client.Cart().load({"id": "cart_id"})
+cart = client.Cart().load({"id": 1})
 ```
 
 #### Example: List
@@ -381,7 +381,7 @@ Create an instance: `coupon = client.Coupon()`
 #### Example: Load
 
 ```python
-coupon = client.Coupon().load({"id": "coupon_id"})
+coupon = client.Coupon().load({"id": 1})
 ```
 
 #### Example: List
@@ -415,7 +415,7 @@ Create an instance: `product = client.Product()`
 #### Example: Load
 
 ```python
-product = client.Product().load({"id": "product_id"})
+product = client.Product().load({"id": 1})
 ```
 
 #### Example: List
@@ -438,7 +438,7 @@ Create an instance: `status = client.Status()`
 #### Example: Load
 
 ```python
-status = client.Status().load({"id": "status_id"})
+status = client.Status().load({"id": 1})
 ```
 
 
@@ -466,7 +466,7 @@ Create an instance: `user = client.User()`
 #### Example: Load
 
 ```python
-user = client.User().load({"id": "user_id"})
+user = client.User().load({"id": 1})
 ```
 
 #### Example: List

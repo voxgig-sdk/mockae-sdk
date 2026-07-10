@@ -16,9 +16,9 @@ main: {
           url: "https://api.mockae.com/fakeapi"
         }
       ]
+      summary: "Mockae API allows you to create mock REST APIs with Lua code execution, enabling customization of headers, bodies, and HTTP status codes."
       title: "Mockae API"
       version: "1.0.0"
+      website: "https://mockae.com"
     }
   }
-}
-

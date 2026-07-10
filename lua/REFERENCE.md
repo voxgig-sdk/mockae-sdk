@@ -126,7 +126,7 @@ local results, err = client:Cart():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Cart():load({ id = "cart_id" })
+local result, err = client:Cart():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -190,7 +190,7 @@ local results, err = client:Coupon():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Coupon():load({ id = "coupon_id" })
+local result, err = client:Coupon():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -254,7 +254,7 @@ local results, err = client:Product():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:Product():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ local status = client:Status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Status():load({ id = "status_id" })
+local result, err = client:Status():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -364,7 +364,7 @@ local results, err = client:User():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:User():load({ id = "user_id" })
+local result, err = client:User():load({ id = 1 })
 ```
 
 ### Common Methods
