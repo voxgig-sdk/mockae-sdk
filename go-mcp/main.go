@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewMockaeSDK(nil)
+	// Configure from the environment: MOCKAE_APIKEY carries the API key and
+	// MOCKAE_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("MOCKAE_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("MOCKAE_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewMockaeSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "mockae",
