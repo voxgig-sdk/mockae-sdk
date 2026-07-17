@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Mockae SDK exists test
 
 local sdk = require("mockae_sdk")
 
