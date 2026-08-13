@@ -128,7 +128,7 @@ func TestCouponEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		couponRef01DataDt0LoadResult := core.ToMapAny(couponRef01DataDt0Loaded)
+		couponRef01DataDt0LoadResult := core.ToMapAny(entityData(couponRef01DataDt0Loaded))
 		if couponRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

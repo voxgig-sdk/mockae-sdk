@@ -109,9 +109,9 @@ $cart = $client->Cart();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
-| `item` | `array` | No |  |
+| `items` | `array` | No |  |
 | `total` | `float` | No |  |
-| `user_id` | `int` | No |  |
+| `userId` | `int` | No |  |
 
 ### Operations
 
@@ -173,7 +173,7 @@ $coupon = $client->Coupon();
 | --- | --- | --- | --- |
 | `code` | `string` | No |  |
 | `discount` | `float` | No |  |
-| `expiry_date` | `string` | No |  |
+| `expiryDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `type` | `string` | No |  |
 
@@ -346,9 +346,9 @@ $user = $client->User();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `last_name` | `string` | No |  |
+| `lastName` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations

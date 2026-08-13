@@ -37,7 +37,7 @@ begin
   # list returns an Array of Cart records — iterate directly.
   carts = client.Cart.list
   carts.each do |item|
-    puts "#{item["id"]} #{item["item"]}"
+    puts "#{item["id"]} #{item["items"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Cart record (raises on error).
+  # load returns the ENTITY — call data_get for the Cart record (raises on error).
   cart = client.Cart.load({ "id" => 1 })
   puts cart
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  carts = client.Cart.list()
+  coupons = client.Coupon.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,12 +131,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = MockaeSDK.test({
-  "entity" => { "cart" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "coupon" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-cart = client.Cart.list()
-puts cart
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+coupon = client.Coupon.list()
+puts coupon
 ```
 
 ### Use a custom fetch function
@@ -257,9 +258,9 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 | `total` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List, Load.
 
@@ -271,7 +272,7 @@ API path: `/carts`
 | --- | --- |
 | `code` |  |
 | `discount` |  |
-| `expiry_date` |  |
+| `expiryDate` |  |
 | `id` |  |
 | `type` |  |
 
@@ -307,9 +308,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `last_name` |  |
+| `lastName` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -337,14 +338,14 @@ Create an instance: `cart = client.Cart`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `Integer` |  |
-| `item` | `Array` |  |
+| `items` | `Array` |  |
 | `total` | `Float` |  |
-| `user_id` | `Integer` |  |
+| `userId` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Cart record (raises on error).
+# load returns the ENTITY — call data_get for the Cart record (raises on error).
 cart = client.Cart.load({ "id" => 1 })
 ```
 
@@ -373,14 +374,14 @@ Create an instance: `coupon = client.Coupon`
 | --- | --- | --- |
 | `code` | `String` |  |
 | `discount` | `Float` |  |
-| `expiry_date` | `String` |  |
+| `expiryDate` | `String` |  |
 | `id` | `Integer` |  |
 | `type` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Coupon record (raises on error).
+# load returns the ENTITY — call data_get for the Coupon record (raises on error).
 coupon = client.Coupon.load({ "id" => 1 })
 ```
 
@@ -416,7 +417,7 @@ Create an instance: `product = client.Product`
 #### Example: Load
 
 ```ruby
-# load returns the bare Product record (raises on error).
+# load returns the ENTITY — call data_get for the Product record (raises on error).
 product = client.Product.load({ "id" => 1 })
 ```
 
@@ -441,7 +442,7 @@ Create an instance: `status = client.Status`
 #### Example: Load
 
 ```ruby
-# load returns the bare Status record (raises on error).
+# load returns the ENTITY — call data_get for the Status record (raises on error).
 status = client.Status.load({ "id" => 1 })
 ```
 
@@ -462,15 +463,15 @@ Create an instance: `user = client.User`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `String` |  |
-| `first_name` | `String` |  |
+| `firstName` | `String` |  |
 | `id` | `Integer` |  |
-| `last_name` | `String` |  |
+| `lastName` | `String` |  |
 | `username` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare User record (raises on error).
+# load returns the ENTITY — call data_get for the User record (raises on error).
 user = client.User.load({ "id" => 1 })
 ```
 
@@ -558,11 +559,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-cart = client.Cart
-cart.list()
+coupon = client.Coupon
+coupon.list()
 
-# cart.data_get now returns the cart data from the last list
-# cart.match_get returns the last match criteria
+# coupon.data_get now returns the coupon data from the last list
+# coupon.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

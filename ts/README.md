@@ -35,7 +35,9 @@ const client = new MockaeSDK()
 
 ### 2. List cart records
 
-`list()` resolves to an array of Cart objects — iterate it directly:
+`list()` resolves to an array of Cart ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const carts = await client.Cart().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const carts = await client.Cart().list()
-  console.log(carts)
+  const coupons = await client.Coupon().list()
+  console.log(coupons)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = MockaeSDK.test()
 
-const cart = await client.Cart().list()
-// cart is a bare entity populated with mock response data
-console.log(cart)
+const coupon = await client.Coupon().list()
+// coupon is the entity, populated with mock response data
+// — call coupon.data() for the record itself
+console.log(coupon)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Cart()
+const entity = client.Coupon()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -304,9 +307,9 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 | `total` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: list, load.
 
@@ -318,7 +321,7 @@ API path: `/carts`
 | --- | --- |
 | `code` |  |
 | `discount` |  |
-| `expiry_date` |  |
+| `expiryDate` |  |
 | `id` |  |
 | `type` |  |
 
@@ -354,9 +357,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `last_name` |  |
+| `lastName` |  |
 | `username` |  |
 
 Operations: list, load.
@@ -384,9 +387,9 @@ Create an instance: `const cart = client.Cart()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `number` |  |
-| `item` | `any[]` |  |
+| `items` | `any[]` |  |
 | `total` | `number` |  |
-| `user_id` | `number` |  |
+| `userId` | `number` |  |
 
 #### Example: Load
 
@@ -418,7 +421,7 @@ Create an instance: `const coupon = client.Coupon()`
 | --- | --- | --- |
 | `code` | `string` |  |
 | `discount` | `number` |  |
-| `expiry_date` | `string` |  |
+| `expiryDate` | `string` |  |
 | `id` | `number` |  |
 | `type` | `string` |  |
 
@@ -502,9 +505,9 @@ Create an instance: `const user = client.User()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `last_name` | `string` |  |
+| `lastName` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Load
@@ -589,11 +592,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const cart = client.Cart()
-await cart.list()
+const coupon = client.Coupon()
+await coupon.list()
 
-// cart.data() now returns the cart data from the last `list`
-// cart.match() returns the last match criteria
+// coupon.data() now returns the coupon data from the last `list`
+// coupon.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

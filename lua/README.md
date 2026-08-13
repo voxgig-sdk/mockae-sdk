@@ -43,7 +43,7 @@ local carts, err = client:Cart():list()
 if err then error(err) end
 
 for _, item in ipairs(carts) do
-  print(item["id"], item["item"])
+  print(item["id"], item["items"])
 end
 ```
 
@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local carts, err = client:Cart():list()
+local coupons, err = client:Coupon():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Cart():list()
+local result, err = client:Coupon():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -246,9 +246,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 | `total` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List, Load.
 
@@ -260,7 +260,7 @@ API path: `/carts`
 | --- | --- |
 | `code` |  |
 | `discount` |  |
-| `expiry_date` |  |
+| `expiryDate` |  |
 | `id` |  |
 | `type` |  |
 
@@ -296,9 +296,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `last_name` |  |
+| `lastName` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -326,9 +326,9 @@ Create an instance: `local cart = client:Cart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `number` |  |
-| `item` | `table` |  |
+| `items` | `table` |  |
 | `total` | `number` |  |
-| `user_id` | `number` |  |
+| `userId` | `number` |  |
 
 #### Example: Load
 
@@ -360,7 +360,7 @@ Create an instance: `local coupon = client:Coupon(nil)`
 | --- | --- | --- |
 | `code` | `string` |  |
 | `discount` | `number` |  |
-| `expiry_date` | `string` |  |
+| `expiryDate` | `string` |  |
 | `id` | `number` |  |
 | `type` | `string` |  |
 
@@ -444,9 +444,9 @@ Create an instance: `local user = client:User(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `number` |  |
-| `last_name` | `string` |  |
+| `lastName` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Load
@@ -538,11 +538,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local cart = client:Cart()
-cart:list()
+local coupon = client:Coupon()
+coupon:list()
 
--- cart:data_get() now returns the cart data from the last list
--- cart:match_get() returns the last match criteria
+-- coupon:data_get() now returns the coupon data from the last list
+-- coupon:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

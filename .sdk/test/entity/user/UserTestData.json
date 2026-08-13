@@ -3,23 +3,23 @@
     "user": {
       "USER00": {
         "email": "s32",
-        "first_name": "s33",
+        "firstName": "s33",
         "id": "USER00",
-        "last_name": "s35",
+        "lastName": "s35",
         "username": "s36"
       },
       "USER01": {
         "email": "s64",
-        "first_name": "s65",
+        "firstName": "s65",
         "id": "USER01",
-        "last_name": "s67",
+        "lastName": "s67",
         "username": "s68"
       },
       "USER02": {
         "email": "s96",
-        "first_name": "s97",
+        "firstName": "s97",
         "id": "USER02",
-        "last_name": "s99",
+        "lastName": "s99",
         "username": "s9a"
       }
     }
@@ -28,8 +28,8 @@
     "user": {
       "user_ref01": {
         "email": "sc8",
-        "first_name": "sc9",
-        "last_name": "scb",
+        "firstName": "sc9",
+        "lastName": "scb",
         "username": "scc"
       }
     }

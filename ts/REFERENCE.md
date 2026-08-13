@@ -165,9 +165,9 @@ const cart = client.Cart()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `number` | No |  |
-| `item` | `any[]` | No |  |
+| `items` | `any[]` | No |  |
 | `total` | `number` | No |  |
-| `user_id` | `number` | No |  |
+| `userId` | `number` | No |  |
 
 ### Operations
 
@@ -227,7 +227,7 @@ const coupon = client.Coupon()
 | --- | --- | --- | --- |
 | `code` | `string` | No |  |
 | `discount` | `number` | No |  |
-| `expiry_date` | `string` | No |  |
+| `expiryDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `type` | `string` | No |  |
 
@@ -394,9 +394,9 @@ const user = client.User()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `number` | No |  |
-| `last_name` | `string` | No |  |
+| `lastName` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations

@@ -8,23 +8,23 @@
 
 ---@class Cart
 ---@field id? number
----@field item? table
+---@field items? table
 ---@field total? number
----@field user_id? number
+---@field userId? number
 
 ---@class CartLoadMatch
 ---@field id number
 
 ---@class CartListMatch
 ---@field id? number
----@field item? table
+---@field items? table
 ---@field total? number
----@field user_id? number
+---@field userId? number
 
 ---@class Coupon
 ---@field code? string
 ---@field discount? number
----@field expiry_date? string
+---@field expiryDate? string
 ---@field id? number
 ---@field type? string
 
@@ -34,7 +34,7 @@
 ---@class CouponListMatch
 ---@field code? string
 ---@field discount? number
----@field expiry_date? string
+---@field expiryDate? string
 ---@field id? number
 ---@field type? string
 
@@ -62,9 +62,9 @@
 
 ---@class User
 ---@field email? string
----@field first_name? string
+---@field firstName? string
 ---@field id? number
----@field last_name? string
+---@field lastName? string
 ---@field username? string
 
 ---@class UserLoadMatch
@@ -72,9 +72,9 @@
 
 ---@class UserListMatch
 ---@field email? string
----@field first_name? string
+---@field firstName? string
 ---@field id? number
----@field last_name? string
+---@field lastName? string
 ---@field username? string
 
 local M = {}

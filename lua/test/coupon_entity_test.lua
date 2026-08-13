@@ -97,7 +97,7 @@ describe("CouponEntity", function()
     }
     local coupon_ref01_data_dt0_loaded, err = coupon_ref01_ent:load(coupon_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local coupon_ref01_data_dt0_load_result = helpers.to_map(coupon_ref01_data_dt0_loaded)
+    local coupon_ref01_data_dt0_load_result = helpers.to_map(type(coupon_ref01_data_dt0_loaded) == 'table' and coupon_ref01_data_dt0_loaded.data_get and coupon_ref01_data_dt0_loaded:data_get() or coupon_ref01_data_dt0_loaded)
     assert.is_not_nil(coupon_ref01_data_dt0_load_result)
     assert.are.equal(coupon_ref01_data_dt0_load_result["id"], coupon_ref01_data["id"])
 

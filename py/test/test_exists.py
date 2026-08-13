@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Mockae SDK exists test
 
 import pytest
 from mockae_sdk import MockaeSDK

@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = MockaeSDK.test()
-const carts = await client.Cart().list()
-// carts is an array of bare Cart records populated with mock data
-console.log(carts)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = MockaeSDK.test({
+  entity: {
+    coupon: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const coupons = await client.Coupon().list()
+// coupons is an array of Coupon entities, populated with mock data
+// — call coupons[0].data() for the record itself
+console.log(coupons)
 ```
 
 ### Python
 
 ```python
 client = MockaeSDK.test()
-carts = client.Cart().list()
-print(carts)
+coupons = client.Coupon().list()
+print(coupons)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(carts)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = MockaeSDK::test([
-    "entity" => ["cart" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["coupon" => ["test01" => ["id" => "test01"]]],
 ]);
-$carts = $client->Cart()->list();
+$coupons = $client->Coupon()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Cart(nil).List(
+result, err := client.Coupon(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Cart(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = MockaeSDK.test({
-  "entity" => { "cart" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "coupon" => { "test01" => { "id" => "test01" } } },
 })
-carts = client.Cart.list()
+coupons = client.Coupon.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Cart():list()
+local results, err = client:Coupon():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { MockaeSDK } from '@voxgig-sdk/mockae'
 
 const client = new MockaeSDK()
 
-// List all carts (returns Cart[])
+// List all carts (returns CartEntity[] — .data() for the record)
 const carts = await client.Cart().list()
 for (const cart of carts) {
   console.log(cart)
@@ -195,7 +204,7 @@ $client = new MockaeSDK();
 $carts = $client->Cart()->list();
 print_r($carts);
 
-// Load a specific cart (returns the bare record; throws on error)
+// Load a specific cart (returns the ENTITY; call data_get() for the record; throws on error)
 $cart = $client->Cart()->load(["id" => 1]);
 print_r($cart);
 ```
@@ -226,7 +235,7 @@ client = MockaeSDK.new
 carts = client.Cart.list
 puts carts
 
-# Load a specific cart (returns the bare record; raises on error)
+# Load a specific cart (returns the ENTITY; call data_get for the record)
 cart = client.Cart.load({ "id" => 1 })
 puts cart
 ```
@@ -363,6 +372,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://mockae.com/](https://mockae.com/)
 

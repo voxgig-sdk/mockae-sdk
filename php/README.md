@@ -38,7 +38,7 @@ try {
     // list() returns an array of Cart records — iterate directly.
     $carts = $client->Cart()->list();
     foreach ($carts as $item) {
-        echo $item["id"] . " " . $item["item"] . "\n";
+        echo $item["id"] . " " . $item["items"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Cart record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Cart record (throws on error).
     $cart = $client->Cart()->load(["id" => 1]);
     print_r($cart);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $carts = $client->Cart()->list();
+    $coupons = $client->Coupon()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,12 +137,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = MockaeSDK::test([
-    "entity" => ["cart" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["coupon" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
-$cart = $client->Cart()->list();
-print_r($cart);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$coupon = $client->Coupon()->list();
+print_r($coupon);
 ```
 
 ### Use a custom fetch function
@@ -244,7 +245,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,9 +268,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 | `total` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List, Load.
 
@@ -281,7 +282,7 @@ API path: `/carts`
 | --- | --- |
 | `code` |  |
 | `discount` |  |
-| `expiry_date` |  |
+| `expiryDate` |  |
 | `id` |  |
 | `type` |  |
 
@@ -317,9 +318,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `last_name` |  |
+| `lastName` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -347,14 +348,14 @@ Create an instance: `$cart = $client->Cart();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `int` |  |
-| `item` | `array` |  |
+| `items` | `array` |  |
 | `total` | `float` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Cart record (throws on error).
+// load() returns the ENTITY — call data_get() for the Cart record (throws on error).
 $cart = $client->Cart()->load(["id" => 1]);
 ```
 
@@ -383,14 +384,14 @@ Create an instance: `$coupon = $client->Coupon();`
 | --- | --- | --- |
 | `code` | `string` |  |
 | `discount` | `float` |  |
-| `expiry_date` | `string` |  |
+| `expiryDate` | `string` |  |
 | `id` | `int` |  |
 | `type` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Coupon record (throws on error).
+// load() returns the ENTITY — call data_get() for the Coupon record (throws on error).
 $coupon = $client->Coupon()->load(["id" => 1]);
 ```
 
@@ -426,7 +427,7 @@ Create an instance: `$product = $client->Product();`
 #### Example: Load
 
 ```php
-// load() returns the bare Product record (throws on error).
+// load() returns the ENTITY — call data_get() for the Product record (throws on error).
 $product = $client->Product()->load(["id" => 1]);
 ```
 
@@ -451,7 +452,7 @@ Create an instance: `$status = $client->Status();`
 #### Example: Load
 
 ```php
-// load() returns the bare Status record (throws on error).
+// load() returns the ENTITY — call data_get() for the Status record (throws on error).
 $status = $client->Status()->load(["id" => 1]);
 ```
 
@@ -472,15 +473,15 @@ Create an instance: `$user = $client->User();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `last_name` | `string` |  |
+| `lastName` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare User record (throws on error).
+// load() returns the ENTITY — call data_get() for the User record (throws on error).
 $user = $client->User()->load(["id" => 1]);
 ```
 
@@ -568,11 +569,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$cart = $client->Cart();
-$cart->list();
+$coupon = $client->Coupon();
+$coupon->list();
 
-// $cart->data_get() now returns the cart data from the last list
-// $cart->match_get() returns the last match criteria
+// $coupon->data_get() now returns the coupon data from the last list
+// $coupon->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

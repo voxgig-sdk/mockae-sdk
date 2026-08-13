@@ -115,9 +115,9 @@ fmt.Println(cart.GetName()) // "cart"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `int` | No |  |
-| `item` | `[]any` | No |  |
+| `items` | `[]any` | No |  |
 | `total` | `float64` | No |  |
-| `user_id` | `int` | No |  |
+| `userId` | `int` | No |  |
 
 ### Operations
 
@@ -182,7 +182,7 @@ fmt.Println(coupon.GetName()) // "coupon"
 | --- | --- | --- | --- |
 | `code` | `string` | No |  |
 | `discount` | `float64` | No |  |
-| `expiry_date` | `string` | No |  |
+| `expiryDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `type` | `string` | No |  |
 
@@ -360,9 +360,9 @@ fmt.Println(user.GetName()) // "user"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `int` | No |  |
-| `last_name` | `string` | No |  |
+| `lastName` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations

@@ -110,9 +110,9 @@ cart = client.Cart
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `Integer` | No |  |
-| `item` | `Array` | No |  |
+| `items` | `Array` | No |  |
 | `total` | `Float` | No |  |
-| `user_id` | `Integer` | No |  |
+| `userId` | `Integer` | No |  |
 
 ### Operations
 
@@ -174,7 +174,7 @@ coupon = client.Coupon
 | --- | --- | --- | --- |
 | `code` | `String` | No |  |
 | `discount` | `Float` | No |  |
-| `expiry_date` | `String` | No |  |
+| `expiryDate` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `type` | `String` | No |  |
 
@@ -347,9 +347,9 @@ user = client.User
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `last_name` | `String` | No |  |
+| `lastName` | `String` | No |  |
 | `username` | `String` | No |  |
 
 ### Operations

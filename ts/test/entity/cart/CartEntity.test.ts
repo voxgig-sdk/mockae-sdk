@@ -63,13 +63,13 @@ describe('CartEntity', async () => {
     const cart_ref01_ent = client.Cart()
     const cart_ref01_match: any = {}
 
-    const cart_ref01_list = await cart_ref01_ent.list(cart_ref01_match)
+    const cart_ref01_list = (await cart_ref01_ent.list(cart_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const cart_ref01_match_dt0: any = {}
     cart_ref01_match_dt0.id = cart_ref01_data.id
-    const cart_ref01_data_dt0 = await cart_ref01_ent.load(cart_ref01_match_dt0)
+    const cart_ref01_data_dt0 = (await cart_ref01_ent.load(cart_ref01_match_dt0)).data()
     assert(cart_ref01_data_dt0.id === cart_ref01_data.id)
 
 

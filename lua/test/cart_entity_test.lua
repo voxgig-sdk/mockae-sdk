@@ -97,7 +97,7 @@ describe("CartEntity", function()
     }
     local cart_ref01_data_dt0_loaded, err = cart_ref01_ent:load(cart_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local cart_ref01_data_dt0_load_result = helpers.to_map(cart_ref01_data_dt0_loaded)
+    local cart_ref01_data_dt0_load_result = helpers.to_map(type(cart_ref01_data_dt0_loaded) == 'table' and cart_ref01_data_dt0_loaded.data_get and cart_ref01_data_dt0_loaded:data_get() or cart_ref01_data_dt0_loaded)
     assert.is_not_nil(cart_ref01_data_dt0_load_result)
     assert.are.equal(cart_ref01_data_dt0_load_result["id"], cart_ref01_data["id"])
 

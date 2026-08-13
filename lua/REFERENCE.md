@@ -107,9 +107,9 @@ local cart = client:Cart(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | `number` | No |  |
-| `item` | `table` | No |  |
+| `items` | `table` | No |  |
 | `total` | `number` | No |  |
-| `user_id` | `number` | No |  |
+| `userId` | `number` | No |  |
 
 ### Operations
 
@@ -171,7 +171,7 @@ local coupon = client:Coupon(nil)
 | --- | --- | --- | --- |
 | `code` | `string` | No |  |
 | `discount` | `number` | No |  |
-| `expiry_date` | `string` | No |  |
+| `expiryDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `type` | `string` | No |  |
 
@@ -344,9 +344,9 @@ local user = client:User(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `email` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `id` | `number` | No |  |
-| `last_name` | `string` | No |  |
+| `lastName` | `string` | No |  |
 | `username` | `string` | No |  |
 
 ### Operations

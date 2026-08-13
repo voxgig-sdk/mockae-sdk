@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a cart
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    carts = client.Cart().list()
-    print(carts)
+    coupons = client.Coupon().list()
+    print(coupons)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = MockaeSDK.test()
 
-# Entity ops return the bare record and raise on error.
-cart = client.Cart().list()
-# cart contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+coupon = client.Coupon().list()
+# coupon contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -237,7 +238,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -260,9 +261,9 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `id` |  |
-| `item` |  |
+| `items` |  |
 | `total` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List, Load.
 
@@ -274,7 +275,7 @@ API path: `/carts`
 | --- | --- |
 | `code` |  |
 | `discount` |  |
-| `expiry_date` |  |
+| `expiryDate` |  |
 | `id` |  |
 | `type` |  |
 
@@ -310,9 +311,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `email` |  |
-| `first_name` |  |
+| `firstName` |  |
 | `id` |  |
-| `last_name` |  |
+| `lastName` |  |
 | `username` |  |
 
 Operations: List, Load.
@@ -340,9 +341,9 @@ Create an instance: `cart = client.Cart()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `int` |  |
-| `item` | `list` |  |
+| `items` | `list` |  |
 | `total` | `float` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: Load
 
@@ -374,7 +375,7 @@ Create an instance: `coupon = client.Coupon()`
 | --- | --- | --- |
 | `code` | `str` |  |
 | `discount` | `float` |  |
-| `expiry_date` | `str` |  |
+| `expiryDate` | `str` |  |
 | `id` | `int` |  |
 | `type` | `str` |  |
 
@@ -458,9 +459,9 @@ Create an instance: `user = client.User()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `str` |  |
-| `first_name` | `str` |  |
+| `firstName` | `str` |  |
 | `id` | `int` |  |
-| `last_name` | `str` |  |
+| `lastName` | `str` |  |
 | `username` | `str` |  |
 
 #### Example: Load
@@ -551,11 +552,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-cart = client.Cart()
-cart.list()
+coupon = client.Coupon()
+coupon.list()
 
-# cart.data_get() now returns the cart data from the last list
-# cart.match_get() returns the last match criteria
+# coupon.data_get() now returns the coupon data from the last list
+# coupon.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

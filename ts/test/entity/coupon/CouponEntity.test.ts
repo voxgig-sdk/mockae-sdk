@@ -63,13 +63,13 @@ describe('CouponEntity', async () => {
     const coupon_ref01_ent = client.Coupon()
     const coupon_ref01_match: any = {}
 
-    const coupon_ref01_list = await coupon_ref01_ent.list(coupon_ref01_match)
+    const coupon_ref01_list = (await coupon_ref01_ent.list(coupon_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const coupon_ref01_match_dt0: any = {}
     coupon_ref01_match_dt0.id = coupon_ref01_data.id
-    const coupon_ref01_data_dt0 = await coupon_ref01_ent.load(coupon_ref01_match_dt0)
+    const coupon_ref01_data_dt0 = (await coupon_ref01_ent.load(coupon_ref01_match_dt0)).data()
     assert(coupon_ref01_data_dt0.id === coupon_ref01_data.id)
 
 

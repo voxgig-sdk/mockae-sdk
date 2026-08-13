@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-carts, err := client.Cart(nil).List(nil, nil)
+coupons, err := client.Coupon(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = carts
+_ = coupons
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-cart, err := client.Cart(nil).List(
+coupon, err := client.Coupon(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(cart) // the returned mock data
+fmt.Println(coupon) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -274,9 +274,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"id"` |  |
-| `"item"` |  |
+| `"items"` |  |
 | `"total"` |  |
-| `"user_id"` |  |
+| `"userId"` |  |
 
 Operations: List, Load.
 
@@ -288,7 +288,7 @@ API path: `/carts`
 | --- | --- |
 | `"code"` |  |
 | `"discount"` |  |
-| `"expiry_date"` |  |
+| `"expiryDate"` |  |
 | `"id"` |  |
 | `"type"` |  |
 
@@ -324,9 +324,9 @@ API path: `/status/{statusCode}`
 | Field | Description |
 | --- | --- |
 | `"email"` |  |
-| `"first_name"` |  |
+| `"firstName"` |  |
 | `"id"` |  |
-| `"last_name"` |  |
+| `"lastName"` |  |
 | `"username"` |  |
 
 Operations: List, Load.
@@ -354,9 +354,9 @@ Create an instance: `cart := client.Cart(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `id` | `int` |  |
-| `item` | `[]any` |  |
+| `items` | `[]any` |  |
 | `total` | `float64` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: Load
 
@@ -396,7 +396,7 @@ Create an instance: `coupon := client.Coupon(nil)`
 | --- | --- | --- |
 | `code` | `string` |  |
 | `discount` | `float64` |  |
-| `expiry_date` | `string` |  |
+| `expiryDate` | `string` |  |
 | `id` | `int` |  |
 | `type` | `string` |  |
 
@@ -500,9 +500,9 @@ Create an instance: `user := client.User(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `email` | `string` |  |
-| `first_name` | `string` |  |
+| `firstName` | `string` |  |
 | `id` | `int` |  |
-| `last_name` | `string` |  |
+| `lastName` | `string` |  |
 | `username` | `string` |  |
 
 #### Example: Load
@@ -599,11 +599,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-cart := client.Cart(nil)
-cart.List(nil, nil)
+coupon := client.Coupon(nil)
+coupon.List(nil, nil)
 
-// cart.Data() now returns the cart data from the last list
-// cart.Match() returns the last match criteria
+// coupon.Data() now returns the coupon data from the last list
+// coupon.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

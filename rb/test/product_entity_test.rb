@@ -87,7 +87,7 @@ class ProductEntityTest < Minitest::Test
       "id" => product_ref01_data["id"],
     }
     product_ref01_data_dt0_loaded = product_ref01_ent.load(product_ref01_match_dt0, nil)
-    product_ref01_data_dt0_load_result = Helpers.to_map(product_ref01_data_dt0_loaded)
+    product_ref01_data_dt0_load_result = Helpers.to_map(product_ref01_data_dt0_loaded.respond_to?(:data_get) ? product_ref01_data_dt0_loaded.data_get : product_ref01_data_dt0_loaded)
     assert !product_ref01_data_dt0_load_result.nil?
     assert_equal product_ref01_data_dt0_load_result["id"], product_ref01_data["id"]
 

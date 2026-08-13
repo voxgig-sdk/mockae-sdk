@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-// Mockae SDK test feature
+// ProjectName SDK test feature
 
 require_once __DIR__ . '/BaseFeature.php';
 require_once __DIR__ . '/../utility/Param.php';
 
-class MockaeTestFeature extends MockaeBaseFeature
+class ProjectNameTestFeature extends ProjectNameBaseFeature
 {
     private mixed $client;
     private ?array $options;
@@ -23,7 +23,7 @@ class MockaeTestFeature extends MockaeBaseFeature
         $this->_netcalls = 0;
     }
 
-    public function init(MockaeContext $ctx, array $options): void
+    public function init(ProjectNameContext $ctx, array $options): void
     {
         $this->client = $ctx->client;
         $this->options = $options;
@@ -47,12 +47,40 @@ class MockaeTestFeature extends MockaeBaseFeature
         $entity = new \stdClass();
         $entity->data = $entity_data;
 
-        $test_fetcher = function (MockaeContext $fctx, string $_fullurl, array $_fetchdef) use ($entity): array {
-            $respond = function (int $status, mixed $data, ?array $extra = null): array {
+        $test_fetcher = function (ProjectNameContext $fctx, string $_fullurl, array $_fetchdef) use ($entity): array {
+            // Shape the mock payload the way the real API would, so the op's
+            // response transform recovers the entity from it. A point carrying
+            // transform.res of `body.item` describes an API that answers
+            // {"item": {...}}; handing back the bare entity means the
+            // transform unwraps a property that is not there and the caller
+            // gets null. The mock has to agree with the model, or it only
+            // ever simulates APIs whose responses happen to be unwrapped.
+            // Mirrors the ts/py mocks.
+            $envelope = function (mixed $data) use ($fctx): mixed {
+                $point = $fctx->point ?? null;
+                if ($data === null || !is_array($point)) {
+                    return $data;
+                }
+                $transform = $point['transform'] ?? null;
+                if (!is_array($transform)) {
+                    return $data;
+                }
+                $restf = $transform['res'] ?? null;
+                if (!is_string($restf)) {
+                    return $data;
+                }
+                if (!preg_match('/^`body\.([^`.]+)`$/', $restf, $m)) {
+                    return $data;
+                }
+                return [$m[1] => $data];
+            };
+
+            $respond = function (int $status, mixed $data, ?array $extra = null) use ($envelope): array {
+                $payload = $envelope($data);
                 $out = [
                     'status' => $status,
                     'statusText' => 'OK',
-                    'json' => function () use ($data) { return $data; },
+                    'json' => function () use ($payload) { return $payload; },
                     'body' => 'not-used',
                 ];
                 if ($extra) {
@@ -211,7 +239,7 @@ class MockaeTestFeature extends MockaeBaseFeature
                 return $respond(200, null);
 
             } elseif ($op->name === 'create') {
-                $id = MockaeParam::call($fctx, 'id');
+                $id = ProjectNameParam::call($fctx, 'id');
                 if ($id === null || $id === '__UNDEFINED__') {
                     $id = sprintf('%04x%04x%04x%04x',
                         random_int(0, 0xFFFF), random_int(0, 0xFFFF),
@@ -281,7 +309,7 @@ class MockaeTestFeature extends MockaeBaseFeature
             usleep((int)($ms * 1000));
         };
 
-        return function (MockaeContext $fctx, string $url, array $fetchdef) use ($net, $inner, $pick_latency, $sleep): array {
+        return function (ProjectNameContext $fctx, string $url, array $fetchdef) use ($net, $inner, $pick_latency, $sleep): array {
             $this->_netcalls++;
             $call = $this->_netcalls;
 
@@ -319,7 +347,7 @@ class MockaeTestFeature extends MockaeBaseFeature
      * current operation point, emit a `$OR` clause matching the key (and
      * its alias, if any) against the supplied value.
      */
-    public function buildArgs(MockaeContext $ctx, $op, $args): array
+    public function buildArgs(ProjectNameContext $ctx, $op, $args): array
     {
         // If args is empty/missing, return an empty $AND so select() matches
         // every entry — the TS test feature relies on this for empty-match
@@ -366,7 +394,7 @@ class MockaeTestFeature extends MockaeBaseFeature
             $is_id = ($k === 'id');
             $in_reqd = in_array($k, $reqd_names, true);
             if ($is_id || $in_reqd) {
-                $v = MockaeParam::call($ctx, $k);
+                $v = ProjectNameParam::call($ctx, $k);
                 $ka = \Voxgig\Struct\Struct::getprop($alias, $k);
 
                 $qor = [[$k => $v]];

@@ -7,9 +7,9 @@
 
 export interface Cart {
   id?: number
-  item?: any[]
+  items?: any[]
   total?: number
-  user_id?: number
+  userId?: number
 }
 
 export interface CartLoadMatch {
@@ -18,15 +18,15 @@ export interface CartLoadMatch {
 
 export interface CartListMatch {
   id?: number
-  item?: any[]
+  items?: any[]
   total?: number
-  user_id?: number
+  userId?: number
 }
 
 export interface Coupon {
   code?: string
   discount?: number
-  expiry_date?: string
+  expiryDate?: string
   id?: number
   type?: string
 }
@@ -38,7 +38,7 @@ export interface CouponLoadMatch {
 export interface CouponListMatch {
   code?: string
   discount?: number
-  expiry_date?: string
+  expiryDate?: string
   id?: number
   type?: string
 }
@@ -72,9 +72,9 @@ export interface StatusLoadMatch {
 
 export interface User {
   email?: string
-  first_name?: string
+  firstName?: string
   id?: number
-  last_name?: string
+  lastName?: string
   username?: string
 }
 
@@ -84,9 +84,9 @@ export interface UserLoadMatch {
 
 export interface UserListMatch {
   email?: string
-  first_name?: string
+  firstName?: string
   id?: number
-  last_name?: string
+  lastName?: string
   username?: string
 }
 

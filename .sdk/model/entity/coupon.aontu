@@ -16,7 +16,7 @@ main: kit: entity: coupon: {
       type: "`$NUMBER`"
     }
     {
-      name: "expiry_date"
+      name: "expiryDate"
       req: false
       type: "`$STRING`"
     }

@@ -87,7 +87,7 @@ class CartEntityTest < Minitest::Test
       "id" => cart_ref01_data["id"],
     }
     cart_ref01_data_dt0_loaded = cart_ref01_ent.load(cart_ref01_match_dt0, nil)
-    cart_ref01_data_dt0_load_result = Helpers.to_map(cart_ref01_data_dt0_loaded)
+    cart_ref01_data_dt0_load_result = Helpers.to_map(cart_ref01_data_dt0_loaded.respond_to?(:data_get) ? cart_ref01_data_dt0_loaded.data_get : cart_ref01_data_dt0_loaded)
     assert !cart_ref01_data_dt0_load_result.nil?
     assert_equal cart_ref01_data_dt0_load_result["id"], cart_ref01_data["id"]
 

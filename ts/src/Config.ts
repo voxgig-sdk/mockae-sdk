@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Mockae',
   }
 
 
@@ -75,7 +75,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "item",
+          "name": "items",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 1
@@ -89,7 +89,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "user_id",
+          "name": "userId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 3
@@ -104,6 +104,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/carts",
               "parts": [
@@ -138,6 +139,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/carts/{id}",
               "parts": [
@@ -181,7 +183,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "expiry_date",
+          "name": "expiryDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -210,6 +212,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/coupons",
               "parts": [
@@ -244,6 +247,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/coupons/{id}",
               "parts": [
@@ -316,6 +320,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/products",
               "parts": [
@@ -350,6 +355,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/products/{id}",
               "parts": [
@@ -399,6 +405,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/status/{statusCode}",
               "parts": [
@@ -440,7 +447,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -454,7 +461,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -476,6 +483,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/users",
               "parts": [
@@ -510,6 +518,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/users/{id}",
               "parts": [

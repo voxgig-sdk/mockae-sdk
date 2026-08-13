@@ -97,7 +97,7 @@ class CouponEntityTest extends TestCase
             "id" => $coupon_ref01_data["id"],
         ];
         $coupon_ref01_data_dt0_loaded = $coupon_ref01_ent->load($coupon_ref01_match_dt0, null);
-        $coupon_ref01_data_dt0_load_result = Helpers::to_map($coupon_ref01_data_dt0_loaded);
+        $coupon_ref01_data_dt0_load_result = Helpers::to_map(is_object($coupon_ref01_data_dt0_loaded) && method_exists($coupon_ref01_data_dt0_loaded, 'data_get') ? $coupon_ref01_data_dt0_loaded->data_get() : $coupon_ref01_data_dt0_loaded);
         $this->assertNotNull($coupon_ref01_data_dt0_load_result);
         $this->assertEquals($coupon_ref01_data_dt0_load_result["id"], $coupon_ref01_data["id"]);
 

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import MockaeSDK
-from core.error import MockaeError
-from core.result import MockaeResult
-from core.response import MockaeResponse
-from core.spec import MockaeSpec
-from feature.base_feature import MockaeBaseFeature
+from projectname_sdk.core.error import MockaeError
+from projectname_sdk.core.result import MockaeResult
+from projectname_sdk.core.response import MockaeResponse
+from projectname_sdk.core.spec import MockaeSpec
+from projectname_sdk.feature.base_feature import MockaeBaseFeature
 
 
 def _client():

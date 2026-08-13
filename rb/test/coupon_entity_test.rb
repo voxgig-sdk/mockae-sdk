@@ -87,7 +87,7 @@ class CouponEntityTest < Minitest::Test
       "id" => coupon_ref01_data["id"],
     }
     coupon_ref01_data_dt0_loaded = coupon_ref01_ent.load(coupon_ref01_match_dt0, nil)
-    coupon_ref01_data_dt0_load_result = Helpers.to_map(coupon_ref01_data_dt0_loaded)
+    coupon_ref01_data_dt0_load_result = Helpers.to_map(coupon_ref01_data_dt0_loaded.respond_to?(:data_get) ? coupon_ref01_data_dt0_loaded.data_get : coupon_ref01_data_dt0_loaded)
     assert !coupon_ref01_data_dt0_load_result.nil?
     assert_equal coupon_ref01_data_dt0_load_result["id"], coupon_ref01_data["id"]
 

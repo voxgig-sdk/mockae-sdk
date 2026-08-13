@@ -97,7 +97,7 @@ class CartEntityTest extends TestCase
             "id" => $cart_ref01_data["id"],
         ];
         $cart_ref01_data_dt0_loaded = $cart_ref01_ent->load($cart_ref01_match_dt0, null);
-        $cart_ref01_data_dt0_load_result = Helpers::to_map($cart_ref01_data_dt0_loaded);
+        $cart_ref01_data_dt0_load_result = Helpers::to_map(is_object($cart_ref01_data_dt0_loaded) && method_exists($cart_ref01_data_dt0_loaded, 'data_get') ? $cart_ref01_data_dt0_loaded->data_get() : $cart_ref01_data_dt0_loaded);
         $this->assertNotNull($cart_ref01_data_dt0_load_result);
         $this->assertEquals($cart_ref01_data_dt0_load_result["id"], $cart_ref01_data["id"]);
 

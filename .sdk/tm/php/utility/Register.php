@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ MockaeUtility::setRegistrar(function (MockaeUtility $u): void {
     $u->prepare_params = [MockaePrepareParams::class, 'call'];
     $u->prepare_path = [MockaePreparePath::class, 'call'];
     $u->prepare_query = [MockaePrepareQuery::class, 'call'];
+    $u->graphql_body = [MockaeGraphql::class, 'body'];
+    $u->graphql_errors = [MockaeGraphql::class, 'errors'];
     $u->result_basic = [MockaeResultBasic::class, 'call'];
     $u->result_body = [MockaeResultBody::class, 'call'];
     $u->result_headers = [MockaeResultHeaders::class, 'call'];

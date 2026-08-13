@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from mockae_sdk.utility.voxgig_struct import voxgig_struct as vs
 from mockae_sdk import MockaeSDK
-from core import helpers
+from mockae_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -42,7 +42,7 @@ class TestCartEntity:
         assert len(seen) == 3
 
         # Inbound: streaming active -> yields each item from the feature.
-        from config import make_config
+        from mockae_sdk.config import make_config
         cfg = make_config()
         if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
             sdk = MockaeSDK.test(
@@ -92,7 +92,7 @@ class TestCartEntity:
             "id": cart_ref01_data["id"],
         }
         cart_ref01_data_dt0_loaded = cart_ref01_ent.load(cart_ref01_match_dt0, None)
-        cart_ref01_data_dt0_load_result = helpers.to_map(cart_ref01_data_dt0_loaded)
+        cart_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(cart_ref01_data_dt0_loaded))
         assert cart_ref01_data_dt0_load_result is not None
         assert cart_ref01_data_dt0_load_result["id"] == cart_ref01_data["id"]
 

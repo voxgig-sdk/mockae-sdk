@@ -13,19 +13,19 @@
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] item
+# @!attribute [rw] items
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
 #   @return [Float, nil]
 #
-# @!attribute [rw] user_id
+# @!attribute [rw] userId
 #   @return [Integer, nil]
 Cart = Struct.new(
   :id,
-  :item,
+  :items,
   :total,
-  :user_id,
+  :userId,
   keyword_init: true
 )
 
@@ -43,19 +43,19 @@ CartLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] item
+# @!attribute [rw] items
 #   @return [Array, nil]
 #
 # @!attribute [rw] total
 #   @return [Float, nil]
 #
-# @!attribute [rw] user_id
+# @!attribute [rw] userId
 #   @return [Integer, nil]
 CartListMatch = Struct.new(
   :id,
-  :item,
+  :items,
   :total,
-  :user_id,
+  :userId,
   keyword_init: true
 )
 
@@ -67,7 +67,7 @@ CartListMatch = Struct.new(
 # @!attribute [rw] discount
 #   @return [Float, nil]
 #
-# @!attribute [rw] expiry_date
+# @!attribute [rw] expiryDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -78,7 +78,7 @@ CartListMatch = Struct.new(
 Coupon = Struct.new(
   :code,
   :discount,
-  :expiry_date,
+  :expiryDate,
   :id,
   :type,
   keyword_init: true
@@ -101,7 +101,7 @@ CouponLoadMatch = Struct.new(
 # @!attribute [rw] discount
 #   @return [Float, nil]
 #
-# @!attribute [rw] expiry_date
+# @!attribute [rw] expiryDate
 #   @return [String, nil]
 #
 # @!attribute [rw] id
@@ -112,7 +112,7 @@ CouponLoadMatch = Struct.new(
 CouponListMatch = Struct.new(
   :code,
   :discount,
-  :expiry_date,
+  :expiryDate,
   :id,
   :type,
   keyword_init: true
@@ -195,22 +195,22 @@ StatusLoadMatch = Struct.new(
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String, nil]
 #
 # @!attribute [rw] username
 #   @return [String, nil]
 User = Struct.new(
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :last_name,
+  :lastName,
   :username,
   keyword_init: true
 )
@@ -229,22 +229,22 @@ UserLoadMatch = Struct.new(
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String, nil]
 #
 # @!attribute [rw] username
 #   @return [String, nil]
 UserListMatch = Struct.new(
   :email,
-  :first_name,
+  :firstName,
   :id,
-  :last_name,
+  :lastName,
   :username,
   keyword_init: true
 )

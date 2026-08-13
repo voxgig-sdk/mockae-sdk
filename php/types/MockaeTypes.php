@@ -16,9 +16,9 @@ declare(strict_types=1);
 class Cart
 {
     public ?int $id = null;
-    public ?array $item = null;
+    public ?array $items = null;
     public ?float $total = null;
-    public ?int $user_id = null;
+    public ?int $userId = null;
 }
 
 /** Request payload for Cart#load. */
@@ -31,9 +31,9 @@ class CartLoadMatch
 class CartListMatch
 {
     public ?int $id = null;
-    public ?array $item = null;
+    public ?array $items = null;
     public ?float $total = null;
-    public ?int $user_id = null;
+    public ?int $userId = null;
 }
 
 /** Coupon entity data model. */
@@ -41,7 +41,7 @@ class Coupon
 {
     public ?string $code = null;
     public ?float $discount = null;
-    public ?string $expiry_date = null;
+    public ?string $expiryDate = null;
     public ?int $id = null;
     public ?string $type = null;
 }
@@ -57,7 +57,7 @@ class CouponListMatch
 {
     public ?string $code = null;
     public ?float $discount = null;
-    public ?string $expiry_date = null;
+    public ?string $expiryDate = null;
     public ?int $id = null;
     public ?string $type = null;
 }
@@ -103,9 +103,9 @@ class StatusLoadMatch
 class User
 {
     public ?string $email = null;
-    public ?string $first_name = null;
+    public ?string $firstName = null;
     public ?int $id = null;
-    public ?string $last_name = null;
+    public ?string $lastName = null;
     public ?string $username = null;
 }
 
@@ -119,9 +119,9 @@ class UserLoadMatch
 class UserListMatch
 {
     public ?string $email = null;
-    public ?string $first_name = null;
+    public ?string $firstName = null;
     public ?int $id = null;
-    public ?string $last_name = null;
+    public ?string $lastName = null;
     public ?string $username = null;
 }
 

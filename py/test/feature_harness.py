@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import MockaeControl
-from core.error import MockaeError
-from core.result import MockaeResult
-from core.spec import MockaeSpec
+from mockae_sdk.config import make_config
+from mockae_sdk.features import _make_feature
+from mockae_sdk.core.control import MockaeControl
+from mockae_sdk.core.error import MockaeError
+from mockae_sdk.core.result import MockaeResult
+from mockae_sdk.core.spec import MockaeSpec
 
 
 # True when this SDK was generated with the named feature.

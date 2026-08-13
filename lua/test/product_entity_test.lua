@@ -97,7 +97,7 @@ describe("ProductEntity", function()
     }
     local product_ref01_data_dt0_loaded, err = product_ref01_ent:load(product_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local product_ref01_data_dt0_load_result = helpers.to_map(product_ref01_data_dt0_loaded)
+    local product_ref01_data_dt0_load_result = helpers.to_map(type(product_ref01_data_dt0_loaded) == 'table' and product_ref01_data_dt0_loaded.data_get and product_ref01_data_dt0_loaded:data_get() or product_ref01_data_dt0_loaded)
     assert.is_not_nil(product_ref01_data_dt0_load_result)
     assert.are.equal(product_ref01_data_dt0_load_result["id"], product_ref01_data["id"])
 

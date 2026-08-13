@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ MockaeUtility.registrar = ->(u) {
   u.prepare_params = MockaeUtilities::PrepareParams
   u.prepare_path = MockaeUtilities::PreparePath
   u.prepare_query = MockaeUtilities::PrepareQuery
+  u.graphql_body = MockaeUtilities::GraphqlBody
+  u.graphql_errors = MockaeUtilities::GraphqlErrors
   u.result_basic = MockaeUtilities::ResultBasic
   u.result_body = MockaeUtilities::ResultBody
   u.result_headers = MockaeUtilities::ResultHeaders
