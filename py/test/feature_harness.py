@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from mockae_sdk.config import make_config
+from mockae_sdk.config import shared_config
 from mockae_sdk.features import _make_feature
 from mockae_sdk.core.control import MockaeControl
 from mockae_sdk.core.error import MockaeError
@@ -24,7 +24,7 @@ from mockae_sdk.core.spec import MockaeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

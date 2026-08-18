@@ -15,7 +15,7 @@ require_relative "../Mockae_sdk"
 module MockaeFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = MockaeConfig.make_config["feature"]
+    f = MockaeConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

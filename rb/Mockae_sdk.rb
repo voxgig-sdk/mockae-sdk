@@ -28,7 +28,7 @@ class MockaeSDK
     utility = MockaeUtility.new
     @_utility = utility
 
-    config = MockaeConfig.make_config
+    config = MockaeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

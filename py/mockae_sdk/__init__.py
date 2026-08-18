@@ -23,8 +23,8 @@ class MockaeSDK:
         utility = MockaeUtility()
         self._utility = utility
 
-        from mockae_sdk.config import make_config
-        config = make_config()
+        from mockae_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

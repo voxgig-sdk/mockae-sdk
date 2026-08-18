@@ -40,7 +40,7 @@ class MockaeSDK
         $utility = new MockaeUtility();
         $this->_utility = $utility;
 
-        $config = MockaeConfig::make_config();
+        $config = MockaeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
