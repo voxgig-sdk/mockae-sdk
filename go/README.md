@@ -6,7 +6,7 @@ The Golang SDK for the Mockae API — an entity-oriented client using standard G
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Cart(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -273,10 +273,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
-| `"items"` |  |
-| `"total"` |  |
-| `"userId"` |  |
+| `"id"` | Cart ID |
+| `"items"` | Items in the cart |
+| `"total"` | Total cart value |
+| `"userId"` | User ID who owns the cart |
 
 Operations: List, Load.
 
@@ -286,11 +286,11 @@ API path: `/carts`
 
 | Field | Description |
 | --- | --- |
-| `"code"` |  |
-| `"discount"` |  |
-| `"expiryDate"` |  |
-| `"id"` |  |
-| `"type"` |  |
+| `"code"` | Coupon code |
+| `"discount"` | Discount percentage or amount |
+| `"expiryDate"` | Coupon expiry date |
+| `"id"` | Coupon ID |
+| `"type"` | Type of discount (percentage or fixed) |
 
 Operations: List, Load.
 
@@ -300,11 +300,11 @@ API path: `/coupons`
 
 | Field | Description |
 | --- | --- |
-| `"category"` |  |
-| `"description"` |  |
-| `"id"` |  |
-| `"name"` |  |
-| `"price"` |  |
+| `"category"` | Product category |
+| `"description"` | Product description |
+| `"id"` | Product ID |
+| `"name"` | Product name |
+| `"price"` | Product price |
 
 Operations: List, Load.
 
@@ -323,11 +323,11 @@ API path: `/status/{statusCode}`
 
 | Field | Description |
 | --- | --- |
-| `"email"` |  |
-| `"firstName"` |  |
-| `"id"` |  |
-| `"lastName"` |  |
-| `"username"` |  |
+| `"email"` | User email address |
+| `"firstName"` | User's first name |
+| `"id"` | User ID |
+| `"lastName"` | User's last name |
+| `"username"` | Username |
 
 Operations: List, Load.
 
@@ -353,10 +353,10 @@ Create an instance: `cart := client.Cart(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `items` | `[]any` |  |
-| `total` | `float64` |  |
-| `userId` | `int` |  |
+| `id` | `int` | Cart ID |
+| `items` | `[]any` | Items in the cart |
+| `total` | `float64` | Total cart value |
+| `userId` | `int` | User ID who owns the cart |
 
 #### Example: Load
 
@@ -394,11 +394,11 @@ Create an instance: `coupon := client.Coupon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `float64` |  |
-| `expiryDate` | `string` |  |
-| `id` | `int` |  |
-| `type` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `float64` | Discount percentage or amount |
+| `expiryDate` | `string` | Coupon expiry date |
+| `id` | `int` | Coupon ID |
+| `type` | `string` | Type of discount (percentage or fixed) |
 
 #### Example: Load
 
@@ -436,11 +436,11 @@ Create an instance: `product := client.Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `price` | `float64` |  |
+| `category` | `string` | Product category |
+| `description` | `string` | Product description |
+| `id` | `int` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `float64` | Product price |
 
 #### Example: Load
 
@@ -499,11 +499,11 @@ Create an instance: `user := client.User(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `int` |  |
-| `lastName` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `firstName` | `string` | User's first name |
+| `id` | `int` | User ID |
+| `lastName` | `string` | User's last name |
+| `username` | `string` | Username |
 
 #### Example: Load
 

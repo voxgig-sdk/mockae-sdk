@@ -260,10 +260,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
-| `total` |  |
-| `userId` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
+| `total` | Total cart value |
+| `userId` | User ID who owns the cart |
 
 Operations: List, Load.
 
@@ -273,11 +273,11 @@ API path: `/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `expiryDate` |  |
-| `id` |  |
-| `type` |  |
+| `code` | Coupon code |
+| `discount` | Discount percentage or amount |
+| `expiryDate` | Coupon expiry date |
+| `id` | Coupon ID |
+| `type` | Type of discount (percentage or fixed) |
 
 Operations: List, Load.
 
@@ -287,11 +287,11 @@ API path: `/coupons`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `category` | Product category |
+| `description` | Product description |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -310,11 +310,11 @@ API path: `/status/{statusCode}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `lastName` |  |
-| `username` |  |
+| `email` | User email address |
+| `firstName` | User's first name |
+| `id` | User ID |
+| `lastName` | User's last name |
+| `username` | Username |
 
 Operations: List, Load.
 
@@ -340,10 +340,10 @@ Create an instance: `cart = client.Cart()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `items` | `list` |  |
-| `total` | `float` |  |
-| `userId` | `int` |  |
+| `id` | `int` | Cart ID |
+| `items` | `list` | Items in the cart |
+| `total` | `float` | Total cart value |
+| `userId` | `int` | User ID who owns the cart |
 
 #### Example: Load
 
@@ -373,11 +373,11 @@ Create an instance: `coupon = client.Coupon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `str` |  |
-| `discount` | `float` |  |
-| `expiryDate` | `str` |  |
-| `id` | `int` |  |
-| `type` | `str` |  |
+| `code` | `str` | Coupon code |
+| `discount` | `float` | Discount percentage or amount |
+| `expiryDate` | `str` | Coupon expiry date |
+| `id` | `int` | Coupon ID |
+| `type` | `str` | Type of discount (percentage or fixed) |
 
 #### Example: Load
 
@@ -407,11 +407,11 @@ Create an instance: `product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `str` |  |
-| `description` | `str` |  |
-| `id` | `int` |  |
-| `name` | `str` |  |
-| `price` | `float` |  |
+| `category` | `str` | Product category |
+| `description` | `str` | Product description |
+| `id` | `int` | Product ID |
+| `name` | `str` | Product name |
+| `price` | `float` | Product price |
 
 #### Example: Load
 
@@ -458,11 +458,11 @@ Create an instance: `user = client.User()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `str` |  |
-| `firstName` | `str` |  |
-| `id` | `int` |  |
-| `lastName` | `str` |  |
-| `username` | `str` |  |
+| `email` | `str` | User email address |
+| `firstName` | `str` | User's first name |
+| `id` | `int` | User ID |
+| `lastName` | `str` | User's last name |
+| `username` | `str` | Username |
 
 #### Example: Load
 

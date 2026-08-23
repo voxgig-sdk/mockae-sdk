@@ -109,10 +109,10 @@ cart = client.Cart
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `items` | `Array` | No |  |
-| `total` | `Float` | No |  |
-| `userId` | `Integer` | No |  |
+| `id` | `Integer` | No | Cart ID |
+| `items` | `Array` | No | Items in the cart |
+| `total` | `Float` | No | Total cart value |
+| `userId` | `Integer` | No | User ID who owns the cart |
 
 ### Operations
 
@@ -172,11 +172,11 @@ coupon = client.Coupon
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `String` | No |  |
-| `discount` | `Float` | No |  |
-| `expiryDate` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `type` | `String` | No |  |
+| `code` | `String` | No | Coupon code |
+| `discount` | `Float` | No | Discount percentage or amount |
+| `expiryDate` | `String` | No | Coupon expiry date |
+| `id` | `Integer` | No | Coupon ID |
+| `type` | `String` | No | Type of discount (percentage or fixed) |
 
 ### Operations
 
@@ -236,11 +236,11 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `String` | No |  |
-| `description` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `price` | `Float` | No |  |
+| `category` | `String` | No | Product category |
+| `description` | `String` | No | Product description |
+| `id` | `Integer` | No | Product ID |
+| `name` | `String` | No | Product name |
+| `price` | `Float` | No | Product price |
 
 ### Operations
 
@@ -346,11 +346,11 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `String` | No |  |
-| `firstName` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `lastName` | `String` | No |  |
-| `username` | `String` | No |  |
+| `email` | `String` | No | User email address |
+| `firstName` | `String` | No | User's first name |
+| `id` | `Integer` | No | User ID |
+| `lastName` | `String` | No | User's last name |
+| `username` | `String` | No | Username |
 
 ### Operations
 

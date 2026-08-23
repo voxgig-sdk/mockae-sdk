@@ -103,10 +103,10 @@ cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `items` | `list` | No |  |
-| `total` | `float` | No |  |
-| `userId` | `int` | No |  |
+| `id` | `int` | No | Cart ID |
+| `items` | `list` | No | Items in the cart |
+| `total` | `float` | No | Total cart value |
+| `userId` | `int` | No | User ID who owns the cart |
 
 ### Operations
 
@@ -167,11 +167,11 @@ coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `str` | No |  |
-| `discount` | `float` | No |  |
-| `expiryDate` | `str` | No |  |
-| `id` | `int` | No |  |
-| `type` | `str` | No |  |
+| `code` | `str` | No | Coupon code |
+| `discount` | `float` | No | Discount percentage or amount |
+| `expiryDate` | `str` | No | Coupon expiry date |
+| `id` | `int` | No | Coupon ID |
+| `type` | `str` | No | Type of discount (percentage or fixed) |
 
 ### Operations
 
@@ -232,11 +232,11 @@ product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `str` | No |  |
-| `description` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `price` | `float` | No |  |
+| `category` | `str` | No | Product category |
+| `description` | `str` | No | Product description |
+| `id` | `int` | No | Product ID |
+| `name` | `str` | No | Product name |
+| `price` | `float` | No | Product price |
 
 ### Operations
 
@@ -342,11 +342,11 @@ user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `str` | No |  |
-| `firstName` | `str` | No |  |
-| `id` | `int` | No |  |
-| `lastName` | `str` | No |  |
-| `username` | `str` | No |  |
+| `email` | `str` | No | User email address |
+| `firstName` | `str` | No | User's first name |
+| `id` | `int` | No | User ID |
+| `lastName` | `str` | No | User's last name |
+| `username` | `str` | No | Username |
 
 ### Operations
 

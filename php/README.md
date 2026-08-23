@@ -267,10 +267,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
-| `total` |  |
-| `userId` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
+| `total` | Total cart value |
+| `userId` | User ID who owns the cart |
 
 Operations: List, Load.
 
@@ -280,11 +280,11 @@ API path: `/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `expiryDate` |  |
-| `id` |  |
-| `type` |  |
+| `code` | Coupon code |
+| `discount` | Discount percentage or amount |
+| `expiryDate` | Coupon expiry date |
+| `id` | Coupon ID |
+| `type` | Type of discount (percentage or fixed) |
 
 Operations: List, Load.
 
@@ -294,11 +294,11 @@ API path: `/coupons`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `category` | Product category |
+| `description` | Product description |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -317,11 +317,11 @@ API path: `/status/{statusCode}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `lastName` |  |
-| `username` |  |
+| `email` | User email address |
+| `firstName` | User's first name |
+| `id` | User ID |
+| `lastName` | User's last name |
+| `username` | Username |
 
 Operations: List, Load.
 
@@ -347,10 +347,10 @@ Create an instance: `$cart = $client->Cart();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `items` | `array` |  |
-| `total` | `float` |  |
-| `userId` | `int` |  |
+| `id` | `int` | Cart ID |
+| `items` | `array` | Items in the cart |
+| `total` | `float` | Total cart value |
+| `userId` | `int` | User ID who owns the cart |
 
 #### Example: Load
 
@@ -382,11 +382,11 @@ Create an instance: `$coupon = $client->Coupon();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `float` |  |
-| `expiryDate` | `string` |  |
-| `id` | `int` |  |
-| `type` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `float` | Discount percentage or amount |
+| `expiryDate` | `string` | Coupon expiry date |
+| `id` | `int` | Coupon ID |
+| `type` | `string` | Type of discount (percentage or fixed) |
 
 #### Example: Load
 
@@ -418,11 +418,11 @@ Create an instance: `$product = $client->Product();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `price` | `float` |  |
+| `category` | `string` | Product category |
+| `description` | `string` | Product description |
+| `id` | `int` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `float` | Product price |
 
 #### Example: Load
 
@@ -472,11 +472,11 @@ Create an instance: `$user = $client->User();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `int` |  |
-| `lastName` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `firstName` | `string` | User's first name |
+| `id` | `int` | User ID |
+| `lastName` | `string` | User's last name |
+| `username` | `string` | Username |
 
 #### Example: Load
 

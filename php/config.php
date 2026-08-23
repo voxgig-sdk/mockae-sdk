@@ -33,6 +33,9 @@ class MockaeConfig
         return [
             "main" => [
                 "name" => "Mockae",
+                "slug" => "mockae",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -59,18 +62,22 @@ class MockaeConfig
           'fields' => [
             [
               'name' => 'id',
+              'short' => 'Cart ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'items',
+              'short' => 'Items in the cart',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'total',
+              'short' => 'Total cart value',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'userId',
+              'short' => 'User ID who owns the cart',
               'type' => '`$INTEGER`',
             ],
           ],
@@ -140,22 +147,27 @@ class MockaeConfig
           'fields' => [
             [
               'name' => 'code',
+              'short' => 'Coupon code',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'discount',
+              'short' => 'Discount percentage or amount',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'expiryDate',
+              'short' => 'Coupon expiry date',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'Coupon ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'type',
+              'short' => 'Type of discount (percentage or fixed)',
               'type' => '`$STRING`',
             ],
           ],
@@ -225,22 +237,27 @@ class MockaeConfig
           'fields' => [
             [
               'name' => 'category',
+              'short' => 'Product category',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'description',
+              'short' => 'Product description',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'Product ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'name',
+              'short' => 'Product name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'price',
+              'short' => 'Product price',
               'type' => '`$NUMBER`',
             ],
           ],
@@ -360,22 +377,27 @@ class MockaeConfig
           'fields' => [
             [
               'name' => 'email',
+              'short' => 'User email address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'firstName',
+              'short' => 'User\'s first name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'User ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'lastName',
+              'short' => 'User\'s last name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'username',
+              'short' => 'Username',
               'type' => '`$STRING`',
             ],
           ],

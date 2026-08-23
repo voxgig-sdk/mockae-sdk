@@ -1,0 +1,100 @@
+# Entity: coupon
+
+main: kit: entity: coupon: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "code"
+      req: false
+      short: "Coupon code"
+      type: "`$STRING`"
+    }
+    {
+      name: "discount"
+      req: false
+      short: "Discount percentage or amount"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "expiryDate"
+      req: false
+      short: "Coupon expiry date"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Coupon ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Type of discount (percentage or fixed)"
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "coupon"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/coupons"
+          parts: [
+            "coupons"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/coupons/{id}"
+          parts: [
+            "coupons"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

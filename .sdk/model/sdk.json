@@ -36,24 +36,28 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Cart ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "items",
               "req": false,
+              "short": "Items in the cart",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "total",
               "req": false,
+              "short": "Total cart value",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "userId",
               "req": false,
+              "short": "User ID who owns the cart",
               "type": "`$INTEGER`"
             }
           ],
@@ -136,30 +140,35 @@
               "active": true,
               "name": "code",
               "req": false,
+              "short": "Coupon code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "discount",
               "req": false,
+              "short": "Discount percentage or amount",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "expiryDate",
               "req": false,
+              "short": "Coupon expiry date",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Coupon ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of discount (percentage or fixed)",
               "type": "`$STRING`"
             }
           ],
@@ -242,30 +251,35 @@
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Product category",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Product description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Product ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Product name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "price",
               "req": false,
+              "short": "Product price",
               "type": "`$NUMBER`"
             }
           ],
@@ -404,30 +418,35 @@
               "active": true,
               "name": "email",
               "req": false,
+              "short": "User email address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "firstName",
               "req": false,
+              "short": "User's first name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "User ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastName",
               "req": false,
+              "short": "User's last name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "username",
               "req": false,
+              "short": "Username",
               "type": "`$STRING`"
             }
           ],

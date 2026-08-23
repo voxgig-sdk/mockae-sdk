@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -306,10 +306,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
-| `total` |  |
-| `userId` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
+| `total` | Total cart value |
+| `userId` | User ID who owns the cart |
 
 Operations: list, load.
 
@@ -319,11 +319,11 @@ API path: `/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `expiryDate` |  |
-| `id` |  |
-| `type` |  |
+| `code` | Coupon code |
+| `discount` | Discount percentage or amount |
+| `expiryDate` | Coupon expiry date |
+| `id` | Coupon ID |
+| `type` | Type of discount (percentage or fixed) |
 
 Operations: list, load.
 
@@ -333,11 +333,11 @@ API path: `/coupons`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `category` | Product category |
+| `description` | Product description |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: list, load.
 
@@ -356,11 +356,11 @@ API path: `/status/{statusCode}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `lastName` |  |
-| `username` |  |
+| `email` | User email address |
+| `firstName` | User's first name |
+| `id` | User ID |
+| `lastName` | User's last name |
+| `username` | Username |
 
 Operations: list, load.
 
@@ -386,10 +386,10 @@ Create an instance: `const cart = client.Cart()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `items` | `any[]` |  |
-| `total` | `number` |  |
-| `userId` | `number` |  |
+| `id` | `number` | Cart ID |
+| `items` | `any[]` | Items in the cart |
+| `total` | `number` | Total cart value |
+| `userId` | `number` | User ID who owns the cart |
 
 #### Example: Load
 
@@ -419,11 +419,11 @@ Create an instance: `const coupon = client.Coupon()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `number` |  |
-| `expiryDate` | `string` |  |
-| `id` | `number` |  |
-| `type` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `number` | Discount percentage or amount |
+| `expiryDate` | `string` | Coupon expiry date |
+| `id` | `number` | Coupon ID |
+| `type` | `string` | Type of discount (percentage or fixed) |
 
 #### Example: Load
 
@@ -453,11 +453,11 @@ Create an instance: `const product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
+| `category` | `string` | Product category |
+| `description` | `string` | Product description |
+| `id` | `number` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `number` | Product price |
 
 #### Example: Load
 
@@ -504,11 +504,11 @@ Create an instance: `const user = client.User()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `number` |  |
-| `lastName` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `firstName` | `string` | User's first name |
+| `id` | `number` | User ID |
+| `lastName` | `string` | User's last name |
+| `username` | `string` | Username |
 
 #### Example: Load
 

@@ -164,10 +164,10 @@ const cart = client.Cart()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `items` | `any[]` | No |  |
-| `total` | `number` | No |  |
-| `userId` | `number` | No |  |
+| `id` | `number` | No | Cart ID |
+| `items` | `any[]` | No | Items in the cart |
+| `total` | `number` | No | Total cart value |
+| `userId` | `number` | No | User ID who owns the cart |
 
 ### Operations
 
@@ -225,11 +225,11 @@ const coupon = client.Coupon()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `discount` | `number` | No |  |
-| `expiryDate` | `string` | No |  |
-| `id` | `number` | No |  |
-| `type` | `string` | No |  |
+| `code` | `string` | No | Coupon code |
+| `discount` | `number` | No | Discount percentage or amount |
+| `expiryDate` | `string` | No | Coupon expiry date |
+| `id` | `number` | No | Coupon ID |
+| `type` | `string` | No | Type of discount (percentage or fixed) |
 
 ### Operations
 
@@ -287,11 +287,11 @@ const product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `price` | `number` | No |  |
+| `category` | `string` | No | Product category |
+| `description` | `string` | No | Product description |
+| `id` | `number` | No | Product ID |
+| `name` | `string` | No | Product name |
+| `price` | `number` | No | Product price |
 
 ### Operations
 
@@ -393,11 +393,11 @@ const user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
-| `firstName` | `string` | No |  |
-| `id` | `number` | No |  |
-| `lastName` | `string` | No |  |
-| `username` | `string` | No |  |
+| `email` | `string` | No | User email address |
+| `firstName` | `string` | No | User's first name |
+| `id` | `number` | No | User ID |
+| `lastName` | `string` | No | User's last name |
+| `username` | `string` | No | Username |
 
 ### Operations
 

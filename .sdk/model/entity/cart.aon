@@ -1,0 +1,94 @@
+# Entity: cart
+
+main: kit: entity: cart: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "id"
+      req: false
+      short: "Cart ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "items"
+      req: false
+      short: "Items in the cart"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "total"
+      req: false
+      short: "Total cart value"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "userId"
+      req: false
+      short: "User ID who owns the cart"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cart"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/carts"
+          parts: [
+            "carts"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/carts/{id}"
+          parts: [
+            "carts"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -108,10 +108,10 @@ $cart = $client->Cart();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `items` | `array` | No |  |
-| `total` | `float` | No |  |
-| `userId` | `int` | No |  |
+| `id` | `int` | No | Cart ID |
+| `items` | `array` | No | Items in the cart |
+| `total` | `float` | No | Total cart value |
+| `userId` | `int` | No | User ID who owns the cart |
 
 ### Operations
 
@@ -171,11 +171,11 @@ $coupon = $client->Coupon();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `discount` | `float` | No |  |
-| `expiryDate` | `string` | No |  |
-| `id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `code` | `string` | No | Coupon code |
+| `discount` | `float` | No | Discount percentage or amount |
+| `expiryDate` | `string` | No | Coupon expiry date |
+| `id` | `int` | No | Coupon ID |
+| `type` | `string` | No | Type of discount (percentage or fixed) |
 
 ### Operations
 
@@ -235,11 +235,11 @@ $product = $client->Product();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `price` | `float` | No |  |
+| `category` | `string` | No | Product category |
+| `description` | `string` | No | Product description |
+| `id` | `int` | No | Product ID |
+| `name` | `string` | No | Product name |
+| `price` | `float` | No | Product price |
 
 ### Operations
 
@@ -345,11 +345,11 @@ $user = $client->User();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
-| `firstName` | `string` | No |  |
-| `id` | `int` | No |  |
-| `lastName` | `string` | No |  |
-| `username` | `string` | No |  |
+| `email` | `string` | No | User email address |
+| `firstName` | `string` | No | User's first name |
+| `id` | `int` | No | User ID |
+| `lastName` | `string` | No | User's last name |
+| `username` | `string` | No | Username |
 
 ### Operations
 

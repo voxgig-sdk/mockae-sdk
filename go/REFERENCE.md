@@ -114,10 +114,10 @@ fmt.Println(cart.GetName()) // "cart"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `items` | `[]any` | No |  |
-| `total` | `float64` | No |  |
-| `userId` | `int` | No |  |
+| `id` | `int` | No | Cart ID |
+| `items` | `[]any` | No | Items in the cart |
+| `total` | `float64` | No | Total cart value |
+| `userId` | `int` | No | User ID who owns the cart |
 
 ### Operations
 
@@ -180,11 +180,11 @@ fmt.Println(coupon.GetName()) // "coupon"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `code` | `string` | No |  |
-| `discount` | `float64` | No |  |
-| `expiryDate` | `string` | No |  |
-| `id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `code` | `string` | No | Coupon code |
+| `discount` | `float64` | No | Discount percentage or amount |
+| `expiryDate` | `string` | No | Coupon expiry date |
+| `id` | `int` | No | Coupon ID |
+| `type` | `string` | No | Type of discount (percentage or fixed) |
 
 ### Operations
 
@@ -247,11 +247,11 @@ fmt.Println(product.GetName()) // "product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `category` | `string` | No |  |
-| `description` | `string` | No |  |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `price` | `float64` | No |  |
+| `category` | `string` | No | Product category |
+| `description` | `string` | No | Product description |
+| `id` | `int` | No | Product ID |
+| `name` | `string` | No | Product name |
+| `price` | `float64` | No | Product price |
 
 ### Operations
 
@@ -359,11 +359,11 @@ fmt.Println(user.GetName()) // "user"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `email` | `string` | No |  |
-| `firstName` | `string` | No |  |
-| `id` | `int` | No |  |
-| `lastName` | `string` | No |  |
-| `username` | `string` | No |  |
+| `email` | `string` | No | User email address |
+| `firstName` | `string` | No | User's first name |
+| `id` | `int` | No | User ID |
+| `lastName` | `string` | No | User's last name |
+| `username` | `string` | No | Username |
 
 ### Operations
 

@@ -245,10 +245,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `items` |  |
-| `total` |  |
-| `userId` |  |
+| `id` | Cart ID |
+| `items` | Items in the cart |
+| `total` | Total cart value |
+| `userId` | User ID who owns the cart |
 
 Operations: List, Load.
 
@@ -258,11 +258,11 @@ API path: `/carts`
 
 | Field | Description |
 | --- | --- |
-| `code` |  |
-| `discount` |  |
-| `expiryDate` |  |
-| `id` |  |
-| `type` |  |
+| `code` | Coupon code |
+| `discount` | Discount percentage or amount |
+| `expiryDate` | Coupon expiry date |
+| `id` | Coupon ID |
+| `type` | Type of discount (percentage or fixed) |
 
 Operations: List, Load.
 
@@ -272,11 +272,11 @@ API path: `/coupons`
 
 | Field | Description |
 | --- | --- |
-| `category` |  |
-| `description` |  |
-| `id` |  |
-| `name` |  |
-| `price` |  |
+| `category` | Product category |
+| `description` | Product description |
+| `id` | Product ID |
+| `name` | Product name |
+| `price` | Product price |
 
 Operations: List, Load.
 
@@ -295,11 +295,11 @@ API path: `/status/{statusCode}`
 
 | Field | Description |
 | --- | --- |
-| `email` |  |
-| `firstName` |  |
-| `id` |  |
-| `lastName` |  |
-| `username` |  |
+| `email` | User email address |
+| `firstName` | User's first name |
+| `id` | User ID |
+| `lastName` | User's last name |
+| `username` | Username |
 
 Operations: List, Load.
 
@@ -325,10 +325,10 @@ Create an instance: `local cart = client:Cart(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `items` | `table` |  |
-| `total` | `number` |  |
-| `userId` | `number` |  |
+| `id` | `number` | Cart ID |
+| `items` | `table` | Items in the cart |
+| `total` | `number` | Total cart value |
+| `userId` | `number` | User ID who owns the cart |
 
 #### Example: Load
 
@@ -358,11 +358,11 @@ Create an instance: `local coupon = client:Coupon(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `code` | `string` |  |
-| `discount` | `number` |  |
-| `expiryDate` | `string` |  |
-| `id` | `number` |  |
-| `type` | `string` |  |
+| `code` | `string` | Coupon code |
+| `discount` | `number` | Discount percentage or amount |
+| `expiryDate` | `string` | Coupon expiry date |
+| `id` | `number` | Coupon ID |
+| `type` | `string` | Type of discount (percentage or fixed) |
 
 #### Example: Load
 
@@ -392,11 +392,11 @@ Create an instance: `local product = client:Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `category` | `string` |  |
-| `description` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
+| `category` | `string` | Product category |
+| `description` | `string` | Product description |
+| `id` | `number` | Product ID |
+| `name` | `string` | Product name |
+| `price` | `number` | Product price |
 
 #### Example: Load
 
@@ -443,11 +443,11 @@ Create an instance: `local user = client:User(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `email` | `string` |  |
-| `firstName` | `string` |  |
-| `id` | `number` |  |
-| `lastName` | `string` |  |
-| `username` | `string` |  |
+| `email` | `string` | User email address |
+| `firstName` | `string` | User's first name |
+| `id` | `number` | User ID |
+| `lastName` | `string` | User's last name |
+| `username` | `string` | Username |
 
 #### Example: Load
 
