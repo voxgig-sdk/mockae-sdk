@@ -28,6 +28,7 @@ module MockaeConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -310,7 +311,12 @@ module MockaeConfig
           },
         },
         "status" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "status",
           "op" => {
             "load" => {

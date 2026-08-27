@@ -81,6 +81,7 @@ type ProductListMatch struct {
 
 // Status is the typed data model for the status entity.
 type Status struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // StatusLoadMatch is the typed request payload for Status.LoadTyped.

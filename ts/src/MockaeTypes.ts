@@ -64,6 +64,7 @@ export interface ProductListMatch {
 }
 
 export interface Status {
+  id?: string
 }
 
 export interface StatusLoadMatch {

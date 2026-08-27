@@ -310,6 +310,12 @@ status := client.Status(nil)
 fmt.Println(status.GetName()) // "status"
 ```
 
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `id` | `string` | No |  |
+
 ### Operations
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`

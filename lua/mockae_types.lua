@@ -56,6 +56,7 @@
 ---@field price? number
 
 ---@class Status
+---@field id? string
 
 ---@class StatusLoadMatch
 ---@field id number

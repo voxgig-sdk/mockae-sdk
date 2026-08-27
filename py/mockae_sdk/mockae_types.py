@@ -74,8 +74,8 @@ class ProductListMatch(TypedDict, total=False):
     price: float
 
 
-class Status(TypedDict):
-    pass
+class Status(TypedDict, total=False):
+    id: str
 
 
 class StatusLoadMatch(TypedDict):

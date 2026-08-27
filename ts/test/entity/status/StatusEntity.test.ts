@@ -59,9 +59,12 @@ describe('StatusEntity', async () => {
 
     let status_ref01_data = Object.values(setup.data.existing.status)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const status_ref01_ent = client.Status()
+    const status_ref01_match_dt0: any = {}
+    status_ref01_match_dt0.id = status_ref01_data.id
+    const status_ref01_data_dt0 = (await status_ref01_ent.load(status_ref01_match_dt0)).data()
+    assert(status_ref01_data_dt0.id === status_ref01_data.id)
 
 
   })

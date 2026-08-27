@@ -178,8 +178,13 @@ ProductListMatch = Struct.new(
 )
 
 # Status entity data model.
-class Status
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Status = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Status#load.
 #

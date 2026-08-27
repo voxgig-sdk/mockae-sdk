@@ -42,6 +42,7 @@ class MockaeConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -324,7 +325,12 @@ class MockaeConfig
           ],
         ],
         'status' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'status',
           'op' => [
             'load' => [

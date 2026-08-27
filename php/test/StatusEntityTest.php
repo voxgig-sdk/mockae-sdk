@@ -48,9 +48,13 @@ class StatusEntityTest extends TestCase
 
         // LOAD
         $status_ref01_ent = $client->Status(null);
-        $status_ref01_match_dt0 = [];
+        $status_ref01_match_dt0 = [
+            "id" => $status_ref01_data["id"],
+        ];
         $status_ref01_data_dt0_loaded = $status_ref01_ent->load($status_ref01_match_dt0, null);
-        $this->assertNotNull($status_ref01_data_dt0_loaded);
+        $status_ref01_data_dt0_load_result = Helpers::to_map(is_object($status_ref01_data_dt0_loaded) && method_exists($status_ref01_data_dt0_loaded, 'data_get') ? $status_ref01_data_dt0_loaded->data_get() : $status_ref01_data_dt0_loaded);
+        $this->assertNotNull($status_ref01_data_dt0_load_result);
+        $this->assertEquals($status_ref01_data_dt0_load_result["id"], $status_ref01_data["id"]);
 
     }
 }

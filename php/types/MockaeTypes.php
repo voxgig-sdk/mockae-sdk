@@ -91,6 +91,7 @@ class ProductListMatch
 /** Status entity data model. */
 class Status
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Status#load. */
