@@ -46,6 +46,7 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "float",
             ["name"] = "total",
             ["short"] = "Total cart value",
             ["type"] = "`$NUMBER`",
@@ -55,6 +56,10 @@ local function make_config()
             ["short"] = "User ID who owns the cart",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "cart",
         ["op"] = {
@@ -67,13 +72,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/carts",
-                ["parts"] = {
-                  "carts",
+                ["segments"] = {
+                  {
+                    ["lit"] = "carts",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "carts",
                 },
               },
             },
@@ -97,9 +107,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/carts/{id}",
-                ["parts"] = {
-                  "carts",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "carts",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -109,6 +123,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "carts",
+                  "{id}",
                 },
               },
             },
@@ -126,11 +144,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "discount",
             ["short"] = "Discount percentage or amount",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "date",
             ["name"] = "expiryDate",
             ["short"] = "Coupon expiry date",
             ["type"] = "`$STRING`",
@@ -146,6 +166,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "coupon",
         ["op"] = {
           ["list"] = {
@@ -157,13 +181,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/coupons",
-                ["parts"] = {
-                  "coupons",
+                ["segments"] = {
+                  {
+                    ["lit"] = "coupons",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "coupons",
                 },
               },
             },
@@ -187,9 +216,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/coupons/{id}",
-                ["parts"] = {
-                  "coupons",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "coupons",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -199,6 +232,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "coupons",
+                  "{id}",
                 },
               },
             },
@@ -231,10 +268,15 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "price",
             ["short"] = "Product price",
             ["type"] = "`$NUMBER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "product",
         ["op"] = {
@@ -247,13 +289,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/products",
-                ["parts"] = {
-                  "products",
+                ["segments"] = {
+                  {
+                    ["lit"] = "products",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "products",
                 },
               },
             },
@@ -277,9 +324,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/products/{id}",
-                ["parts"] = {
-                  "products",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "products",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -289,6 +340,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "products",
+                  "{id}",
                 },
               },
             },
@@ -304,6 +359,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "status",
         ["op"] = {
@@ -327,13 +386,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/status/{statusCode}",
-                ["parts"] = {
-                  "status",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["statusCode"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "status",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -344,6 +407,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "status",
+                  "{id}",
                 },
               },
             },
@@ -356,6 +423,7 @@ local function make_config()
       ["user"] = {
         ["fields"] = {
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["short"] = "User email address",
             ["type"] = "`$STRING`",
@@ -381,6 +449,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "user",
         ["op"] = {
           ["list"] = {
@@ -392,13 +464,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/users",
-                ["parts"] = {
-                  "users",
+                ["segments"] = {
+                  {
+                    ["lit"] = "users",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "users",
                 },
               },
             },
@@ -422,9 +499,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/users/{id}",
-                ["parts"] = {
-                  "users",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -434,6 +515,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "users",
+                  "{id}",
                 },
               },
             },

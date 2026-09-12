@@ -18,6 +18,7 @@ main: kit: entity: cart: {
       type: "`$ARRAY`"
     }
     {
+      format: "float"
       name: "total"
       req: false
       short: "Total cart value"
@@ -44,8 +45,10 @@ main: kit: entity: cart: {
         {
           method: "GET"
           orig: "/carts"
-          parts: [
-            "carts"
+          segments: [
+            {
+              lit: "carts"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -71,9 +74,13 @@ main: kit: entity: cart: {
           }
           method: "GET"
           orig: "/carts/{id}"
-          parts: [
-            "carts"
-            "{id}"
+          segments: [
+            {
+              lit: "carts"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

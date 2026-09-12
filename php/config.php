@@ -72,6 +72,7 @@ class MockaeConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'float',
               'name' => 'total',
               'short' => 'Total cart value',
               'type' => '`$NUMBER`',
@@ -81,6 +82,10 @@ class MockaeConfig
               'short' => 'User ID who owns the cart',
               'type' => '`$INTEGER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'cart',
           'op' => [
@@ -93,13 +98,18 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/carts',
-                  'parts' => [
-                    'carts',
+                  'segments' => [
+                    [
+                      'lit' => 'carts',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'carts',
                   ],
                 ],
               ],
@@ -123,9 +133,13 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/carts/{id}',
-                  'parts' => [
-                    'carts',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'carts',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -135,6 +149,10 @@ class MockaeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'carts',
+                    '{id}',
                   ],
                 ],
               ],
@@ -152,11 +170,13 @@ class MockaeConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'discount',
               'short' => 'Discount percentage or amount',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date',
               'name' => 'expiryDate',
               'short' => 'Coupon expiry date',
               'type' => '`$STRING`',
@@ -172,6 +192,10 @@ class MockaeConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'coupon',
           'op' => [
             'list' => [
@@ -183,13 +207,18 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/coupons',
-                  'parts' => [
-                    'coupons',
+                  'segments' => [
+                    [
+                      'lit' => 'coupons',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'coupons',
                   ],
                 ],
               ],
@@ -213,9 +242,13 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/coupons/{id}',
-                  'parts' => [
-                    'coupons',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'coupons',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -225,6 +258,10 @@ class MockaeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'coupons',
+                    '{id}',
                   ],
                 ],
               ],
@@ -257,10 +294,15 @@ class MockaeConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'price',
               'short' => 'Product price',
               'type' => '`$NUMBER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'product',
           'op' => [
@@ -273,13 +315,18 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/products',
-                  'parts' => [
-                    'products',
+                  'segments' => [
+                    [
+                      'lit' => 'products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'products',
                   ],
                 ],
               ],
@@ -303,9 +350,13 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/products/{id}',
-                  'parts' => [
-                    'products',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'products',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -315,6 +366,10 @@ class MockaeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'products',
+                    '{id}',
                   ],
                 ],
               ],
@@ -330,6 +385,10 @@ class MockaeConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'status',
           'op' => [
@@ -353,13 +412,17 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/status/{statusCode}',
-                  'parts' => [
-                    'status',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'statusCode' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'status',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -370,6 +433,10 @@ class MockaeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'status',
+                    '{id}',
                   ],
                 ],
               ],
@@ -382,6 +449,7 @@ class MockaeConfig
         'user' => [
           'fields' => [
             [
+              'format' => 'email',
               'name' => 'email',
               'short' => 'User email address',
               'type' => '`$STRING`',
@@ -407,6 +475,10 @@ class MockaeConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'user',
           'op' => [
             'list' => [
@@ -418,13 +490,18 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/users',
-                  'parts' => [
-                    'users',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'users',
                   ],
                 ],
               ],
@@ -448,9 +525,13 @@ class MockaeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/users/{id}',
-                  'parts' => [
-                    'users',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -460,6 +541,10 @@ class MockaeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'users',
+                    '{id}',
                   ],
                 ],
               ],

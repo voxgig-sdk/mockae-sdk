@@ -50,6 +50,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "total",
 						"short": "Total cart value",
 						"type": "`$NUMBER`",
@@ -59,6 +60,10 @@ func MakeConfig() map[string]any {
 						"short": "User ID who owns the cart",
 						"type": "`$INTEGER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "cart",
 				"op": map[string]any{
@@ -71,13 +76,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/carts",
-								"parts": []any{
-									"carts",
+								"segments": []any{
+									map[string]any{
+										"lit": "carts",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"carts",
 								},
 							},
 						},
@@ -101,9 +111,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/carts/{id}",
-								"parts": []any{
-									"carts",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "carts",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -113,6 +127,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"carts",
+									"{id}",
 								},
 							},
 						},
@@ -130,11 +148,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "discount",
 						"short": "Discount percentage or amount",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "expiryDate",
 						"short": "Coupon expiry date",
 						"type": "`$STRING`",
@@ -150,6 +170,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "coupon",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -161,13 +185,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/coupons",
-								"parts": []any{
-									"coupons",
+								"segments": []any{
+									map[string]any{
+										"lit": "coupons",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"coupons",
 								},
 							},
 						},
@@ -191,9 +220,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/coupons/{id}",
-								"parts": []any{
-									"coupons",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "coupons",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -203,6 +236,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"coupons",
+									"{id}",
 								},
 							},
 						},
@@ -235,10 +272,15 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "price",
 						"short": "Product price",
 						"type": "`$NUMBER`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "product",
 				"op": map[string]any{
@@ -251,13 +293,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/products",
-								"parts": []any{
-									"products",
+								"segments": []any{
+									map[string]any{
+										"lit": "products",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"products",
 								},
 							},
 						},
@@ -281,9 +328,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/products/{id}",
-								"parts": []any{
-									"products",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "products",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -293,6 +344,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"products",
+									"{id}",
 								},
 							},
 						},
@@ -308,6 +363,10 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "status",
 				"op": map[string]any{
@@ -331,13 +390,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/status/{statusCode}",
-								"parts": []any{
-									"status",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"statusCode": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "status",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -348,6 +411,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"status",
+									"{id}",
 								},
 							},
 						},
@@ -360,6 +427,7 @@ func MakeConfig() map[string]any {
 			"user": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "email",
 						"name": "email",
 						"short": "User email address",
 						"type": "`$STRING`",
@@ -385,6 +453,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "user",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -396,13 +468,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/users",
-								"parts": []any{
-									"users",
+								"segments": []any{
+									map[string]any{
+										"lit": "users",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"users",
 								},
 							},
 						},
@@ -426,9 +503,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/users/{id}",
-								"parts": []any{
-									"users",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "users",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -438,6 +519,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"users",
+									"{id}",
 								},
 							},
 						},
@@ -449,6 +534,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

@@ -30,6 +30,7 @@ main: kit: entity: product: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "price"
       req: false
       short: "Product price"
@@ -50,8 +51,10 @@ main: kit: entity: product: {
         {
           method: "GET"
           orig: "/products"
-          parts: [
-            "products"
+          segments: [
+            {
+              lit: "products"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +80,13 @@ main: kit: entity: product: {
           }
           method: "GET"
           orig: "/products/{id}"
-          parts: [
-            "products"
-            "{id}"
+          segments: [
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

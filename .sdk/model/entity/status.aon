@@ -37,15 +37,19 @@ main: kit: entity: status: {
           }
           method: "GET"
           orig: "/status/{statusCode}"
-          parts: [
-            "status"
-            "{id}"
-          ]
           rename: {
             param: {
               statusCode: "id"
             }
           }
+          segments: [
+            {
+              lit: "status"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

@@ -12,12 +12,14 @@ main: kit: entity: coupon: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "discount"
       req: false
       short: "Discount percentage or amount"
       type: "`$NUMBER`"
     }
     {
+      format: "date"
       name: "expiryDate"
       req: false
       short: "Coupon expiry date"
@@ -50,8 +52,10 @@ main: kit: entity: coupon: {
         {
           method: "GET"
           orig: "/coupons"
-          parts: [
-            "coupons"
+          segments: [
+            {
+              lit: "coupons"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +81,13 @@ main: kit: entity: coupon: {
           }
           method: "GET"
           orig: "/coupons/{id}"
-          parts: [
-            "coupons"
-            "{id}"
+          segments: [
+            {
+              lit: "coupons"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

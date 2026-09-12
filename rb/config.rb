@@ -58,6 +58,7 @@ module MockaeConfig
               "type" => "`$ARRAY`",
             },
             {
+              "format" => "float",
               "name" => "total",
               "short" => "Total cart value",
               "type" => "`$NUMBER`",
@@ -68,6 +69,10 @@ module MockaeConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "cart",
           "op" => {
             "list" => {
@@ -79,14 +84,19 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/carts",
-                  "parts" => [
-                    "carts",
+                  "segments" => [
+                    {
+                      "lit" => "carts",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "carts",
+                  ],
                 },
               ],
             },
@@ -109,9 +119,13 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/carts/{id}",
-                  "parts" => [
-                    "carts",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "carts",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -122,6 +136,10 @@ module MockaeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "carts",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -138,11 +156,13 @@ module MockaeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "discount",
               "short" => "Discount percentage or amount",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date",
               "name" => "expiryDate",
               "short" => "Coupon expiry date",
               "type" => "`$STRING`",
@@ -158,6 +178,10 @@ module MockaeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "coupon",
           "op" => {
             "list" => {
@@ -169,14 +193,19 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/coupons",
-                  "parts" => [
-                    "coupons",
+                  "segments" => [
+                    {
+                      "lit" => "coupons",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "coupons",
+                  ],
                 },
               ],
             },
@@ -199,9 +228,13 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/coupons/{id}",
-                  "parts" => [
-                    "coupons",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "coupons",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -212,6 +245,10 @@ module MockaeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "coupons",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -243,11 +280,16 @@ module MockaeConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "price",
               "short" => "Product price",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "product",
           "op" => {
             "list" => {
@@ -259,14 +301,19 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/products",
-                  "parts" => [
-                    "products",
+                  "segments" => [
+                    {
+                      "lit" => "products",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "products",
+                  ],
                 },
               ],
             },
@@ -289,9 +336,13 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/products/{id}",
-                  "parts" => [
-                    "products",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -302,6 +353,10 @@ module MockaeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "products",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -317,6 +372,10 @@ module MockaeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "status",
           "op" => {
             "load" => {
@@ -339,15 +398,19 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/status/{statusCode}",
-                  "parts" => [
-                    "status",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "statusCode" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "status",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -357,6 +420,10 @@ module MockaeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "status",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -368,6 +435,7 @@ module MockaeConfig
         "user" => {
           "fields" => [
             {
+              "format" => "email",
               "name" => "email",
               "short" => "User email address",
               "type" => "`$STRING`",
@@ -393,6 +461,10 @@ module MockaeConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "user",
           "op" => {
             "list" => {
@@ -404,14 +476,19 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users",
-                  "parts" => [
-                    "users",
+                  "segments" => [
+                    {
+                      "lit" => "users",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "users",
+                  ],
                 },
               ],
             },
@@ -434,9 +511,13 @@ module MockaeConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users/{id}",
-                  "parts" => [
-                    "users",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "users",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -447,6 +528,10 @@ module MockaeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "users",
+                    "{id}",
+                  ],
                 },
               ],
             },
