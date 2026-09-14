@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { MockaeSDK } from '@voxgig-sdk/mockae'
+import { MockaeSDK } from '@voxgig-sdk/mockae-sdk'
 
 const client = new MockaeSDK()
 ```
@@ -612,7 +612,7 @@ mockae/
 Import the SDK from the package root:
 
 ```ts
-import { MockaeSDK } from '@voxgig-sdk/mockae'
+import { MockaeSDK } from '@voxgig-sdk/mockae-sdk'
 ```
 
 ### Entity state

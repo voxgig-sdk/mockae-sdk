@@ -105,7 +105,7 @@ local results, err = client:Coupon():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/mockae` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mockae-sdk/releases) |
+| TypeScript | `@voxgig-sdk/mockae-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mockae-sdk/releases) |
 | Python | `voxgig-sdk-mockae` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mockae-sdk/releases) |
 | PHP | `voxgig-sdk/mockae` | publish pending — [install from git tag](https://github.com/voxgig-sdk/mockae-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/mockae-sdk/go` | `go get github.com/voxgig-sdk/mockae-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Coupon():list()
 ### TypeScript
 
 ```ts
-import { MockaeSDK } from '@voxgig-sdk/mockae'
+import { MockaeSDK } from '@voxgig-sdk/mockae-sdk'
 
 const client = new MockaeSDK()
 
