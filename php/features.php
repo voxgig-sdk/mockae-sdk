@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Mockae SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class MockaeFeatures
@@ -14,8 +17,14 @@ class MockaeFeatures
         switch ($name) {
             case "base":
                 return new MockaeBaseFeature();
+            case "ratelimit":
+                return new MockaeRatelimitFeature();
+            case "retry":
+                return new MockaeRetryFeature();
             case "test":
                 return new MockaeTestFeature();
+            case "timeout":
+                return new MockaeTimeoutFeature();
             default:
                 return new MockaeBaseFeature();
         }
@@ -31,7 +40,10 @@ class MockaeFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

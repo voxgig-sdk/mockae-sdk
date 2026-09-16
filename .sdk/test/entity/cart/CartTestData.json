@@ -5,19 +5,19 @@
         "id": "CART00",
         "items": [],
         "total": 42,
-        "userId": "s2b"
+        "userId": 43
       },
       "CART01": {
         "id": "CART01",
         "items": [],
         "total": 82,
-        "userId": "s53"
+        "userId": 83
       },
       "CART02": {
         "id": "CART02",
         "items": [],
         "total": 122,
-        "userId": "s7b"
+        "userId": 123
       }
     }
   },
@@ -26,7 +26,141 @@
       "cart_ref01": {
         "items": [],
         "total": 162,
-        "userId": "sa3"
+        "userId": 163
+      }
+    }
+  },
+  "requests": {
+    "GET /carts": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllCarts",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "description": "Shopping cart object",
+                    "properties": {
+                      "id": {
+                        "description": "Cart ID",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "items": {
+                        "description": "Items in the cart",
+                        "items": {
+                          "properties": {
+                            "productId": {
+                              "example": 10,
+                              "type": "integer"
+                            },
+                            "quantity": {
+                              "example": 2,
+                              "type": "integer"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "total": {
+                        "description": "Total cart value",
+                        "example": 59.98,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "userId": {
+                        "description": "User ID who owns the cart",
+                        "example": 5,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of carts"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /carts/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCartById",
+        "parameters": [
+          {
+            "description": "Cart ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "maximum": 20,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Shopping cart object",
+                  "properties": {
+                    "id": {
+                      "description": "Cart ID",
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "items": {
+                      "description": "Items in the cart",
+                      "items": {
+                        "properties": {
+                          "productId": {
+                            "example": 10,
+                            "type": "integer"
+                          },
+                          "quantity": {
+                            "example": 2,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "description": "Total cart value",
+                      "example": 59.98,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "userId": {
+                      "description": "User ID who owns the cart",
+                      "example": 5,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with cart details"
+          },
+          "404": {
+            "description": "Cart not found"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

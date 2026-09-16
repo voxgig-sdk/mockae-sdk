@@ -33,5 +33,135 @@
         "type": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /coupons": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllCoupons",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "description": "Coupon object with discount information",
+                    "properties": {
+                      "code": {
+                        "description": "Coupon code",
+                        "example": "SAVE20",
+                        "type": "string"
+                      },
+                      "discount": {
+                        "description": "Discount percentage or amount",
+                        "example": 20,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "expiryDate": {
+                        "description": "Coupon expiry date",
+                        "example": "2024-12-31",
+                        "format": "date",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Coupon ID",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "type": {
+                        "description": "Type of discount (percentage or fixed)",
+                        "enum": [
+                          "percentage",
+                          "fixed"
+                        ],
+                        "example": "percentage",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of coupons"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /coupons/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCouponById",
+        "parameters": [
+          {
+            "description": "Coupon ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "maximum": 20,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Coupon object with discount information",
+                  "properties": {
+                    "code": {
+                      "description": "Coupon code",
+                      "example": "SAVE20",
+                      "type": "string"
+                    },
+                    "discount": {
+                      "description": "Discount percentage or amount",
+                      "example": 20,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "expiryDate": {
+                      "description": "Coupon expiry date",
+                      "example": "2024-12-31",
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Coupon ID",
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "type": {
+                      "description": "Type of discount (percentage or fixed)",
+                      "enum": [
+                        "percentage",
+                        "fixed"
+                      ],
+                      "example": "percentage",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with coupon details"
+          },
+          "404": {
+            "description": "Coupon not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

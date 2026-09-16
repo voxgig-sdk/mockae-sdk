@@ -33,5 +33,125 @@
         "username": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /users": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllUsers",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "description": "User object with profile information",
+                    "properties": {
+                      "email": {
+                        "description": "User email address",
+                        "example": "john.doe@example.com",
+                        "format": "email",
+                        "type": "string"
+                      },
+                      "firstName": {
+                        "description": "User's first name",
+                        "example": "John",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "User ID",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "lastName": {
+                        "description": "User's last name",
+                        "example": "Doe",
+                        "type": "string"
+                      },
+                      "username": {
+                        "description": "Username",
+                        "example": "john_doe",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of users"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /users/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "maximum": 20,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "User object with profile information",
+                  "properties": {
+                    "email": {
+                      "description": "User email address",
+                      "example": "john.doe@example.com",
+                      "format": "email",
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "description": "User's first name",
+                      "example": "John",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "User ID",
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "lastName": {
+                      "description": "User's last name",
+                      "example": "Doe",
+                      "type": "string"
+                    },
+                    "username": {
+                      "description": "Username",
+                      "example": "john_doe",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with user details"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -33,5 +33,125 @@
         "price": 204
       }
     }
+  },
+  "requests": {
+    "GET /products": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllProducts",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "description": "Product object with details",
+                    "properties": {
+                      "category": {
+                        "description": "Product category",
+                        "example": "Electronics",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Product description",
+                        "example": "This is a sample product description",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Product ID",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "description": "Product name",
+                        "example": "Sample Product",
+                        "type": "string"
+                      },
+                      "price": {
+                        "description": "Product price",
+                        "example": 29.99,
+                        "format": "float",
+                        "type": "number"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with list of products"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /products/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "description": "Product ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "maximum": 50,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Product object with details",
+                  "properties": {
+                    "category": {
+                      "description": "Product category",
+                      "example": "Electronics",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Product description",
+                      "example": "This is a sample product description",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Product ID",
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Product name",
+                      "example": "Sample Product",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Product price",
+                      "example": 29.99,
+                      "format": "float",
+                      "type": "number"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with product details"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

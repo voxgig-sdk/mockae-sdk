@@ -1,12 +1,18 @@
 # Mockae SDK feature factory
 
 from mockae_sdk.feature.base_feature import MockaeBaseFeature
+from mockae_sdk.feature.ratelimit_feature import MockaeRatelimitFeature
+from mockae_sdk.feature.retry_feature import MockaeRetryFeature
 from mockae_sdk.feature.test_feature import MockaeTestFeature
+from mockae_sdk.feature.timeout_feature import MockaeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: MockaeBaseFeature(),
+    "ratelimit": lambda: MockaeRatelimitFeature(),
+    "retry": lambda: MockaeRetryFeature(),
     "test": lambda: MockaeTestFeature(),
+    "timeout": lambda: MockaeTimeoutFeature(),
 }
 
 

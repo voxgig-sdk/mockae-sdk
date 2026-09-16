@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "cart": {
           "active": true,
@@ -75,6 +139,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /carts",
+                    "json": "{\"operationId\":\"getAllCarts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"Shopping cart object\",\"properties\":{\"id\":{\"description\":\"Cart ID\",\"example\":1,\"type\":\"integer\"},\"items\":{\"description\":\"Items in the cart\",\"items\":{\"properties\":{\"productId\":{\"example\":10,\"type\":\"integer\"},\"quantity\":{\"example\":2,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"Total cart value\",\"example\":59.98,\"format\":\"float\",\"type\":\"number\"},\"userId\":{\"description\":\"User ID who owns the cart\",\"example\":5,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of carts\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/carts",
@@ -108,6 +178,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /carts/{id}",
+                    "json": "{\"operationId\":\"getCartById\",\"parameters\":[{\"description\":\"Cart ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maximum\":20,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Shopping cart object\",\"properties\":{\"id\":{\"description\":\"Cart ID\",\"example\":1,\"type\":\"integer\"},\"items\":{\"description\":\"Items in the cart\",\"items\":{\"properties\":{\"productId\":{\"example\":10,\"type\":\"integer\"},\"quantity\":{\"example\":2,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"Total cart value\",\"example\":59.98,\"format\":\"float\",\"type\":\"number\"},\"userId\":{\"description\":\"User ID who owns the cart\",\"example\":5,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with cart details\"},\"404\":{\"description\":\"Cart not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -194,6 +270,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /coupons",
+                    "json": "{\"operationId\":\"getAllCoupons\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"Coupon object with discount information\",\"properties\":{\"code\":{\"description\":\"Coupon code\",\"example\":\"SAVE20\",\"type\":\"string\"},\"discount\":{\"description\":\"Discount percentage or amount\",\"example\":20,\"format\":\"float\",\"type\":\"number\"},\"expiryDate\":{\"description\":\"Coupon expiry date\",\"example\":\"2024-12-31\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Coupon ID\",\"example\":1,\"type\":\"integer\"},\"type\":{\"description\":\"Type of discount (percentage or fixed)\",\"enum\":[\"percentage\",\"fixed\"],\"example\":\"percentage\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of coupons\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/coupons",
@@ -227,6 +309,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /coupons/{id}",
+                    "json": "{\"operationId\":\"getCouponById\",\"parameters\":[{\"description\":\"Coupon ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maximum\":20,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Coupon object with discount information\",\"properties\":{\"code\":{\"description\":\"Coupon code\",\"example\":\"SAVE20\",\"type\":\"string\"},\"discount\":{\"description\":\"Discount percentage or amount\",\"example\":20,\"format\":\"float\",\"type\":\"number\"},\"expiryDate\":{\"description\":\"Coupon expiry date\",\"example\":\"2024-12-31\",\"format\":\"date\",\"type\":\"string\"},\"id\":{\"description\":\"Coupon ID\",\"example\":1,\"type\":\"integer\"},\"type\":{\"description\":\"Type of discount (percentage or fixed)\",\"enum\":[\"percentage\",\"fixed\"],\"example\":\"percentage\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with coupon details\"},\"404\":{\"description\":\"Coupon not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -312,6 +400,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /products",
+                    "json": "{\"operationId\":\"getAllProducts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"Product object with details\",\"properties\":{\"category\":{\"description\":\"Product category\",\"example\":\"Electronics\",\"type\":\"string\"},\"description\":{\"description\":\"Product description\",\"example\":\"This is a sample product description\",\"type\":\"string\"},\"id\":{\"description\":\"Product ID\",\"example\":1,\"type\":\"integer\"},\"name\":{\"description\":\"Product name\",\"example\":\"Sample Product\",\"type\":\"string\"},\"price\":{\"description\":\"Product price\",\"example\":29.99,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of products\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/products",
@@ -345,6 +439,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /products/{id}",
+                    "json": "{\"operationId\":\"getProductById\",\"parameters\":[{\"description\":\"Product ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Product object with details\",\"properties\":{\"category\":{\"description\":\"Product category\",\"example\":\"Electronics\",\"type\":\"string\"},\"description\":{\"description\":\"Product description\",\"example\":\"This is a sample product description\",\"type\":\"string\"},\"id\":{\"description\":\"Product ID\",\"example\":1,\"type\":\"integer\"},\"name\":{\"description\":\"Product name\",\"example\":\"Sample Product\",\"type\":\"string\"},\"price\":{\"description\":\"Product price\",\"example\":29.99,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}}},\"description\":\"Successful response with product details\"},\"404\":{\"description\":\"Product not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -411,6 +511,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /status/{statusCode}",
+                    "json": "{\"operationId\":\"getStatusCode\",\"parameters\":[{\"description\":\"HTTP status code to simulate (e.g., 200, 403, 404, 409, 500)\",\"examples\":{\"conflict\":{\"summary\":\"Conflict\",\"value\":409},\"forbidden\":{\"summary\":\"Forbidden\",\"value\":403},\"notFound\":{\"summary\":\"Not Found\",\"value\":404},\"serverError\":{\"summary\":\"Internal Server Error\",\"value\":500}},\"in\":\"path\",\"name\":\"statusCode\",\"required\":true,\"schema\":{\"maximum\":599,\"minimum\":100,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Success status code simulation\"},\"400\":{\"description\":\"Bad Request status code simulation\"},\"401\":{\"description\":\"Unauthorized status code simulation\"},\"403\":{\"description\":\"Forbidden status code simulation\"},\"404\":{\"description\":\"Not Found status code simulation\"},\"409\":{\"description\":\"Conflict status code simulation\"},\"500\":{\"description\":\"Internal Server Error status code simulation\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -501,6 +607,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /users",
+                    "json": "{\"operationId\":\"getAllUsers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"description\":\"User object with profile information\",\"properties\":{\"email\":{\"description\":\"User email address\",\"example\":\"john.doe@example.com\",\"format\":\"email\",\"type\":\"string\"},\"firstName\":{\"description\":\"User's first name\",\"example\":\"John\",\"type\":\"string\"},\"id\":{\"description\":\"User ID\",\"example\":1,\"type\":\"integer\"},\"lastName\":{\"description\":\"User's last name\",\"example\":\"Doe\",\"type\":\"string\"},\"username\":{\"description\":\"Username\",\"example\":\"john_doe\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with list of users\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/users",
@@ -535,6 +647,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /users/{id}",
+                    "json": "{\"operationId\":\"getUserById\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maximum\":20,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"User object with profile information\",\"properties\":{\"email\":{\"description\":\"User email address\",\"example\":\"john.doe@example.com\",\"format\":\"email\",\"type\":\"string\"},\"firstName\":{\"description\":\"User's first name\",\"example\":\"John\",\"type\":\"string\"},\"id\":{\"description\":\"User ID\",\"example\":1,\"type\":\"integer\"},\"lastName\":{\"description\":\"User's last name\",\"example\":\"Doe\",\"type\":\"string\"},\"username\":{\"description\":\"Username\",\"example\":\"john_doe\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with user details\"},\"404\":{\"description\":\"User not found\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/users/{id}",
@@ -565,13 +683,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -661,6 +989,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -910,6 +1334,48 @@
         "website": "https://mockae.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1464,6 +1930,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1505,7 +1972,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

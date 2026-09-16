@@ -16,5 +16,69 @@
     "status": {
       "status_ref01": {}
     }
+  },
+  "requests": {
+    "GET /status/{statusCode}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getStatusCode",
+        "parameters": [
+          {
+            "description": "HTTP status code to simulate (e.g., 200, 403, 404, 409, 500)",
+            "examples": {
+              "conflict": {
+                "summary": "Conflict",
+                "value": 409
+              },
+              "forbidden": {
+                "summary": "Forbidden",
+                "value": 403
+              },
+              "notFound": {
+                "summary": "Not Found",
+                "value": 404
+              },
+              "serverError": {
+                "summary": "Internal Server Error",
+                "value": 500
+              }
+            },
+            "in": "path",
+            "name": "statusCode",
+            "required": true,
+            "schema": {
+              "maximum": 599,
+              "minimum": 100,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "description": "Success status code simulation"
+          },
+          "400": {
+            "description": "Bad Request status code simulation"
+          },
+          "401": {
+            "description": "Unauthorized status code simulation"
+          },
+          "403": {
+            "description": "Forbidden status code simulation"
+          },
+          "404": {
+            "description": "Not Found status code simulation"
+          },
+          "409": {
+            "description": "Conflict status code simulation"
+          },
+          "500": {
+            "description": "Internal Server Error status code simulation"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
