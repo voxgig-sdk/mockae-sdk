@@ -1,7 +1,7 @@
 # Entity Models
 
-@"cart.aon"
-@"coupon.aon"
-@"product.aon"
-@"status.aon"
-@"user.aon"
+@"./cart.aon"
+@"./coupon.aon"
+@"./product.aon"
+@"./status.aon"
+@"./user.aon"

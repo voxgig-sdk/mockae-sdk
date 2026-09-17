@@ -127,21 +127,21 @@ class Config {
 
     entity: {
       
-      cart: {
-      },
-
-      coupon: {
-      },
-
-      product: {
-      },
-
-      status: {
-      },
-
-      user: {
-      },
-
+        cart: {
+        },
+  
+        coupon: {
+        },
+  
+        product: {
+        },
+  
+        status: {
+        },
+  
+        user: {
+        },
+  
     }
   }
 

@@ -611,6 +611,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── mockae_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations
