@@ -1,0 +1,115 @@
+# Entity: cart
+
+main: kit: entity: cart: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Cart ID"
+      t: "`$INTEGER`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: false
+      sh: "Items in the cart"
+      t: "`$ARRAY`"
+    }
+    total: {
+      fo: "float"
+      h: "Total"
+      n: "total"
+      r: false
+      sh: "Total cart value"
+      t: "`$NUMBER`"
+    }
+    userId: {
+      h: "User Id"
+      n: "userId"
+      r: false
+      sh: "User ID who owns the cart"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cart"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /carts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/carts"
+          s: [
+            {
+              lit: "carts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /carts/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/carts/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "carts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

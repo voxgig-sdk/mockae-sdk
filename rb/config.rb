@@ -103,24 +103,28 @@ module MockaeConfig
           "fields" => [
             {
               "name" => "id",
-              "short" => "Cart ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Cart ID",
             },
             {
               "name" => "items",
-              "short" => "Items in the cart",
+              "title" => "Items",
               "type" => "`$ARRAY`",
+              "short" => "Items in the cart",
             },
             {
-              "format" => "float",
               "name" => "total",
-              "short" => "Total cart value",
+              "title" => "Total",
               "type" => "`$NUMBER`",
+              "short" => "Total cart value",
+              "format" => "float",
             },
             {
               "name" => "userId",
-              "short" => "User ID who owns the cart",
+              "title" => "User Id",
               "type" => "`$INTEGER`",
+              "short" => "User ID who owns the cart",
             },
           ],
           "id" => {
@@ -134,7 +138,6 @@ module MockaeConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/carts",
@@ -143,14 +146,16 @@ module MockaeConfig
                       "lit" => "carts",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "carts",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "carts",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -159,17 +164,6 @@ module MockaeConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/carts/{id}",
@@ -181,19 +175,31 @@ module MockaeConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "carts",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "carts",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -206,30 +212,35 @@ module MockaeConfig
           "fields" => [
             {
               "name" => "code",
+              "title" => "Code",
+              "type" => "`$STRING`",
               "short" => "Coupon code",
-              "type" => "`$STRING`",
             },
             {
-              "format" => "float",
               "name" => "discount",
-              "short" => "Discount percentage or amount",
+              "title" => "Discount",
               "type" => "`$NUMBER`",
+              "short" => "Discount percentage or amount",
+              "format" => "float",
             },
             {
-              "format" => "date",
               "name" => "expiryDate",
-              "short" => "Coupon expiry date",
+              "title" => "Expiry Date",
               "type" => "`$STRING`",
+              "short" => "Coupon expiry date",
+              "format" => "date",
             },
             {
               "name" => "id",
-              "short" => "Coupon ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Coupon ID",
             },
             {
               "name" => "type",
-              "short" => "Type of discount (percentage or fixed)",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "Type of discount (percentage or fixed)",
             },
           ],
           "id" => {
@@ -243,7 +254,6 @@ module MockaeConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/coupons",
@@ -252,14 +262,16 @@ module MockaeConfig
                       "lit" => "coupons",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "coupons",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "coupons",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -268,17 +280,6 @@ module MockaeConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/coupons/{id}",
@@ -290,19 +291,31 @@ module MockaeConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "coupons",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "coupons",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -315,29 +328,34 @@ module MockaeConfig
           "fields" => [
             {
               "name" => "category",
-              "short" => "Product category",
+              "title" => "Category",
               "type" => "`$STRING`",
+              "short" => "Product category",
             },
             {
               "name" => "description",
-              "short" => "Product description",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "Product description",
             },
             {
               "name" => "id",
-              "short" => "Product ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Product ID",
             },
             {
               "name" => "name",
-              "short" => "Product name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "Product name",
             },
             {
-              "format" => "float",
               "name" => "price",
-              "short" => "Product price",
+              "title" => "Price",
               "type" => "`$NUMBER`",
+              "short" => "Product price",
+              "format" => "float",
             },
           ],
           "id" => {
@@ -351,7 +369,6 @@ module MockaeConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/products",
@@ -360,14 +377,16 @@ module MockaeConfig
                       "lit" => "products",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "products",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "products",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -376,17 +395,6 @@ module MockaeConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/products/{id}",
@@ -398,19 +406,31 @@ module MockaeConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "products",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "products",
-                    "{id}",
-                  ],
                 },
               ],
             },
@@ -423,6 +443,7 @@ module MockaeConfig
           "fields" => [
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$STRING`",
             },
           ],
@@ -437,26 +458,9 @@ module MockaeConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 403,
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "status_code",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/status/{statusCode}",
-                  "rename" => {
-                    "param" => {
-                      "statusCode" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "status",
@@ -465,19 +469,36 @@ module MockaeConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
+                  "parts" => [
+                    "status",
+                    "{id}",
+                  ],
+                  "rename" => {
+                    "param" => {
+                      "statusCode" => "id",
+                    },
                   },
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "status",
-                    "{id}",
-                  ],
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "status_code",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 403,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -489,30 +510,35 @@ module MockaeConfig
         "user" => {
           "fields" => [
             {
-              "format" => "email",
               "name" => "email",
-              "short" => "User email address",
+              "title" => "Email",
               "type" => "`$STRING`",
+              "short" => "User email address",
+              "format" => "email",
             },
             {
               "name" => "firstName",
-              "short" => "User's first name",
+              "title" => "First Name",
               "type" => "`$STRING`",
+              "short" => "User's first name",
             },
             {
               "name" => "id",
-              "short" => "User ID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "User ID",
             },
             {
               "name" => "lastName",
-              "short" => "User's last name",
+              "title" => "Last Name",
               "type" => "`$STRING`",
+              "short" => "User's last name",
             },
             {
               "name" => "username",
-              "short" => "Username",
+              "title" => "Username",
               "type" => "`$STRING`",
+              "short" => "Username",
             },
           ],
           "id" => {
@@ -526,7 +552,6 @@ module MockaeConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users",
@@ -535,14 +560,16 @@ module MockaeConfig
                       "lit" => "users",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "users",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "users",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -551,17 +578,6 @@ module MockaeConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/users/{id}",
@@ -573,19 +589,31 @@ module MockaeConfig
                       "var" => "id",
                     },
                   ],
+                  "parts" => [
+                    "users",
+                    "{id}",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "users",
-                    "{id}",
-                  ],
                 },
               ],
             },

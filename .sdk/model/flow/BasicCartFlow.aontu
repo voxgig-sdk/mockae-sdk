@@ -1,0 +1,44 @@
+# BasicCartFlow
+
+main: kit: flow: BasicCartFlow:
+{
+  entity: "cart",
+  kind: "basic",
+  name: "BasicCartFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cart_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cart_ref01",
+        srcdatavar: "cart_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "cart01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cart_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCartFlow"
+}

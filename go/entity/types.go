@@ -1,7 +1,7 @@
 // Typed models for the Mockae SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,10 +14,6 @@ import (
 
 // Cart is the typed data model for the cart entity.
 type Cart struct {
-	Id *int `json:"id,omitempty"`
-	Items *[]any `json:"items,omitempty"`
-	Total *float64 `json:"total,omitempty"`
-	UserId *int `json:"userId,omitempty"`
 }
 
 // CartLoadMatch is the typed request payload for Cart.LoadTyped.
@@ -35,11 +31,6 @@ type CartListMatch struct {
 
 // Coupon is the typed data model for the coupon entity.
 type Coupon struct {
-	Code *string `json:"code,omitempty"`
-	Discount *float64 `json:"discount,omitempty"`
-	ExpiryDate *string `json:"expiryDate,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Type *string `json:"type,omitempty"`
 }
 
 // CouponLoadMatch is the typed request payload for Coupon.LoadTyped.
@@ -58,11 +49,6 @@ type CouponListMatch struct {
 
 // Product is the typed data model for the product entity.
 type Product struct {
-	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Price *float64 `json:"price,omitempty"`
 }
 
 // ProductLoadMatch is the typed request payload for Product.LoadTyped.
@@ -81,7 +67,6 @@ type ProductListMatch struct {
 
 // Status is the typed data model for the status entity.
 type Status struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // StatusLoadMatch is the typed request payload for Status.LoadTyped.
@@ -91,11 +76,6 @@ type StatusLoadMatch struct {
 
 // User is the typed data model for the user entity.
 type User struct {
-	Email *string `json:"email,omitempty"`
-	FirstName *string `json:"firstName,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastName *string `json:"lastName,omitempty"`
-	Username *string `json:"username,omitempty"`
 }
 
 // UserLoadMatch is the typed request payload for User.LoadTyped.

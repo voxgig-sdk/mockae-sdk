@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -151,24 +144,28 @@ class Config {
       "fields": [
         {
           "name": "id",
-          "short": "Cart ID",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Cart ID"
         },
         {
           "name": "items",
-          "short": "Items in the cart",
-          "type": "`$ARRAY`"
+          "title": "Items",
+          "type": "`$ARRAY`",
+          "short": "Items in the cart"
         },
         {
-          "format": "float",
           "name": "total",
+          "title": "Total",
+          "type": "`$NUMBER`",
           "short": "Total cart value",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
           "name": "userId",
-          "short": "User ID who owns the cart",
-          "type": "`$INTEGER`"
+          "title": "User Id",
+          "type": "`$INTEGER`",
+          "short": "User ID who owns the cart"
         }
       ],
       "id": {
@@ -182,7 +179,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/carts",
@@ -191,14 +187,16 @@ class Config {
                   "lit": "carts"
                 }
               ],
-              "select": {},
+              "parts": [
+                "carts"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "carts"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -207,17 +205,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/carts/{id}",
@@ -229,19 +216,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "carts",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "carts",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -254,30 +253,35 @@ class Config {
       "fields": [
         {
           "name": "code",
-          "short": "Coupon code",
-          "type": "`$STRING`"
+          "title": "Code",
+          "type": "`$STRING`",
+          "short": "Coupon code"
         },
         {
-          "format": "float",
           "name": "discount",
+          "title": "Discount",
+          "type": "`$NUMBER`",
           "short": "Discount percentage or amount",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
-          "format": "date",
           "name": "expiryDate",
+          "title": "Expiry Date",
+          "type": "`$STRING`",
           "short": "Coupon expiry date",
-          "type": "`$STRING`"
+          "format": "date"
         },
         {
           "name": "id",
-          "short": "Coupon ID",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Coupon ID"
         },
         {
           "name": "type",
-          "short": "Type of discount (percentage or fixed)",
-          "type": "`$STRING`"
+          "title": "Type",
+          "type": "`$STRING`",
+          "short": "Type of discount (percentage or fixed)"
         }
       ],
       "id": {
@@ -291,7 +295,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/coupons",
@@ -300,14 +303,16 @@ class Config {
                   "lit": "coupons"
                 }
               ],
-              "select": {},
+              "parts": [
+                "coupons"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "coupons"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -316,17 +321,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/coupons/{id}",
@@ -338,19 +332,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "coupons",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "coupons",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -363,29 +369,34 @@ class Config {
       "fields": [
         {
           "name": "category",
-          "short": "Product category",
-          "type": "`$STRING`"
+          "title": "Category",
+          "type": "`$STRING`",
+          "short": "Product category"
         },
         {
           "name": "description",
-          "short": "Product description",
-          "type": "`$STRING`"
+          "title": "Description",
+          "type": "`$STRING`",
+          "short": "Product description"
         },
         {
           "name": "id",
-          "short": "Product ID",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "Product ID"
         },
         {
           "name": "name",
-          "short": "Product name",
-          "type": "`$STRING`"
+          "title": "Name",
+          "type": "`$STRING`",
+          "short": "Product name"
         },
         {
-          "format": "float",
           "name": "price",
+          "title": "Price",
+          "type": "`$NUMBER`",
           "short": "Product price",
-          "type": "`$NUMBER`"
+          "format": "float"
         }
       ],
       "id": {
@@ -399,7 +410,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/products",
@@ -408,14 +418,16 @@ class Config {
                   "lit": "products"
                 }
               ],
-              "select": {},
+              "parts": [
+                "products"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "products"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -424,17 +436,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/products/{id}",
@@ -446,19 +447,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "products",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "products",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -471,6 +484,7 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         }
       ],
@@ -485,26 +499,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": 403,
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "status_code",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/status/{statusCode}",
-              "rename": {
-                "param": {
-                  "statusCode": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "status"
@@ -513,19 +510,36 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
+              "parts": [
+                "status",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "statusCode": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "status",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "status_code",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": 403
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -537,30 +551,35 @@ class Config {
     "user": {
       "fields": [
         {
-          "format": "email",
           "name": "email",
+          "title": "Email",
+          "type": "`$STRING`",
           "short": "User email address",
-          "type": "`$STRING`"
+          "format": "email"
         },
         {
           "name": "firstName",
-          "short": "User's first name",
-          "type": "`$STRING`"
+          "title": "First Name",
+          "type": "`$STRING`",
+          "short": "User's first name"
         },
         {
           "name": "id",
-          "short": "User ID",
-          "type": "`$INTEGER`"
+          "title": "Id",
+          "type": "`$INTEGER`",
+          "short": "User ID"
         },
         {
           "name": "lastName",
-          "short": "User's last name",
-          "type": "`$STRING`"
+          "title": "Last Name",
+          "type": "`$STRING`",
+          "short": "User's last name"
         },
         {
           "name": "username",
-          "short": "Username",
-          "type": "`$STRING`"
+          "title": "Username",
+          "type": "`$STRING`",
+          "short": "Username"
         }
       ],
       "id": {
@@ -574,7 +593,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/users",
@@ -583,14 +601,16 @@ class Config {
                   "lit": "users"
                 }
               ],
-              "select": {},
+              "parts": [
+                "users"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "users"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -599,17 +619,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "id",
-                    "reqd": true,
-                    "type": "`$INTEGER`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/users/{id}",
@@ -621,19 +630,31 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
-              },
+              "parts": [
+                "users",
+                "{id}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "users",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "id",
+                    "type": "`$INTEGER`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }

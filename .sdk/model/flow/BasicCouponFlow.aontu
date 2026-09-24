@@ -1,0 +1,44 @@
+# BasicCouponFlow
+
+main: kit: flow: BasicCouponFlow:
+{
+  entity: "coupon",
+  kind: "basic",
+  name: "BasicCouponFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "coupon_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "coupon_ref01",
+        srcdatavar: "coupon_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "coupon01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-coupon_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCouponFlow"
+}

@@ -1,0 +1,123 @@
+# Entity: coupon
+
+main: kit: entity: coupon: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "Coupon code"
+      t: "`$STRING`"
+    }
+    discount: {
+      fo: "float"
+      h: "Discount"
+      n: "discount"
+      r: false
+      sh: "Discount percentage or amount"
+      t: "`$NUMBER`"
+    }
+    expiryDate: {
+      fo: "date"
+      h: "Expiry Date"
+      n: "expiryDate"
+      r: false
+      sh: "Coupon expiry date"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Coupon ID"
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of discount (percentage or fixed)"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "coupon"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /coupons"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/coupons"
+          s: [
+            {
+              lit: "coupons"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /coupons/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/coupons/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "coupons"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
